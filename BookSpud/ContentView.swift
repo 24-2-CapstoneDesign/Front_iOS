@@ -10,10 +10,15 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.gray04)
-            Text("Hello, world!")
+            Text("백두산")
+                .font(.spoqaHans(type: .medium, size: 40))
+        }
+        .onAppear {
+            for fontFamily in UIFont.familyNames {
+                for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+                    print(fontName)
+                }
+            }
         }
         .padding()
     }
