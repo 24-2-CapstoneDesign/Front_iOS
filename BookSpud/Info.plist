@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakaof9fd82c29e5a60c4c9a3c70fd938deda</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SpoqaHanSansNeo-Bold.otf</string>
@@ -10,5 +21,14 @@
 		<string>SpoqaHanSansNeo-Regular.otf</string>
 		<string>SpoqaHanSansNeo-Thin.otf</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>LSApplicationQueriesSchemes</key>
+		<array/>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

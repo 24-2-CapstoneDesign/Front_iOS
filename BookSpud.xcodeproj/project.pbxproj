@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D72BC8380700ED8D2F /* BookSpudApp.swift */; };
-		487170DA2BC8380700ED8D2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D92BC8380700ED8D2F /* ContentView.swift */; };
+		487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D92BC8380700ED8D2F /* LoginView.swift */; };
 		487170DC2BC8380800ED8D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170DB2BC8380800ED8D2F /* Assets.xcassets */; };
 		487170DF2BC8380800ED8D2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170DE2BC8380800ED8D2F /* Preview Assets.xcassets */; };
 		487170E62BC839F200ED8D2F /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170E52BC839F200ED8D2F /* Color.xcassets */; };
@@ -18,12 +18,20 @@
 		487170F12BC840D100ED8D2F /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 487170EC2BC840D100ED8D2F /* SpoqaHanSansNeo-Medium.otf */; };
 		487170F22BC840D100ED8D2F /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 487170ED2BC840D100ED8D2F /* SpoqaHanSansNeo-Bold.otf */; };
 		487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170F42BC841F400ED8D2F /* FontExtension.swift */; };
+		487170F82BC845D600ED8D2F /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170F72BC845D600ED8D2F /* Icon.swift */; };
+		48C19A742BC93497007B5B1F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginManager.swift */; };
+		48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A762BC939A4007B5B1F /* KakaoSDK */; };
+		48C19A792BC939A4007B5B1F /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A782BC939A4007B5B1F /* KakaoSDKAuth */; };
+		48C19A7B2BC939A4007B5B1F /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7A2BC939A4007B5B1F /* KakaoSDKCert */; };
+		48C19A7D2BC939A4007B5B1F /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */; };
+		48C19A7F2BC939A4007B5B1F /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */; };
+		48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		487170D42BC8380700ED8D2F /* BookSpud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSpud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487170D72BC8380700ED8D2F /* BookSpudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSpudApp.swift; sourceTree = "<group>"; };
-		487170D92BC8380700ED8D2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		487170D92BC8380700ED8D2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		487170DB2BC8380800ED8D2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		487170DE2BC8380800ED8D2F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		487170E52BC839F200ED8D2F /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
@@ -34,6 +42,9 @@
 		487170ED2BC840D100ED8D2F /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		487170F32BC8418100ED8D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		487170F42BC841F400ED8D2F /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		487170F72BC845D600ED8D2F /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		48C19A732BC93497007B5B1F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +52,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48C19A7D2BC939A4007B5B1F /* KakaoSDKCertCore in Frameworks */,
+				48C19A7B2BC939A4007B5B1F /* KakaoSDKCert in Frameworks */,
+				48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */,
+				48C19A7F2BC939A4007B5B1F /* KakaoSDKCommon in Frameworks */,
+				48C19A792BC939A4007B5B1F /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,13 +82,11 @@
 		487170D62BC8380700ED8D2F /* BookSpud */ = {
 			isa = PBXGroup;
 			children = (
-				487170F32BC8418100ED8D2F /* Info.plist */,
+				487170F92BC8463300ED8D2F /* Login */,
+				487170F62BC845BB00ED8D2F /* Setting */,
 				487170E82BC840C500ED8D2F /* Fonts */,
-				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
-				487170D92BC8380700ED8D2F /* ContentView.swift */,
-				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
-				487170E52BC839F200ED8D2F /* Color.xcassets */,
 				487170DD2BC8380800ED8D2F /* Preview Content */,
+				487170F32BC8418100ED8D2F /* Info.plist */,
 			);
 			path = BookSpud;
 			sourceTree = "<group>";
@@ -98,6 +112,35 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		487170F62BC845BB00ED8D2F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
+				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
+				487170E52BC839F200ED8D2F /* Color.xcassets */,
+				487170F72BC845D600ED8D2F /* Icon.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		487170F92BC8463300ED8D2F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				48C19A802BC93B24007B5B1F /* Kakao */,
+				487170D92BC8380700ED8D2F /* LoginView.swift */,
+				48C19A732BC93497007B5B1F /* LoginManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		48C19A802BC93B24007B5B1F /* Kakao */ = {
+			isa = PBXGroup;
+			children = (
+				48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */,
+			);
+			path = Kakao;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +157,13 @@
 			dependencies = (
 			);
 			name = BookSpud;
+			packageProductDependencies = (
+				48C19A762BC939A4007B5B1F /* KakaoSDK */,
+				48C19A782BC939A4007B5B1F /* KakaoSDKAuth */,
+				48C19A7A2BC939A4007B5B1F /* KakaoSDKCert */,
+				48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */,
+				48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */,
+			);
 			productName = BookSpud;
 			productReference = 487170D42BC8380700ED8D2F /* BookSpud.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +192,9 @@
 				Base,
 			);
 			mainGroup = 487170CB2BC8380700ED8D2F;
+			packageReferences = (
+				48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = 487170D52BC8380700ED8D2F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,8 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48C19A742BC93497007B5B1F /* LoginManager.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
-				487170DA2BC8380700ED8D2F /* ContentView.swift in Sources */,
+				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
+				487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */,
+				487170F82BC845D600ED8D2F /* Icon.swift in Sources */,
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +370,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookSpud/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -324,7 +379,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.BookSpud.BookSpud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.BookSpud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -344,7 +399,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookSpud/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -354,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.BookSpud.BookSpud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.BookSpud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -384,6 +438,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.22.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48C19A762BC939A4007B5B1F /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		48C19A782BC939A4007B5B1F /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		48C19A7A2BC939A4007B5B1F /* KakaoSDKCert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCert;
+		};
+		48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCertCore;
+		};
+		48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 487170CC2BC8380700ED8D2F /* Project object */;
 }
