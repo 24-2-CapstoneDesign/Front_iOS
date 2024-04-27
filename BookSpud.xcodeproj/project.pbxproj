@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480F6D2D2BC996DE008D958E /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D2C2BC996DE008D958E /* CombineMoya */; };
+		480F6D2F2BC996DE008D958E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D2E2BC996DE008D958E /* Moya */; };
+		480F6D312BC996DE008D958E /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D302BC996DE008D958E /* ReactiveMoya */; };
+		480F6D332BC996DE008D958E /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D322BC996DE008D958E /* RxMoya */; };
+		480F6D372BC99943008D958E /* ProfilModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D362BC99943008D958E /* ProfilModel.swift */; };
+		480F6D392BC99969008D958E /* ProfilSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D382BC99969008D958E /* ProfilSettingView.swift */; };
+		480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D3C2BC99D9D008D958E /* CustomTextField.swift */; };
 		487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D72BC8380700ED8D2F /* BookSpudApp.swift */; };
 		487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D92BC8380700ED8D2F /* LoginView.swift */; };
 		487170DC2BC8380800ED8D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170DB2BC8380800ED8D2F /* Assets.xcassets */; };
@@ -29,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		480F6D362BC99943008D958E /* ProfilModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilModel.swift; sourceTree = "<group>"; };
+		480F6D382BC99969008D958E /* ProfilSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilSettingView.swift; sourceTree = "<group>"; };
+		480F6D3C2BC99D9D008D958E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		487170D42BC8380700ED8D2F /* BookSpud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSpud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487170D72BC8380700ED8D2F /* BookSpudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSpudApp.swift; sourceTree = "<group>"; };
 		487170D92BC8380700ED8D2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -54,8 +64,12 @@
 			files = (
 				48C19A7D2BC939A4007B5B1F /* KakaoSDKCertCore in Frameworks */,
 				48C19A7B2BC939A4007B5B1F /* KakaoSDKCert in Frameworks */,
+				480F6D2D2BC996DE008D958E /* CombineMoya in Frameworks */,
 				48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */,
 				48C19A7F2BC939A4007B5B1F /* KakaoSDKCommon in Frameworks */,
+				480F6D312BC996DE008D958E /* ReactiveMoya in Frameworks */,
+				480F6D332BC996DE008D958E /* RxMoya in Frameworks */,
+				480F6D2F2BC996DE008D958E /* Moya in Frameworks */,
 				48C19A792BC939A4007B5B1F /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +77,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480F6D342BC9991B008D958E /* ProfilSetting */ = {
+			isa = PBXGroup;
+			children = (
+				480F6D362BC99943008D958E /* ProfilModel.swift */,
+				480F6D382BC99969008D958E /* ProfilSettingView.swift */,
+			);
+			path = ProfilSetting;
+			sourceTree = "<group>";
+		};
+		480F6D3A2BC99D83008D958E /* GlboalComponent */ = {
+			isa = PBXGroup;
+			children = (
+				480F6D3C2BC99D9D008D958E /* CustomTextField.swift */,
+			);
+			path = GlboalComponent;
+			sourceTree = "<group>";
+		};
 		487170CB2BC8380700ED8D2F = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +113,8 @@
 		487170D62BC8380700ED8D2F /* BookSpud */ = {
 			isa = PBXGroup;
 			children = (
+				480F6D3A2BC99D83008D958E /* GlboalComponent */,
+				480F6D342BC9991B008D958E /* ProfilSetting */,
 				487170F92BC8463300ED8D2F /* Login */,
 				487170F62BC845BB00ED8D2F /* Setting */,
 				487170E82BC840C500ED8D2F /* Fonts */,
@@ -116,9 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
+				487170F72BC845D600ED8D2F /* Icon.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
-				487170F72BC845D600ED8D2F /* Icon.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -163,6 +196,10 @@
 				48C19A7A2BC939A4007B5B1F /* KakaoSDKCert */,
 				48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */,
 				48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */,
+				480F6D2C2BC996DE008D958E /* CombineMoya */,
+				480F6D2E2BC996DE008D958E /* Moya */,
+				480F6D302BC996DE008D958E /* ReactiveMoya */,
+				480F6D322BC996DE008D958E /* RxMoya */,
 			);
 			productName = BookSpud;
 			productReference = 487170D42BC8380700ED8D2F /* BookSpud.app */;
@@ -194,6 +231,7 @@
 			mainGroup = 487170CB2BC8380700ED8D2F;
 			packageReferences = (
 				48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 487170D52BC8380700ED8D2F /* Products */;
 			projectDirPath = "";
@@ -229,10 +267,13 @@
 			files = (
 				48C19A742BC93497007B5B1F /* LoginManager.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
+				480F6D372BC99943008D958E /* ProfilModel.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */,
 				487170F82BC845D600ED8D2F /* Icon.swift in Sources */,
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
+				480F6D392BC99969008D958E /* ProfilSettingView.swift in Sources */,
+				480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +481,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -451,6 +500,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		480F6D2C2BC996DE008D958E /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		480F6D2E2BC996DE008D958E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		480F6D302BC996DE008D958E /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		480F6D322BC996DE008D958E /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 480F6D2B2BC996DE008D958E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
 		48C19A762BC939A4007B5B1F /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48C19A752BC939A4007B5B1F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
