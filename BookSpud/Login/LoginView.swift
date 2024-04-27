@@ -104,6 +104,7 @@ struct LoginView_Preview: PreviewProvider {
     static var previews: some View {
         LoginView()
             .previewLayout(.sizeThatFits)
+            .previewDevice("iPhone 15 Pro Max")
             .previewDevice("iPhone 11")
     }
 }

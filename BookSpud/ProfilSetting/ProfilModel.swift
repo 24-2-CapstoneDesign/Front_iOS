@@ -9,4 +9,5 @@ import Foundation
 
 struct ProfilModel: Codable {
     var userNickname: String
+    var profileImage: Data
 }

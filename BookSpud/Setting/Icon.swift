@@ -16,6 +16,8 @@ enum Icon: String {
     
     // MARK: - Profil
     case profil = "profil"
+    case checkNickname = "nickNameCheck"
+    case notCheckNickname = "notNicknameCheck"
     
     // MARK: - Function
     var image: Image {

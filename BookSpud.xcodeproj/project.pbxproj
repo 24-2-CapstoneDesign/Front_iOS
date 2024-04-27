@@ -149,9 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
+				487170F72BC845D600ED8D2F /* Icon.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
-				487170F72BC845D600ED8D2F /* Icon.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
