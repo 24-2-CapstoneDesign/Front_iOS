@@ -8,12 +8,49 @@
 import SwiftUI
 
 struct ProfilSettingView: View {
+    
+    // MARK: - Propert
+    @StateObject var profileVM = ProfileViewModel()
+    
     var body: some View {
-        profilTitleView
+        allGroup
+    }
+    
+    // MARK: - AllGroup
+    
+    /// 닉네임 설정 뷰에 대한 모든 프로퍼티 그룹
+    private var allGroup: some View {
+        VStack(alignment: .center, content: {
+            
+            Spacer().frame(maxHeight: 120)
+            
+            profileSettingGroup
+            
+            Spacer().frame(maxHeight: 310)
+            
+            GlobalMainBtn(clickBool: $profileVM.beginBtn,
+                          btnName: "시작하기",
+                          btnImg: nil,
+                          onClicked: {
+                print("hello world")
+            })
+        })
     }
     
     // MARK: - TopView
     
+    private var profileSettingGroup: some View {
+        VStack(alignment: .center, content: {
+            profilTitleView
+            
+            Spacer()
+            
+            nickNameTextField
+        })
+        .frame(maxWidth: 297, maxHeight: 260)
+    }
+    
+    /// 프로필 사진 지정 버튼
     private var profilTitleView: some View {
         VStack(alignment: .center, spacing: 21, content: {
             
@@ -31,12 +68,26 @@ struct ProfilSettingView: View {
                 .frame(minWidth: 226)
         })
     }
+    
+    /// 닉네임 입력 필드
+    private var nickNameTextField: some View {
+        CustomTextField(text: $profileVM.nickNameText,
+                        placeholder: "사용하고 싶은 닉네임을 작성해주세요!",
+                        showCheckIcon: true,
+                        maxWidth: 297,
+                        maxHeight: 47)
+    }
 }
 
 
 struct ProfilSetting_Preview: PreviewProvider {
+    static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
     static var previews: some View {
-        ProfilSettingView()
-            .previewLayout(.sizeThatFits)
+        ForEach(devices, id: \.self) { device in
+            ProfilSettingView()
+                .previewLayout(.sizeThatFits)
+                .previewDevice(PreviewDevice(rawValue: device))
+                .previewDisplayName(device)
+        }
     }
 }

@@ -19,6 +19,9 @@ enum Icon: String {
     case checkNickname = "nickNameCheck"
     case notCheckNickname = "notNicknameCheck"
     
+    // MARK: - BtnImage
+    case inputISBN = "inputISBN"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)
