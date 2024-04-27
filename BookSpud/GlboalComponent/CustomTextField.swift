@@ -55,6 +55,9 @@ struct CustomTextField: View {
                 placeholderInField
             }
         })
+        .onTapGesture {
+            isTextFocused = false
+        }
     }
     
     /// 텍스트 필드 내 Placeholder 지정
@@ -64,6 +67,9 @@ struct CustomTextField: View {
             .frame(minWidth: 193, minHeight: 16)
             .foregroundStyle(Color.subText)
             .padding([.vertical, .horizontal], 3)
+            .onTapGesture {
+                isTextFocused = true
+            }
     }
     
     /// 커스텀 텍스트 필드 생성
@@ -117,7 +123,7 @@ struct CustomTextField_Preview: PreviewProvider {
     
     static var previews: some View {
         ForEach(devices, id: \.self) { deviceName in
-            @State var text: String = "홍길동"
+            @State var text: String = "홍"
             CustomTextField(text: $text, placeholder: "하고 싶은 이름을 지정하세요", showCheckIcon: true, maxWidth: 297, maxHeight: 47)
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: deviceName))

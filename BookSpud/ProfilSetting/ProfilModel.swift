@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - ProfileModel
+
 struct ProfilModel: Codable {
     var userNickname: String
     var profileImage: Data
