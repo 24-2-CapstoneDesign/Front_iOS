@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfilSettingView: View {
+struct ProfileSettingView: View {
     
     // MARK: - Propert
     @StateObject var profileVM = ProfileViewModel()
@@ -35,6 +35,9 @@ struct ProfilSettingView: View {
                 print("hello world")
             })
         })
+        .sheet(isPresented: $profileVM.isImagePickerPresendted, content: {
+            ShowImagePicker(imageHandler: profileVM)
+        })
     }
     
     // MARK: - TopView
@@ -55,11 +58,19 @@ struct ProfilSettingView: View {
         VStack(alignment: .center, spacing: 21, content: {
             
             Button(action: {
-                print("이미지 버튼 클릭")
+                profileVM.showImagePicker()
             }, label: {
-                Icon.profil.image
-                    .fixedSize()
-                    .aspectRatio(contentMode: .fit)
+                if let selectedImage = profileVM.selectedImage {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: 127, maxHeight: 127)
+                        .clipShape(Circle())
+                } else {
+                    Icon.profil.image
+                        .fixedSize()
+                        .aspectRatio(contentMode: .fit)
+                }
             })
             
             Text("원하는 프로필을 넣어주세요!")
@@ -80,11 +91,11 @@ struct ProfilSettingView: View {
 }
 
 
-struct ProfilSetting_Preview: PreviewProvider {
+struct ProfileSetting_Preview: PreviewProvider {
     static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
-            ProfilSettingView()
+            ProfileSettingView()
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)
