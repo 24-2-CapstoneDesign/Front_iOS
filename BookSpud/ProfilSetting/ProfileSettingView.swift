@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ProfileSettingView: View {
     
-    // MARK: - Propert
-    @StateObject var profileVM = ProfileViewModel()
+    // MARK: - Property
+    @StateObject var profileVM: ProfileViewModel
     
     var body: some View {
         allGroup
+            .ignoresSafeArea(.keyboard)
+            .onAppear(perform: {
+                UIApplication.shared.hideKeyboard()
+            })
     }
     
     // MARK: - AllGroup
@@ -95,7 +99,7 @@ struct ProfileSetting_Preview: PreviewProvider {
     static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
-            ProfileSettingView()
+            ProfileSettingView(profileVM: ProfileViewModel())
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)

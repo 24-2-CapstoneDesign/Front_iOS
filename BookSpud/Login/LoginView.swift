@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    private let kakaoLoginManager = KakaoLoginMananger()
+    @StateObject var loginViewModel: LoginViewModel
     
     var body: some View {
             allGroup
@@ -82,7 +82,7 @@ struct LoginView: View {
         HStack(alignment: .center, spacing: 70, content: {
             
             Button(action: {
-                kakaoLoginManager.loginKakao()
+                loginViewModel.loginKakao()
             }, label: {
                 Icon.kakao.image
                     .fixedSize()
@@ -102,7 +102,7 @@ struct LoginView: View {
 
 struct LoginView_Preview: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(loginViewModel: LoginViewModel())
             .previewLayout(.sizeThatFits)
             .previewDevice("iPhone 15 Pro Max")
             .previewDevice("iPhone 11")
