@@ -13,6 +13,7 @@ class LoginViewModel: ObservableObject {
     private var kakaoLoginManager = KakaoLoginMananger()
     @Published public var isLogin: Bool = false
     
+    /// 카카오톡 로그인 시도
     public func loginKakao() {
         self.kakaoLoginManager.kakaoLogin { [weak self] result in
             switch result {

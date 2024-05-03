@@ -13,6 +13,7 @@ import KakaoSDKAuth
 struct BookSpudApp: App {
     
     @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel()
     
     init() {
         // Kakao SDK 초기화
@@ -24,7 +25,7 @@ struct BookSpudApp: App {
             if loginViewModel.isLogin == false{
                 LoginView(loginViewModel: loginViewModel)
             } else {
-                ProfileSettingView()
+                ProfileSettingView(profileVM: profileViewModel)
             }
         }
     }

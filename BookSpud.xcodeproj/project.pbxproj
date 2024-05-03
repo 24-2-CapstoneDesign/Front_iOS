@@ -19,6 +19,7 @@
 		4819A1B32BE4C65800DDED13 /* KeyboardHideExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */; };
 		482055812BDFDD23004E0D78 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482055802BDFDD23004E0D78 /* KeyChainManager.swift */; };
 		482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482055822BDFE1F2004E0D78 /* UserInfo.swift */; };
+		48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48607EF92BE4D46500284E38 /* RoundedCorner.swift */; };
 		487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D72BC8380700ED8D2F /* BookSpudApp.swift */; };
 		487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D92BC8380700ED8D2F /* LoginView.swift */; };
 		487170DC2BC8380800ED8D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170DB2BC8380800ED8D2F /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideExtension.swift; sourceTree = "<group>"; };
 		482055802BDFDD23004E0D78 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		482055822BDFE1F2004E0D78 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		48607EF92BE4D46500284E38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		487170D42BC8380700ED8D2F /* BookSpud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSpud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487170D72BC8380700ED8D2F /* BookSpudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSpudApp.swift; sourceTree = "<group>"; };
 		487170D92BC8380700ED8D2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,21 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		483628F72BE4D3600070FD7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				483628F82BE4D37D0070FD7F /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		483628F82BE4D37D0070FD7F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		487170CB2BC8380700ED8D2F = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +155,7 @@
 		487170D62BC8380700ED8D2F /* BookSpud */ = {
 			isa = PBXGroup;
 			children = (
+				483628F72BE4D3600070FD7F /* Views */,
 				489469722BDDF6DB00A4C942 /* GlobalGeneric */,
 				480F6D3A2BC99D83008D958E /* GlboalComponent */,
 				480F6D342BC9991B008D958E /* ProfilSetting */,
@@ -179,6 +197,7 @@
 				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
+				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -318,6 +337,7 @@
 				482055812BDFDD23004E0D78 /* KeyChainManager.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				4800C5CA2BDC7F78001431BE /* ProfileViewModel.swift in Sources */,
+				48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */,
 				487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */,
 				487170F82BC845D600ED8D2F /* Icon.swift in Sources */,
 				48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */,

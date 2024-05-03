@@ -11,8 +11,10 @@ import KakaoSDKUser
 
 class KakaoLoginMananger: ObservableObject {
     
+    //TODO: - 사용자 나이 받아오기
     
-    private func handleLoginResponse(oauthToken: OAuthToken?, error: Error?, completion: @escaping (Result<OAuthToken, Error>) -> Void) {
+    
+    fileprivate func handleLoginResponse(oauthToken: OAuthToken?, error: Error?, completion: @escaping (Result<OAuthToken, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else if let oauthToken = oauthToken {
@@ -20,7 +22,7 @@ class KakaoLoginMananger: ObservableObject {
         }
     }
     
-    public func kakaoLogin(completion: @escaping (Result<OAuthToken, Error>) -> Void) {
+    internal func kakaoLogin(completion: @escaping (Result<OAuthToken, Error>) -> Void) {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
                 self?.handleLoginResponse(oauthToken: oauthToken, error: error, completion: completion)
