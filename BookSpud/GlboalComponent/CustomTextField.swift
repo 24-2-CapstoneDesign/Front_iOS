@@ -77,7 +77,7 @@ struct CustomTextField: View {
         ZStack(alignment: .trailing, content: {
             
             TextField("", text: $text, axis: .horizontal)
-                .frame(maxWidth: maxWidth, maxHeight: maxHeight)
+                .frame(minWidth: maxWidth, minHeight: maxHeight)
                 .font(.spoqaHans(type: .medium, size: 13))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Color.subText)

@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ProfileSettingView: View {
     
-    // MARK: - Propert
+    // MARK: - Property
     @StateObject var profileVM = ProfileViewModel()
     
     var body: some View {
         allGroup
+            .ignoresSafeArea(.keyboard)
+            .onAppear(perform: {
+                UIApplication.shared.hideKeyboard()
+            })
     }
     
     // MARK: - AllGroup

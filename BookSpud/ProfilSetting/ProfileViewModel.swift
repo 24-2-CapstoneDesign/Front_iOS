@@ -11,8 +11,11 @@ import UIKit
 class ProfileViewModel: ObservableObject, ImageHandling {
     
     
-    // MARK: - Property
+    // MARK: - UserAgeProperty
+    /// 피커뷰로 선택하는 유저 나이 정보
+    @Published var userAge: Int = 18
     
+    // MARK: - NicknameProperty
     /// 입력한 닉네임 길이
     @Published public var nickNameText: String = "" {
         didSet {
@@ -24,11 +27,14 @@ class ProfileViewModel: ObservableObject, ImageHandling {
         }
     }
     
+    // MARK: - btnProperty
     /// 시작하기 버튼 활성화 여부 판단
     @Published public var beginBtn: Bool = false
     
+    // MARK: - ImageProperty
     /// 이미지 피커 선택되었는가?
     @Published var isImagePickerPresendted: Bool = false
+    
     
     @Published private var profileImageData: Data?
     var selectedImage: UIImage?

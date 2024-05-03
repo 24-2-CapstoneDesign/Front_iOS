@@ -16,6 +16,7 @@
 		480F6D372BC99943008D958E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D362BC99943008D958E /* ProfileModel.swift */; };
 		480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D382BC99969008D958E /* ProfileSettingView.swift */; };
 		480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F6D3C2BC99D9D008D958E /* CustomTextField.swift */; };
+		4819A1B32BE4C65800DDED13 /* KeyboardHideExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */; };
 		482055812BDFDD23004E0D78 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482055802BDFDD23004E0D78 /* KeyChainManager.swift */; };
 		482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482055822BDFE1F2004E0D78 /* UserInfo.swift */; };
 		487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D72BC8380700ED8D2F /* BookSpudApp.swift */; };
@@ -32,7 +33,7 @@
 		487170F82BC845D600ED8D2F /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170F72BC845D600ED8D2F /* Icon.swift */; };
 		489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489469742BDDF6F200A4C942 /* ImageHandling.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
-		48C19A742BC93497007B5B1F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginManager.swift */; };
+		48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginViewModel.swift */; };
 		48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A762BC939A4007B5B1F /* KakaoSDK */; };
 		48C19A792BC939A4007B5B1F /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A782BC939A4007B5B1F /* KakaoSDKAuth */; };
 		48C19A7B2BC939A4007B5B1F /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7A2BC939A4007B5B1F /* KakaoSDKCert */; };
@@ -47,6 +48,7 @@
 		480F6D362BC99943008D958E /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		480F6D382BC99969008D958E /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		480F6D3C2BC99D9D008D958E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideExtension.swift; sourceTree = "<group>"; };
 		482055802BDFDD23004E0D78 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		482055822BDFE1F2004E0D78 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		487170D42BC8380700ED8D2F /* BookSpud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSpud.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +67,7 @@
 		487170F72BC845D600ED8D2F /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		489469742BDDF6F200A4C942 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
-		48C19A732BC93497007B5B1F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			children = (
 				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
 				487170F72BC845D600ED8D2F /* Icon.swift */,
+				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
 			);
@@ -186,7 +189,7 @@
 				4820557F2BDFDD10004E0D78 /* KeyChain */,
 				48C19A802BC93B24007B5B1F /* Kakao */,
 				487170D92BC8380700ED8D2F /* LoginView.swift */,
-				48C19A732BC93497007B5B1F /* LoginManager.swift */,
+				48C19A732BC93497007B5B1F /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -307,7 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48C19A742BC93497007B5B1F /* LoginManager.swift in Sources */,
+				48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
 				489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */,
 				4800C5CD2BDC8532001431BE /* GlobalMainBtn.swift in Sources */,
@@ -321,6 +324,7 @@
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
+				4819A1B32BE4C65800DDED13 /* KeyboardHideExtension.swift in Sources */,
 				480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,15 +12,20 @@ import KakaoSDKAuth
 @main
 struct BookSpudApp: App {
     
+    @StateObject private var loginViewModel = LoginViewModel()
+    
     init() {
-            // Kakao SDK 초기화
-            KakaoSDK.initSDK(appKey: "f9fd82c29e5a60c4c9a3c70fd938deda")
-        }
+        // Kakao SDK 초기화
+        KakaoSDK.initSDK(appKey: "5446287ceb12e71a169594ebed02e85a")
+    }
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
-            
+            if loginViewModel.isLogin == false{
+                LoginView(loginViewModel: loginViewModel)
+            } else {
+                ProfileSettingView()
+            }
         }
     }
 }
