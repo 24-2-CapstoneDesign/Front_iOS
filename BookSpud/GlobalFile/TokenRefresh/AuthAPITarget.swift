@@ -1,0 +1,44 @@
+//
+//  AuthAPI.swift
+//  BookSpud
+//
+//  Created by 정의찬 on 5/11/24.
+//
+
+import Foundation
+import Moya
+
+enum AuthAPITarget {
+    case refreshToken(currentToken: String)
+}
+
+extension AuthAPITarget: TargetType {
+    var baseURL: URL {
+        return URL(string: "example")!
+    }
+    
+    var path: String {
+        switch self {
+        case .refreshToken:
+            return "/refresh"
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .refreshToken:
+            return .post
+        }
+    }
+    
+    var task: Task {
+        switch self {
+        case .refreshToken(let token):
+            return .requestParameters(parameters: ["currentToken": token], encoding: JSONEncoding.default)
+        }
+    }
+    
+    var headers: [String : String]? {
+        return ["Content-Type": "application/json"]
+    }
+}

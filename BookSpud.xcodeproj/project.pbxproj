@@ -32,6 +32,10 @@
 		487170F22BC840D100ED8D2F /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 487170ED2BC840D100ED8D2F /* SpoqaHanSansNeo-Bold.otf */; };
 		487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170F42BC841F400ED8D2F /* FontExtension.swift */; };
 		487170F82BC845D600ED8D2F /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170F72BC845D600ED8D2F /* Icon.swift */; };
+		487AF4B12BEF412E00EADE67 /* AccessTokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B02BEF412E00EADE67 /* AccessTokenRefresher.swift */; };
+		487AF4B32BEF415500EADE67 /* TokenProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B22BEF415500EADE67 /* TokenProviding.swift */; };
+		487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B42BEF418600EADE67 /* TokenProvider.swift */; };
+		487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */; };
 		489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489469742BDDF6F200A4C942 /* ImageHandling.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
 		48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginViewModel.swift */; };
@@ -41,6 +45,7 @@
 		48C19A7D2BC939A4007B5B1F /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */; };
 		48C19A7F2BC939A4007B5B1F /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */; };
 		48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */; };
+		48DE6DF12BEF47C30096A069 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE6DF02BEF47C30096A069 /* TokenResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +72,15 @@
 		487170F32BC8418100ED8D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		487170F42BC841F400ED8D2F /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		487170F72BC845D600ED8D2F /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		487AF4B02BEF412E00EADE67 /* AccessTokenRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRefresher.swift; sourceTree = "<group>"; };
+		487AF4B22BEF415500EADE67 /* TokenProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProviding.swift; sourceTree = "<group>"; };
+		487AF4B42BEF418600EADE67 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPITarget.swift; sourceTree = "<group>"; };
 		489469742BDDF6F200A4C942 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
 		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
+		48DE6DF02BEF47C30096A069 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				483628F72BE4D3600070FD7F /* Views */,
-				489469722BDDF6DB00A4C942 /* GlobalGeneric */,
+				489469722BDDF6DB00A4C942 /* GlobalFile */,
 				480F6D3A2BC99D83008D958E /* GlboalComponent */,
 				480F6D342BC9991B008D958E /* ProfilSetting */,
 				487170F92BC8463300ED8D2F /* Login */,
@@ -195,9 +205,9 @@
 				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
 				487170F72BC845D600ED8D2F /* Icon.swift */,
 				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
+				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
-				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -213,12 +223,25 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		489469722BDDF6DB00A4C942 /* GlobalGeneric */ = {
+		487AF4AF2BEF410900EADE67 /* TokenRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				487AF4B02BEF412E00EADE67 /* AccessTokenRefresher.swift */,
+				487AF4B42BEF418600EADE67 /* TokenProvider.swift */,
+				487AF4B22BEF415500EADE67 /* TokenProviding.swift */,
+				487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */,
+				48DE6DF02BEF47C30096A069 /* TokenResponse.swift */,
+			);
+			path = TokenRefresh;
+			sourceTree = "<group>";
+		};
+		489469722BDDF6DB00A4C942 /* GlobalFile */ = {
+			isa = PBXGroup;
+			children = (
+				487AF4AF2BEF410900EADE67 /* TokenRefresh */,
 				489469732BDDF6E700A4C942 /* ImagePicker */,
 			);
-			path = GlobalGeneric;
+			path = GlobalFile;
 			sourceTree = "<group>";
 		};
 		489469732BDDF6E700A4C942 /* ImagePicker */ = {
@@ -331,16 +354,21 @@
 			files = (
 				48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
+				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
 				489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */,
 				4800C5CD2BDC8532001431BE /* GlobalMainBtn.swift in Sources */,
 				480F6D372BC99943008D958E /* ProfileModel.swift in Sources */,
 				482055812BDFDD23004E0D78 /* KeyChainManager.swift in Sources */,
+				487AF4B12BEF412E00EADE67 /* AccessTokenRefresher.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				4800C5CA2BDC7F78001431BE /* ProfileViewModel.swift in Sources */,
 				48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */,
+				487AF4B32BEF415500EADE67 /* TokenProviding.swift in Sources */,
 				487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */,
+				487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */,
 				487170F82BC845D600ED8D2F /* Icon.swift in Sources */,
 				48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */,
+				48DE6DF12BEF47C30096A069 /* TokenResponse.swift in Sources */,
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
