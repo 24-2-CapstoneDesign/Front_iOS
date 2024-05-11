@@ -22,8 +22,39 @@ enum Icon: String {
     // MARK: - BtnImage
     case inputISBN = "inputISBN"
     
+    // MARK: - TabImage
+    case homeTab = "homeTab"
+    case bookTap = "bookTap"
+    case isbnTap = "isbnTap"
+    case spudTab = "spudTab"
+    case reportTab = "reportTab"
+    
+    case clickedHome = "clickedHome"
+    case clickedBook = "clickedBook"
+    case clickedISBN = "clickedISBN"
+    case clickedSpud = "clickedSpud"
+    case clickedReport = "clickedReport"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)
+    }
+    
+    // MARK: - TabFunction
+    func icon(for isSelected: Bool) -> Image {
+        let iconName = isSelected ? self.clickedIconName : self.rawValue
+        return Image(iconName)
+    }
+    
+    private var clickedIconName: String {
+        switch self {
+        case .homeTab: return "clickedHome"
+        case .bookTap: return "clickedBook"
+        case .isbnTap: return "clickedISBN"
+        case .spudTab: return "clickedSpud"
+        case .reportTab: return "clickedReport"
+        default:
+            return self.rawValue
+        }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import Moya
 
+/// 토큰 Refresh 초기화 API 호출
 enum AuthAPITarget {
     case refreshToken(currentToken: String)
 }
