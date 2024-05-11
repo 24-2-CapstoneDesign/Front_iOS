@@ -22,10 +22,12 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if loginViewModel.isLogin == false{
+            if !loginViewModel.isLogin {
                 LoginView(loginViewModel: loginViewModel)
-            } else {
+            } else if !profileViewModel.isProfileCompleted {
                 ProfileSettingView(profileVM: profileViewModel)
+            } else {
+                BookSpudTabView()
             }
         }
     }

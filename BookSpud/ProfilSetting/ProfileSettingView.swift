@@ -36,7 +36,7 @@ struct ProfileSettingView: View {
                           btnName: "시작하기",
                           btnImg: nil,
                           onClicked: {
-                print("hello world")
+                profileVM.isProfileCompleted = true
             })
         })
         .sheet(isPresented: $profileVM.isImagePickerPresendted, content: {

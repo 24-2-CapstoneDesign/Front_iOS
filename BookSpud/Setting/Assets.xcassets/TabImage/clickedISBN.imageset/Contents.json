@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "clickedISBN.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

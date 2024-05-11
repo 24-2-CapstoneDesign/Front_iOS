@@ -7,9 +7,23 @@
 
 import Foundation
 import UIKit
+import Moya
+import Alamofire
 
 class ProfileViewModel: ObservableObject, ImageHandling {
     
+    // MARK: - API Property
+    private let tokenProvider: TokenProviding
+    private let accessTokenRefresher: AccessTokenRefresher
+    private let session: Session
+    var provider: MoyaProvider<ProfileAPITarget>
+    
+    init() {
+        tokenProvider = TokenProvider()
+        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
+        session = Session(interceptor: accessTokenRefresher)
+        provider = MoyaProvider<ProfileAPITarget>(session: session)
+    }
     
     // MARK: - UserAgeProperty
     /// 피커뷰로 선택하는 유저 나이 정보
@@ -26,6 +40,8 @@ class ProfileViewModel: ObservableObject, ImageHandling {
             }
         }
     }
+    
+    @Published public var isProfileCompleted: Bool = false
     
     // MARK: - btnProperty
     /// 시작하기 버튼 활성화 여부 판단
@@ -63,11 +79,15 @@ class ProfileViewModel: ObservableObject, ImageHandling {
     private func inputUserData() -> ProfileModel? {
         if let profileImageData = self.selectedImage {
             profileModel = ProfileModel(userNickname: self.nickNameText,
-                                        profileImage: profileImageData.jpegData(compressionQuality: 1.0))
+                                        profileImage: profileImageData.jpegData(compressionQuality: 0.5))
             
             return profileModel
         } else {
             return nil
         }
     }
+    
+    //TODO: - 사진 이미지 전송 API 작성 및 유저 데이터 전송
+    
+    
 }
