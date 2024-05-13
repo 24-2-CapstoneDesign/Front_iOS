@@ -10,6 +10,8 @@ import SwiftUI
 
 class LoginViewModel: ObservableObject {
     
+    let keyChainManager = KeyChainManager.standard
+    
     private var kakaoLoginManager = KakaoLoginMananger()
     @Published public var isLogin: Bool = false
     

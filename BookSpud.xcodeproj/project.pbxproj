@@ -21,6 +21,9 @@
 		482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482055822BDFE1F2004E0D78 /* UserInfo.swift */; };
 		4825672C2BEFC2E000B4C6E8 /* ProfileAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825672B2BEFC2E000B4C6E8 /* ProfileAPITarget.swift */; };
 		48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48607EF92BE4D46500284E38 /* RoundedCorner.swift */; };
+		486348002BF2C6C2006628F3 /* TopUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486347FF2BF2C6C2006628F3 /* TopUserViewModel.swift */; };
+		486348032BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486348022BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift */; };
+		486348052BF2CA1E006628F3 /* LoginAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486348042BF2CA1E006628F3 /* LoginAPITarget.swift */; };
 		487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D72BC8380700ED8D2F /* BookSpudApp.swift */; };
 		487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487170D92BC8380700ED8D2F /* LoginView.swift */; };
 		487170DC2BC8380800ED8D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487170DB2BC8380800ED8D2F /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 		482055822BDFE1F2004E0D78 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		4825672B2BEFC2E000B4C6E8 /* ProfileAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPITarget.swift; sourceTree = "<group>"; };
 		48607EF92BE4D46500284E38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		486347FF2BF2C6C2006628F3 /* TopUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserViewModel.swift; sourceTree = "<group>"; };
+		486348022BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUserInfoAPITarget.swift; sourceTree = "<group>"; };
+		486348042BF2CA1E006628F3 /* LoginAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPITarget.swift; sourceTree = "<group>"; };
 		487170D42BC8380700ED8D2F /* BookSpud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSpud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487170D72BC8380700ED8D2F /* BookSpudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSpudApp.swift; sourceTree = "<group>"; };
 		487170D92BC8380700ED8D2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -178,10 +184,19 @@
 		483628F82BE4D37D0070FD7F /* HomeTap */ = {
 			isa = PBXGroup;
 			children = (
+				486348012BF2C72A006628F3 /* APITargets */,
 				489795852BF28F56008ED803 /* TopUserInfo */,
 				48DE6DFE2BEF5D8B0096A069 /* HomeView.swift */,
 			);
 			path = HomeTap;
+			sourceTree = "<group>";
+		};
+		486348012BF2C72A006628F3 /* APITargets */ = {
+			isa = PBXGroup;
+			children = (
+				486348022BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift */,
+			);
+			path = APITargets;
 			sourceTree = "<group>";
 		};
 		487170CB2BC8380700ED8D2F = {
@@ -257,6 +272,7 @@
 				48C19A802BC93B24007B5B1F /* Kakao */,
 				487170D92BC8380700ED8D2F /* LoginView.swift */,
 				48C19A732BC93497007B5B1F /* LoginViewModel.swift */,
+				486348042BF2CA1E006628F3 /* LoginAPITarget.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -297,6 +313,7 @@
 			children = (
 				489795862BF28F6D008ED803 /* TopUserData.swift */,
 				4897958D2BF29454008ED803 /* TopUserView.swift */,
+				486347FF2BF2C6C2006628F3 /* TopUserViewModel.swift */,
 			);
 			path = TopUserInfo;
 			sourceTree = "<group>";
@@ -453,6 +470,7 @@
 				48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
 				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
+				486348052BF2CA1E006628F3 /* LoginAPITarget.swift in Sources */,
 				48DE6E0B2BEF67630096A069 /* BookSpudTab.swift in Sources */,
 				4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */,
 				4897958E2BF29454008ED803 /* TopUserView.swift in Sources */,
@@ -467,6 +485,7 @@
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				4800C5CA2BDC7F78001431BE /* ProfileViewModel.swift in Sources */,
 				48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */,
+				486348032BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift in Sources */,
 				487AF4B32BEF415500EADE67 /* TokenProviding.swift in Sources */,
 				487170DA2BC8380700ED8D2F /* LoginView.swift in Sources */,
 				487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */,
@@ -477,6 +496,7 @@
 				48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */,
 				4825672C2BEFC2E000B4C6E8 /* ProfileAPITarget.swift in Sources */,
 				48DE6DF12BEF47C30096A069 /* TokenResponse.swift in Sources */,
+				486348002BF2C6C2006628F3 /* TopUserViewModel.swift in Sources */,
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,

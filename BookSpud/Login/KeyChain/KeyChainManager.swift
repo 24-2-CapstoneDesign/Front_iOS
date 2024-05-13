@@ -90,4 +90,15 @@ class KeyChainManager {
     public func deleteSession(for key: String) {
         delete(key: key)
     }
+    
+    public func updateNickname(_ nickName: String, for key: String) {
+        if var userInfo = KeyChainManager.standard.loadSession(for: key) {
+            userInfo.nickname = nickName
+            
+            let updated = KeyChainManager.standard.saveSession(userInfo, for: key)
+            print("닉네임 업데이트 완료")
+        } else {
+            print("닉네임 업데이트 불가")
+        }
+    }
 }

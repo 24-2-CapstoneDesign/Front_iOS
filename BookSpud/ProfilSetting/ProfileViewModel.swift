@@ -88,6 +88,8 @@ class ProfileViewModel: ObservableObject, ImageHandling {
     }
     
     //TODO: - 사진 이미지 전송 API 작성 및 유저 데이터 전송
-    
-    
+    //TODO: - 데이터 전송 성공 시, 사진 캐시 저장 닉네임 키체인 저장
+    public func sendUserInfo() {
+        
+    }
 }
