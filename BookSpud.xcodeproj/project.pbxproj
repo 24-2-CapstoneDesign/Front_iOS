@@ -38,8 +38,10 @@
 		487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B42BEF418600EADE67 /* TokenProvider.swift */; };
 		487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */; };
 		489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489469742BDDF6F200A4C942 /* ImageHandling.swift */; };
-		489795872BF28F6D008ED803 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795862BF28F6D008ED803 /* UserData.swift */; };
+		489795872BF28F6D008ED803 /* TopUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795862BF28F6D008ED803 /* TopUserData.swift */; };
 		4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795892BF29104008ED803 /* ImageCacheManager.swift */; };
+		4897958E2BF29454008ED803 /* TopUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897958D2BF29454008ED803 /* TopUserView.swift */; };
+		489795902BF296F8008ED803 /* PotatoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897958F2BF296F8008ED803 /* PotatoCircle.swift */; };
 		48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A650502BEF9C93006D4267 /* TopRadiusView.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
 		48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginViewModel.swift */; };
@@ -90,8 +92,10 @@
 		487AF4B42BEF418600EADE67 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPITarget.swift; sourceTree = "<group>"; };
 		489469742BDDF6F200A4C942 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
-		489795862BF28F6D008ED803 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		489795862BF28F6D008ED803 /* TopUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserData.swift; sourceTree = "<group>"; };
 		489795892BF29104008ED803 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		4897958D2BF29454008ED803 /* TopUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserView.swift; sourceTree = "<group>"; };
+		4897958F2BF296F8008ED803 /* PotatoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotatoCircle.swift; sourceTree = "<group>"; };
 		48A650502BEF9C93006D4267 /* TopRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRadiusView.swift; sourceTree = "<group>"; };
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
 		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -141,8 +145,10 @@
 		480F6D3A2BC99D83008D958E /* GlboalComponent */ = {
 			isa = PBXGroup;
 			children = (
+				48A650502BEF9C93006D4267 /* TopRadiusView.swift */,
 				480F6D3C2BC99D9D008D958E /* CustomTextField.swift */,
 				4800C5CC2BDC8532001431BE /* GlobalMainBtn.swift */,
+				4897958F2BF296F8008ED803 /* PotatoCircle.swift */,
 			);
 			path = GlboalComponent;
 			sourceTree = "<group>";
@@ -272,7 +278,6 @@
 			children = (
 				489795882BF29021008ED803 /* CacheFile */,
 				489469732BDDF6E700A4C942 /* ImagePicker */,
-				48A6504F2BEF9C5E006D4267 /* ReuseTopView */,
 				487AF4AF2BEF410900EADE67 /* TokenRefresh */,
 			);
 			path = GlobalFile;
@@ -290,7 +295,8 @@
 		489795852BF28F56008ED803 /* TopUserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				489795862BF28F6D008ED803 /* UserData.swift */,
+				489795862BF28F6D008ED803 /* TopUserData.swift */,
+				4897958D2BF29454008ED803 /* TopUserView.swift */,
 			);
 			path = TopUserInfo;
 			sourceTree = "<group>";
@@ -301,14 +307,6 @@
 				489795892BF29104008ED803 /* ImageCacheManager.swift */,
 			);
 			path = CacheFile;
-			sourceTree = "<group>";
-		};
-		48A6504F2BEF9C5E006D4267 /* ReuseTopView */ = {
-			isa = PBXGroup;
-			children = (
-				48A650502BEF9C93006D4267 /* TopRadiusView.swift */,
-			);
-			path = ReuseTopView;
 			sourceTree = "<group>";
 		};
 		48C19A802BC93B24007B5B1F /* Kakao */ = {
@@ -457,6 +455,7 @@
 				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
 				48DE6E0B2BEF67630096A069 /* BookSpudTab.swift in Sources */,
 				4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */,
+				4897958E2BF29454008ED803 /* TopUserView.swift in Sources */,
 				489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */,
 				48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */,
 				48DE6E012BEF5D960096A069 /* BookView.swift in Sources */,
@@ -473,6 +472,7 @@
 				487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */,
 				48DE6E032BEF5DA30096A069 /* ISBNView.swift in Sources */,
 				487170F82BC845D600ED8D2F /* Icon.swift in Sources */,
+				489795902BF296F8008ED803 /* PotatoCircle.swift in Sources */,
 				48DE6E072BEF5DB10096A069 /* ReportView.swift in Sources */,
 				48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */,
 				4825672C2BEFC2E000B4C6E8 /* ProfileAPITarget.swift in Sources */,
@@ -480,7 +480,7 @@
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
-				489795872BF28F6D008ED803 /* UserData.swift in Sources */,
+				489795872BF28F6D008ED803 /* TopUserData.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
 				48DE6DFF2BEF5D8B0096A069 /* HomeView.swift in Sources */,
 				48DE6E0D2BEF6EC90096A069 /* CustomTabView.swift in Sources */,

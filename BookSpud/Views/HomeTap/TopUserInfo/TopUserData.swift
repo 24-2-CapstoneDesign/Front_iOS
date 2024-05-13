@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TopUserInfo: Codable {
+struct TopUserData: Codable {
     var userProfileURL: String
     var userName: String
 }

@@ -14,7 +14,7 @@ enum Icon: String {
     case kakao = "kakaoLogin"
     case apple = "iosLogin"
     
-    // MARK: - Profil
+    // MARK: - Profile
     case profil = "profil"
     case checkNickname = "nickNameCheck"
     case notCheckNickname = "notNicknameCheck"
@@ -34,6 +34,10 @@ enum Icon: String {
     case clickedISBN = "clickedISBN"
     case clickedSpud = "clickedSpud"
     case clickedReport = "clickedReport"
+    
+    // MARK: - HomeTopUser
+    case cutyPotato = "cutyPotato"
+    case optionBtn = "optionBtn"
     
     // MARK: - Function
     var image: Image {
