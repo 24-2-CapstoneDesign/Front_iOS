@@ -34,11 +34,23 @@ extension ProfileAPITarget: TargetType {
     var task: Task {
         switch self {
         case .sendUserData(let data):
-            return .requestParameters(parameters: ["userData" : data], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["nickname" : data.userNickname
+                                                  ], encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String : String]? {
         return ["Content-Type": "application/json"]
+    }
+    
+    var sampleData: Data {
+        switch self {
+        case .sendUserData:
+            return Data("""
+                {
+                    "nickname": "TestUser",
+                }
+                """.utf8)
+        }
     }
 }

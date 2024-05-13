@@ -13,6 +13,7 @@ import Alamofire
 class ProfileViewModel: ObservableObject, ImageHandling {
     
     // MARK: - API Property
+    private let keyChainManger = KeyChainManager.standard
     private let tokenProvider: TokenProviding
     private let accessTokenRefresher: AccessTokenRefresher
     private let session: Session
@@ -89,7 +90,22 @@ class ProfileViewModel: ObservableObject, ImageHandling {
     
     //TODO: - 사진 이미지 전송 API 작성 및 유저 데이터 전송
     //TODO: - 데이터 전송 성공 시, 사진 캐시 저장 닉네임 키체인 저장
-    public func sendUserInfo() {
-        
+    /// 프로필 지정 값 서버로 전송
+    public func sendUserProfile() {
+        guard let userInfo = inputUserData() else { return }
+        provider.request(.sendUserData(userInfo: userInfo)) { [weak self] result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decodedData = try JSONDecoder().decode(UserInfo.self, from: response.data)
+                    self?.keyChainManger.updateNickname(userInfo.userNickname, for: "userSession")
+                    print("닉네임 업데이트 완료")
+                } catch {
+                    print("닉네임 업데이트 오류: \(error)")
+                }
+            case .failure(let error):
+                print("유저 프로필 전송 오류 : \(error)")
+            }
+        }
     }
 }

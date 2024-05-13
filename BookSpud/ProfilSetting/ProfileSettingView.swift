@@ -36,6 +36,7 @@ struct ProfileSettingView: View {
                           btnName: "시작하기",
                           btnImg: nil,
                           onClicked: {
+                profileVM.sendUserProfile()
                 profileVM.isProfileCompleted = true
             })
         })

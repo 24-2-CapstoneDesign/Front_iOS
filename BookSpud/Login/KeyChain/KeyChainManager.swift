@@ -91,6 +91,10 @@ class KeyChainManager {
         delete(key: key)
     }
     
+    /// 닉네임 업데이트
+    /// - Parameters:
+    ///   - nickName: 업데이트 하고자 하는 닉네임 업데이트
+    ///   - key: 유저 정보 키
     public func updateNickname(_ nickName: String, for key: String) {
         if var userInfo = KeyChainManager.standard.loadSession(for: key) {
             userInfo.nickname = nickName
