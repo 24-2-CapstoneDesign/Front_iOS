@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct TopUserInfo: Codable {
+    var userProfileURL: String
+    var userName: String
+}

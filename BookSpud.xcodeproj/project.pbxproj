@@ -38,8 +38,9 @@
 		487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B42BEF418600EADE67 /* TokenProvider.swift */; };
 		487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */; };
 		489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489469742BDDF6F200A4C942 /* ImageHandling.swift */; };
+		489795872BF28F6D008ED803 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795862BF28F6D008ED803 /* UserData.swift */; };
+		4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795892BF29104008ED803 /* ImageCacheManager.swift */; };
 		48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A650502BEF9C93006D4267 /* TopRadiusView.swift */; };
-		48A650532BEF9F8A006D4267 /* HomeTopViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A650522BEF9F8A006D4267 /* HomeTopViewComponent.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
 		48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginViewModel.swift */; };
 		48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A762BC939A4007B5B1F /* KakaoSDK */; };
@@ -89,8 +90,9 @@
 		487AF4B42BEF418600EADE67 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPITarget.swift; sourceTree = "<group>"; };
 		489469742BDDF6F200A4C942 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
+		489795862BF28F6D008ED803 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		489795892BF29104008ED803 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		48A650502BEF9C93006D4267 /* TopRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRadiusView.swift; sourceTree = "<group>"; };
-		48A650522BEF9F8A006D4267 /* HomeTopViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopViewComponent.swift; sourceTree = "<group>"; };
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
 		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
@@ -128,10 +130,10 @@
 		480F6D342BC9991B008D958E /* ProfilSetting */ = {
 			isa = PBXGroup;
 			children = (
+				4825672B2BEFC2E000B4C6E8 /* ProfileAPITarget.swift */,
 				480F6D362BC99943008D958E /* ProfileModel.swift */,
 				480F6D382BC99969008D958E /* ProfileSettingView.swift */,
 				4800C5C92BDC7F78001431BE /* ProfileViewModel.swift */,
-				4825672B2BEFC2E000B4C6E8 /* ProfileAPITarget.swift */,
 			);
 			path = ProfilSetting;
 			sourceTree = "<group>";
@@ -170,8 +172,8 @@
 		483628F82BE4D37D0070FD7F /* HomeTap */ = {
 			isa = PBXGroup;
 			children = (
+				489795852BF28F56008ED803 /* TopUserInfo */,
 				48DE6DFE2BEF5D8B0096A069 /* HomeView.swift */,
-				48A650522BEF9F8A006D4267 /* HomeTopViewComponent.swift */,
 			);
 			path = HomeTap;
 			sourceTree = "<group>";
@@ -268,9 +270,10 @@
 		489469722BDDF6DB00A4C942 /* GlobalFile */ = {
 			isa = PBXGroup;
 			children = (
+				489795882BF29021008ED803 /* CacheFile */,
+				489469732BDDF6E700A4C942 /* ImagePicker */,
 				48A6504F2BEF9C5E006D4267 /* ReuseTopView */,
 				487AF4AF2BEF410900EADE67 /* TokenRefresh */,
-				489469732BDDF6E700A4C942 /* ImagePicker */,
 			);
 			path = GlobalFile;
 			sourceTree = "<group>";
@@ -282,6 +285,22 @@
 				48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */,
 			);
 			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		489795852BF28F56008ED803 /* TopUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				489795862BF28F6D008ED803 /* UserData.swift */,
+			);
+			path = TopUserInfo;
+			sourceTree = "<group>";
+		};
+		489795882BF29021008ED803 /* CacheFile */ = {
+			isa = PBXGroup;
+			children = (
+				489795892BF29104008ED803 /* ImageCacheManager.swift */,
+			);
+			path = CacheFile;
 			sourceTree = "<group>";
 		};
 		48A6504F2BEF9C5E006D4267 /* ReuseTopView */ = {
@@ -437,6 +456,7 @@
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
 				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
 				48DE6E0B2BEF67630096A069 /* BookSpudTab.swift in Sources */,
+				4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */,
 				489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */,
 				48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */,
 				48DE6E012BEF5D960096A069 /* BookView.swift in Sources */,
@@ -460,12 +480,12 @@
 				487170D82BC8380700ED8D2F /* BookSpudApp.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
+				489795872BF28F6D008ED803 /* UserData.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
 				48DE6DFF2BEF5D8B0096A069 /* HomeView.swift in Sources */,
 				48DE6E0D2BEF6EC90096A069 /* CustomTabView.swift in Sources */,
 				4819A1B32BE4C65800DDED13 /* KeyboardHideExtension.swift in Sources */,
 				480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */,
-				48A650532BEF9F8A006D4267 /* HomeTopViewComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
