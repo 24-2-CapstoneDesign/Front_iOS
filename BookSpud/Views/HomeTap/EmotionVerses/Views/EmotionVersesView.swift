@@ -9,11 +9,17 @@ import SwiftUI
 
 /// 감정선택과 감정에 해당하는 최근 책의 구절 보이는 뷰
 struct EmotionVersesView: View {
+    
+    @StateObject var emotionVersesViewModel =  EmotionVersesViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center, content: {
+            SelectEmotionView(emotionVersesViewModel: emotionVersesViewModel)
+        })
+        .frame(maxWidth: 380, maxHeight: 210)
     }
 }
 
 #Preview {
-    EmotionVersesView()
+    EmotionVersesView(emotionVersesViewModel: EmotionVersesViewModel())
 }

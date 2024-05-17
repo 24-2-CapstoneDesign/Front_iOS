@@ -27,10 +27,12 @@ struct TopRadiusView: View {
         GeometryReader { geo in
             Rectangle()
                 .fill(Color.primary1)
-                .frame(maxWidth: geo.size.width, maxHeight: height)
+                .frame(width: geo.size.width, height: height)
                 .roundedCorner(radius, corners: [.bottomLeft, .bottomRight])
+                .shadow03()
                 .ignoresSafeArea(.all)
         }
+
     }
 }
 

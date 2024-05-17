@@ -11,7 +11,15 @@ import SwiftUI
 class EmotionVersesViewModel: ObservableObject {
     
     // MARK: - Property
+    
     /* EmotionVerses  Propert */
     @Published var selectedEmotionImage: SwiftUI.Image = Icon.happyEmtion.image
     @Published var isEmotionPickerPresented: Bool = false
+    @Published var isEmotionPickerViewAnimation = false
+    
+    // MARK: - emotionFunction
+    
+    public func chagePickerPresented() {
+        self.isEmotionPickerPresented.toggle()
+    }
 }

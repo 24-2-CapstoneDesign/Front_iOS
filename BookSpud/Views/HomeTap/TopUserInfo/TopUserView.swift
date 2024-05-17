@@ -21,10 +21,11 @@ struct TopUserView: View {
     // MARK: - TopUserViewProperty
     
     private var topRoundView: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .center) {
             TopRadiusView(radius: 50, height: 160)
             userData
         }
+        .frame(height: 160)
     }
     
     /// 상단 유저 데이터
@@ -47,7 +48,8 @@ struct TopUserView: View {
             
         })
         .frame(maxWidth: 380)
-        .padding(.all, 5)
+        .padding(.horizontal, 5)
+        .padding(.top, 20)
     }
 }
 
@@ -58,6 +60,7 @@ struct TopUserView_Preview: PreviewProvider {
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
             TopUserView(topUserViewModel: TopUserViewModel())
+                .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)
         }

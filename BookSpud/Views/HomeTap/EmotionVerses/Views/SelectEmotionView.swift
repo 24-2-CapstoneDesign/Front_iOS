@@ -15,12 +15,21 @@ struct SelectEmotionView: View {
     
     // MARK: - View
     var body: some View {
-        HStack(alignment: .center, spacing: 14, content: {
-            guideTextLeft
-            guideImage
-            guideTextRight
+        ZStack(alignment: .center, content: {
+            HStack(alignment: .center, spacing: 14, content: {
+                guideTextLeft
+                guideImage
+                guideTextRight
+            })
+            .frame(maxWidth: 345, maxHeight: 34)
+            .offset(y: -20)
+            
+            if emotionVersesViewModel.isEmotionPickerPresented {
+                EmotionPickerView(emotionVersesViewModel: emotionVersesViewModel)
+                    .offset(y: 20)
+            }
         })
-        .frame(maxWidth: 345, maxHeight: 34)
+        .frame(maxWidth: 345, maxHeight: 90)
     }
     
     // MARK: - View Property
@@ -49,7 +58,8 @@ struct SelectEmotionView: View {
         ZStack(alignment: .top, content: {
             
             Button(action: {
-                print("selectEmotion")
+                emotionVersesViewModel.chagePickerPresented()
+                print(emotionVersesViewModel.isEmotionPickerPresented)
             }, label: {
                 Icon.emotionBackground.image
                     .resizable()

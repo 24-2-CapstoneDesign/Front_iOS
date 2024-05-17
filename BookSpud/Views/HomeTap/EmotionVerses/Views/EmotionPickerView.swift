@@ -10,9 +10,19 @@ import SwiftUI
 struct EmotionPickerView: View {
     
     let emotionList: [EmotionData] = EmotionDataList.emotionList
+    @StateObject var emotionVersesViewModel: EmotionVersesViewModel
     
     var body: some View {
         emotionPickerView
+            .opacity(emotionVersesViewModel.isEmotionPickerViewAnimation ? 1 : 0)
+            .onAppear {
+                withAnimation(.easeIn(duration: 0.5)) {
+                    emotionVersesViewModel.isEmotionPickerViewAnimation = true
+                }
+            }
+            .onDisappear {
+                emotionVersesViewModel.isEmotionPickerViewAnimation = false
+            }
     }
     
     private var emotionPickerView: some View {
@@ -22,7 +32,8 @@ struct EmotionPickerView: View {
             
             ForEach(emotionList, id: \.name) { emotion in
                 Button(action: {
-                    print(emotion)
+                    emotionVersesViewModel.selectedEmotionImage = emotion.emotionImage
+                    emotionVersesViewModel.isEmotionPickerPresented = false
                 }, label: {
                     emotion.emotionImage
                         .resizable()
@@ -42,18 +53,5 @@ struct EmotionPickerView: View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(Color.primary1, lineWidth: 0.5)
         )
-    }
-}
-
-struct EmotionPickerView_Preview: PreviewProvider {
-    static let devices = ["iPhone 11", "iPhon 15 Pro Max"]
-    
-    static var previews: some View {
-        ForEach(devices, id:\.self) { device in
-            EmotionPickerView()
-                .previewLayout(.sizeThatFits)
-                .previewDevice(PreviewDevice(rawValue: device))
-                .previewDisplayName(device)
-        }
     }
 }

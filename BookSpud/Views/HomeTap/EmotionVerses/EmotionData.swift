@@ -14,6 +14,11 @@ struct EmotionData: Identifiable {
     var emotionImage: Image
 }
 
+struct BookVerses: Codable {
+    var verses: String
+    var bookImgURL: String
+}
+
 final class EmotionDataList {
     static let emotionList: [EmotionData] = [
         EmotionData(name: "happy", emotionImage: Icon.happyEmtion.image),

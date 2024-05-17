@@ -46,6 +46,7 @@
 		4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795892BF29104008ED803 /* ImageCacheManager.swift */; };
 		4897958E2BF29454008ED803 /* TopUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897958D2BF29454008ED803 /* TopUserView.swift */; };
 		489795902BF296F8008ED803 /* PotatoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897958F2BF296F8008ED803 /* PotatoCircle.swift */; };
+		4898711D2BF7786400F1903E /* ShadowReuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898711C2BF7786400F1903E /* ShadowReuse.swift */; };
 		48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A650502BEF9C93006D4267 /* TopRadiusView.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
 		48ABDBAB2BF72BC100EF520C /* EmotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBAA2BF72BC100EF520C /* EmotionData.swift */; };
@@ -108,6 +109,7 @@
 		489795892BF29104008ED803 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		4897958D2BF29454008ED803 /* TopUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserView.swift; sourceTree = "<group>"; };
 		4897958F2BF296F8008ED803 /* PotatoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotatoCircle.swift; sourceTree = "<group>"; };
+		4898711C2BF7786400F1903E /* ShadowReuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowReuse.swift; sourceTree = "<group>"; };
 		48A650502BEF9C93006D4267 /* TopRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRadiusView.swift; sourceTree = "<group>"; };
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
 		48ABDBAA2BF72BC100EF520C /* EmotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionData.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				487170F72BC845D600ED8D2F /* Icon.swift */,
 				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
 				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
+				4898711C2BF7786400F1903E /* ShadowReuse.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
 			);
@@ -518,6 +521,7 @@
 				487AF4B12BEF412E00EADE67 /* AccessTokenRefresher.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				4876A83E2BF60B6F00E1B204 /* SelectEmotionView.swift in Sources */,
+				4898711D2BF7786400F1903E /* ShadowReuse.swift in Sources */,
 				4800C5CA2BDC7F78001431BE /* ProfileViewModel.swift in Sources */,
 				48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */,
 				486348032BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift in Sources */,
