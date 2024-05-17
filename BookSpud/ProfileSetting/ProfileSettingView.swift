@@ -80,7 +80,7 @@ struct ProfileSettingView: View {
             
             Text("원하는 프로필을 넣어주세요!")
                 .font(.spoqaHans(type: .bold, size: 19))
-                .foregroundStyle(.subText)
+                .foregroundStyle(.gray07)
                 .frame(minWidth: 226)
         })
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 홈탭 모든 뷰 구성
 struct HomeView: View {
     var body: some View {
         Text("1")

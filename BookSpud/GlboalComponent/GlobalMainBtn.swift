@@ -52,7 +52,7 @@ struct GlobalMainBtn: View {
             
             Text(btnName)
                 .font(.spoqaHans(type: .medium, size: 16))
-                .foregroundStyle(Color.blackText)
+                .foregroundStyle(Color.gray07)
                 .multilineTextAlignment(.center)
         })
         .frame(minWidth: 300, minHeight: 50)

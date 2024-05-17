@@ -11,4 +11,5 @@ struct UserInfo: Codable {
     var accessToken: String?
     var refreshToken: String?
     var nickname: String?
+    var profileImageURL: String?
 }

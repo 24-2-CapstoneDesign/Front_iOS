@@ -65,7 +65,7 @@ struct CustomTextField: View {
         Text(placeholder)
             .font(.spoqaHans(type: .medium, size: 13))
             .frame(minWidth: 193, minHeight: 16)
-            .foregroundStyle(Color.subText)
+            .foregroundStyle(Color.gray07)
             .padding([.vertical, .horizontal], 3)
             .onTapGesture {
                 isTextFocused = true
@@ -80,14 +80,14 @@ struct CustomTextField: View {
                 .frame(minWidth: maxWidth, minHeight: maxHeight)
                 .font(.spoqaHans(type: .medium, size: 13))
                 .multilineTextAlignment(.center)
-                .foregroundStyle(Color.subText)
+                .foregroundStyle(Color.gray07)
                 .focused($isTextFocused)
                 .background(Color.clear)
                 .clipShape(.rect(cornerRadius: cornerSize))
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerSize)
                         .inset(by: 0.5)
-                        .stroke(Color.subText, lineWidth: 1)
+                        .stroke(Color.gray07, lineWidth: 1)
                 )
             
             if showCheckIcon && !text.isEmpty {

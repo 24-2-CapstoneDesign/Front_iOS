@@ -18,7 +18,7 @@ struct PotatoCircle: View {
             .overlay(
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
                     .frame(maxWidth: 53, maxHeight: 53)
                     .clipShape(Circle())
             )
