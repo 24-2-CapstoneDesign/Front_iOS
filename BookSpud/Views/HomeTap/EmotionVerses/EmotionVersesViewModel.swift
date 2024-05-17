@@ -17,9 +17,14 @@ class EmotionVersesViewModel: ObservableObject {
     @Published var isEmotionPickerPresented: Bool = false
     @Published var isEmotionPickerViewAnimation = false
     
+    /* API DataModel */
+    @Published var bookVerses: BookVerses? = BookVerses(verses: "asdasd", bookName: "Asdsd", bookImgURL: "Asdad")
+    
     // MARK: - emotionFunction
     
     public func chagePickerPresented() {
         self.isEmotionPickerPresented.toggle()
     }
+    
+    
 }

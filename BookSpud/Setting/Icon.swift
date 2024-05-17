@@ -51,6 +51,9 @@ enum Icon: String {
     case moveEmotion = "moveEmotion"
     case sadEmotion = "sadEmotion"
     
+    /* 감정 구절 */
+    case versesBorder = "versesBorder"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)

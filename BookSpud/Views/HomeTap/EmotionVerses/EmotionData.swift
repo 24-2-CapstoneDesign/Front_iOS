@@ -15,8 +15,9 @@ struct EmotionData: Identifiable {
 }
 
 struct BookVerses: Codable {
-    var verses: String
-    var bookImgURL: String
+    var verses: String?
+    var bookName: String?
+    var bookImgURL: String?
 }
 
 final class EmotionDataList {
