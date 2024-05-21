@@ -54,6 +54,9 @@ enum Icon: String {
     /* 감정 구절 */
     case versesBorder = "versesBorder"
     
+    /* 감정 구절 책 표지 */
+    case emptyBookPoster = "emptyBookPoster"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)

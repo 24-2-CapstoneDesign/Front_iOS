@@ -21,7 +21,9 @@ struct EmotionPickerView: View {
                 }
             }
             .onDisappear {
-                emotionVersesViewModel.isEmotionPickerViewAnimation = false
+                withAnimation(.bouncy(duration: 1.5)) {
+                    emotionVersesViewModel.isEmotionPickerViewAnimation = false
+                }
             }
     }
     
@@ -33,7 +35,7 @@ struct EmotionPickerView: View {
             ForEach(emotionList, id: \.name) { emotion in
                 Button(action: {
                     emotionVersesViewModel.selectedEmotionImage = emotion.emotionImage
-                    emotionVersesViewModel.isEmotionPickerPresented = false
+                    emotionVersesViewModel.easeOutAnimationEffect()
                 }, label: {
                     emotion.emotionImage
                         .resizable()

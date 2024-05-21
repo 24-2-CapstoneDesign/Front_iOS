@@ -12,20 +12,37 @@ struct HomeView: View {
     
     // MARK: - ViewModel
     @StateObject var topUserViewModel = TopUserViewModel()
+    @StateObject var emotionVersesViewModel = EmotionVersesViewModel()
+    @StateObject var friendConnectingLinkViewModel = FriendConnectingLinkViewModel()
     
     var body: some View {
         allView
     }
     
+    /// 홈탭 뷰 모든 뷰 그룹
     private var allView: some View {
         ScrollView(.vertical) {
-            VStack(alignment: .center, content: {
+            VStack(alignment: .center, spacing: 29, content: {
                 TopUserView(topUserViewModel: topUserViewModel)
                 
-                Spacer()
+                EmotionVersesView(emotionVersesViewModel: EmotionVersesViewModel())
+                
+                MainDotLine
+                
+                FriendConnectingLinkView(friendConnectingLinkViewModel: friendConnectingLinkViewModel)
+                
+                MainDotLine
+                    
             })
         }
         .ignoresSafeArea(.all)
+    }
+    
+    private var MainDotLine: some View {
+        BookSpud.MainDotLine()
+            .stroke(style: StrokeStyle(lineWidth: 1, dash: [2, 3]))
+            .frame(width: 390, height: 1)
+            .foregroundStyle(Color.gray04)
     }
 }
 

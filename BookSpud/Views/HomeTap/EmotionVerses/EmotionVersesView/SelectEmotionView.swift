@@ -15,21 +15,12 @@ struct SelectEmotionView: View {
     
     // MARK: - View
     var body: some View {
-        ZStack(alignment: .center, content: {
             HStack(alignment: .center, spacing: 14, content: {
                 guideTextLeft
                 guideImage
                 guideTextRight
             })
             .frame(maxWidth: 345, maxHeight: 34)
-            .offset(y: -20)
-            
-            if emotionVersesViewModel.isEmotionPickerPresented {
-                EmotionPickerView(emotionVersesViewModel: emotionVersesViewModel)
-                    .offset(y: 20)
-            }
-        })
-        .frame(maxWidth: 345, maxHeight: 90)
     }
     
     // MARK: - View Property

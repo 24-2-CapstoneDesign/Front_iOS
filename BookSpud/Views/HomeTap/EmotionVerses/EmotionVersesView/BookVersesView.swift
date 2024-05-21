@@ -12,10 +12,19 @@ struct BookVersesView: View {
     @StateObject var emotionVersesViewModel: EmotionVersesViewModel
     
     var body: some View {
-        leftVerses
+        viewGroup
     }
     
     // MARK: - ViewProperty
+    
+    private var viewGroup: some View {
+        HStack(spacing: 1, content: {
+            leftVerses
+            rightBookPoster
+        })
+        .frame(maxWidth: 328, maxHeight: 150)
+        .shadow03()
+    }
     
     /// 왼쪽 구절 저장 뷰
     private var leftVerses: some View {
@@ -34,14 +43,12 @@ struct BookVersesView: View {
                     )
                 )
                 .clipShape(.rect(cornerRadius: 8))
-                .shadow03()
             
             if emotionVersesViewModel.bookVerses?.verses != nil{
                 Icon.versesBorder.image
                     .fixedSize()
                     .aspectRatio(contentMode: .fit)
             }
-            
             
             Text(emotionVersesViewModel.bookVerses?.verses ?? "저장한 구절이 없습니다.")
                 .font(.gangwonEdu(type: .basic, size: 16))
@@ -51,7 +58,54 @@ struct BookVersesView: View {
         })
     }
     
-    //TODO: Right뷰 생성하기
+    private var rightBookPoster: some View {
+        ZStack(alignment: .center, content: {
+            
+            RoundedCorner(radius: 8)
+                .frame(maxWidth: 87, maxHeight: 150)
+                .foregroundStyle(Color.white)
+            
+                bookPosterOrSprout
+        })
+        .onAppear {
+            Task {
+                await emotionVersesViewModel.showBookPosterImg()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    /// 북포스터 또는 새싹 이미지 리턴
+    private var bookPosterOrSprout: some View {
+        if let bookPosterImg = emotionVersesViewModel.bookPosterImg {
+            if emotionVersesViewModel.isDefaultPosterImage {
+                bookPosterImg
+                    .fixedSize()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                VStack(alignment: .center, content: {
+                    bookPosterImg
+                        .resizable()
+                        .frame(maxWidth: 67, maxHeight: 100)
+                        .aspectRatio(contentMode: .fit)
+                    Text(emotionVersesViewModel.bookVerses?.bookName ?? "")
+                        .font(.spoqaHans(type: .medium, size: 8))
+                        .frame(minWidth: 45, minHeight: 10)
+                        .foregroundStyle(Color.black)
+                    
+                    Spacer()
+                    
+                    Icon.emptyBookPoster.image
+                        .fixedSize()
+                })
+                .frame(width: 67, height: 140)
+                .padding(.top, 10)
+            }
+        }
+        else {
+            ProgressView()
+        }
+    }
 }
 
 struct BookVersesView_Previews: PreviewProvider {
