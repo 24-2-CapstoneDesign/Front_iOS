@@ -8,36 +8,43 @@
 import SwiftUI
 
 /// LazyGrid로 생성하는 북 카드
-struct ConnectingBookView: View {
+struct BookRecommendCard: View {
     
-    @StateObject var friendConnectingViewModel: FriendConnectingViewModel
+    @StateObject var bookRecommendCardViewModel: BookRecommendCardViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 12, content: {
-            friendConnectingViewModel.bookCover?
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 100, maxHeight: 150)
-                .shadow03()
-            
+            bookCoverImage
             bookInfoText
         })
         .frame(maxWidth: 100, maxHeight: 191)
         .onAppear {
-            friendConnectingViewModel.imageCacheHandler()
+            bookRecommendCardViewModel.imageCacheHandler()
         }
     }
     
+    // MARK: - ProvertyView
+    
+    /// 책 커버
+    private var bookCoverImage: some View {
+        bookRecommendCardViewModel.bookCover?
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(maxWidth: 100, maxHeight: 150)
+            .shadow03()
+    }
+    
+    /// 책 이름 및 작가 이름
     private var bookInfoText: some View {
         VStack(alignment: .center, spacing: 3, content: {
-            Text(friendConnectingViewModel.friendConnectingDetailData.bookName)
+            Text(bookRecommendCardViewModel.bookRecommendDetailData.bookName)
                 .font(.spoqaHans(type: .bold, size: 12))
                 .foregroundStyle(Color.mainText)
                 .kerning(0.5)
                 .lineSpacing(5)
                 .frame(minWidth: 30)
             
-            Text(friendConnectingViewModel.friendConnectingDetailData.author)
+            Text(bookRecommendCardViewModel.bookRecommendDetailData.author)
                 .font(.spoqaHans(type: .regular, size: 9))
                 .foregroundStyle(Color.subText)
                 .kerning(0.2)

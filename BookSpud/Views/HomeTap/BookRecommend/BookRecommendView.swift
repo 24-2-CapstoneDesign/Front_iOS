@@ -8,9 +8,9 @@
 import SwiftUI
 
 /// 추천책 전체 뷰
-struct FriendConnectingLinkView: View {
+struct BookRecommendView: View {
     
-    @StateObject var friendConnectingLinkViewModel: FriendConnectingLinkViewModel
+    @StateObject var bookRecommendViewModel: BookRecommendViewModel
     let data = sampleDataLists.datalist
     
     var body: some View {
@@ -22,11 +22,13 @@ struct FriendConnectingLinkView: View {
     private var allView: some View {
         VStack(alignment: .center, spacing: 21, content: {
             HStack(content: {
+                
                 friendConnectingTitle
+                
                 Spacer()
             })
             //TODO: - 기본 뷰로 돌릴것
-//            if let dataList = friendConnectingLinkViewModel.friendConnecting?.information, !dataList.isEmpty {
+//            if let dataList = bookRecommendViewModel.friendConnecting?.information, !dataList.isEmpty {
             if !data.information.isEmpty {
                 individualBookConnecting
             } else {
@@ -34,7 +36,7 @@ struct FriendConnectingLinkView: View {
                 notice
             }
         })
-        .frame(maxWidth: 380, minHeight: 221, alignment: .center)
+        .frame(maxWidth: 380, alignment: .center)
     }
     
     /// 독서 타이틀
@@ -47,7 +49,7 @@ struct FriendConnectingLinkView: View {
 //    private var individualBookConnecting: some View {
 //        ScrollView(.horizontal) {
 //            LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
-//                ForEach(friendConnectingLinkViewModel.friendConnecting?.information ?? [], id: \.self) { connectingData in
+//                ForEach(bookRecommendViewModel.friendConnecting?.information ?? [], id: \.self) { connectingData in
 //                    ConnectingBookView(friendConnectingViewModel: FriendConnectingViewModel(friendConnectingDetailData: connectingData))
 //                }
 //            })
@@ -59,12 +61,12 @@ struct FriendConnectingLinkView: View {
     private var individualBookConnecting: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
-                ForEach(data.information, id: \.self) { connectingData in
-                    ConnectingBookView(friendConnectingViewModel: FriendConnectingViewModel(friendConnectingDetailData: connectingData))
+                ForEach(data.information, id: \.self) { book in
+                    BookRecommendCard(bookRecommendCardViewModel:BookRecommendCardViewModel(bookRecommendDetailData: book))
                 }
             })
         }
-        .frame(maxWidth: 390, maxHeight: 201)
+        .frame(width: 390, height: 180)
         .padding(.vertical, -10)
     }
     
@@ -105,7 +107,7 @@ struct FriendConnectingLinkView: View {
 
 struct FriendConnectingLinkView_Preview: PreviewProvider {
     static var previews: some View {
-        FriendConnectingLinkView(friendConnectingLinkViewModel: FriendConnectingLinkViewModel())
+        BookRecommendView(bookRecommendViewModel: BookRecommendViewModel())
             .previewLayout(.sizeThatFits)
     }
 }

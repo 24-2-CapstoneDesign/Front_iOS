@@ -49,7 +49,7 @@ struct TopUserView: View {
         })
         .frame(maxWidth: 380)
         .padding(.horizontal, 5)
-        .padding(.top, 20)
+        .padding(.top, 25)
     }
 }
 

@@ -13,7 +13,8 @@ struct HomeView: View {
     // MARK: - ViewModel
     @StateObject var topUserViewModel = TopUserViewModel()
     @StateObject var emotionVersesViewModel = EmotionVersesViewModel()
-    @StateObject var friendConnectingLinkViewModel = FriendConnectingLinkViewModel()
+    @StateObject var bookCommendViewModel = BookRecommendViewModel()
+    @StateObject var emotionChartViewModel = EmotionChartViewModel()
     
     var body: some View {
         allView
@@ -21,19 +22,21 @@ struct HomeView: View {
     
     /// 홈탭 뷰 모든 뷰 그룹
     private var allView: some View {
-        ScrollView(.vertical) {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 29, content: {
                 TopUserView(topUserViewModel: topUserViewModel)
                 
-                EmotionVersesView(emotionVersesViewModel: EmotionVersesViewModel())
+                EmotionVersesView(emotionVersesViewModel: emotionVersesViewModel)
                 
                 MainDotLine
                 
-                FriendConnectingLinkView(friendConnectingLinkViewModel: friendConnectingLinkViewModel)
+                BookRecommendView(bookRecommendViewModel: bookCommendViewModel)
                 
                 MainDotLine
-                    
+                
+                EmotionChartView(emotionChartViewModel: emotionChartViewModel)
             })
+            .frame(minHeight: 1300, maxHeight: 1350, alignment: .top).ignoresSafeArea(.all)
         }
         .ignoresSafeArea(.all)
     }

@@ -9,25 +9,25 @@ import Foundation
 import SwiftUI
 
 /// 추천책 개개인 뷰모델
-class FriendConnectingViewModel: ObservableObject {
+class BookRecommendCardViewModel: ObservableObject {
     
-    @Published var friendConnectingDetailData: FriendConnectingDetailData
+    @Published var bookRecommendDetailData: BookRecommendDetailData
     @Published var bookCover: SwiftUI.Image? = nil
     
-    init(friendConnectingDetailData: FriendConnectingDetailData) {
-        self.friendConnectingDetailData = friendConnectingDetailData
+    init(bookRecommendDetailData: BookRecommendDetailData) {
+        self.bookRecommendDetailData = bookRecommendDetailData
     }
     
     private var imageChache = ImageCacheManager.shared
     
     /// 이미지 데이터 캐시에 저장하기
     private func saveCache() {
-        imageChache.downloadAndSaveImage(from: URL(string: friendConnectingDetailData.bookCoverUrl)!)
+        imageChache.downloadAndSaveImage(from: URL(string: bookRecommendDetailData.bookCoverUrl)!)
     }
     
     /// 이미지 데이터 캐시에서 로드하기
     private func loadCache() {
-        guard let image = imageChache.loadImageData(from: URL(string: friendConnectingDetailData.bookCoverUrl)!) else { return }
+        guard let image = imageChache.loadImageData(from: URL(string: bookRecommendDetailData.bookCoverUrl)!) else { return }
         self.bookCover = image
     }
     
