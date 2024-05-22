@@ -9,19 +9,26 @@ import Foundation
 
 class EmotionChartViewModel: ObservableObject {
     
-    @Published var emotions: [EmotionChartData]
+    // MARK: - Property
+    
+    @Published var emotions: [EmotionChartBeforeData]
     @Published var currentDate: String?
     @Published var userName: String = ""
-    @Published var dominationEmotion: EmotionChartData
+    @Published var dominationEmotion: EmotionChartBeforeData
+    @Published var emotionData: EmotionData? = nil
+    
     let keyChainManager = KeyChainManager.standard
+    
+    
+    // MARK: - Init
     
     init() {
         let initialData = [
-            EmotionChartData(name: "happyEmtion", value: 99, color: .touchedYellow),
-            EmotionChartData(name: "sadEmotion", value: 29, color: .sadBlue),
-            EmotionChartData(name: "angryEmotion", value: 59, color: .angryRed),
-            EmotionChartData(name: "inspirationEmotion", value: 49, color: .inspiredGreen),
-            EmotionChartData(name: "moveEmotion", value: 69, color: .touchedPurple)
+            EmotionChartBeforeData(name: "happyEmtion", value: 99, color: .touchedYellow),
+            EmotionChartBeforeData(name: "sadEmotion", value: 29, color: .sadBlue),
+            EmotionChartBeforeData(name: "angryEmotion", value: 59, color: .angryRed),
+            EmotionChartBeforeData(name: "inspirationEmotion", value: 49, color: .inspiredGreen),
+            EmotionChartBeforeData(name: "moveEmotion", value: 69, color: .touchedPurple)
         ]
         self.emotions = initialData
         self.dominationEmotion = initialData.max(by: { $0.value < $1.value})!
@@ -68,6 +75,8 @@ class EmotionChartViewModel: ObservableObject {
             return ""
         }
     }
+    
+    //TODO: - EmotionData API로 받아온 후, 값 할당 하는 함수 필요
     
  
 }

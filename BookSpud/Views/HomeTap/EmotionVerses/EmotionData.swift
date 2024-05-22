@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct EmotionData: Identifiable {
+struct EmotionPickerData: Identifiable {
     var id: String { name }
     var name: String
     var emotionImage: Image
@@ -21,11 +21,11 @@ struct BookVerses: Codable {
 }
 
 final class EmotionDataList {
-    static let emotionList: [EmotionData] = [
-        EmotionData(name: "happy", emotionImage: Icon.happyEmtion.image),
-        EmotionData(name: "sad", emotionImage: Icon.sadEmotion.image),
-        EmotionData(name: "angry", emotionImage: Icon.angryEmotion.image),
-        EmotionData(name: "inspiration", emotionImage: Icon.inspirationEmotion.image),
-        EmotionData(name: "move", emotionImage: Icon.moveEmotion.image)
+    static let emotionList: [EmotionPickerData] = [
+        EmotionPickerData(name: "happy", emotionImage: Icon.happyEmtion.image),
+        EmotionPickerData(name: "sad", emotionImage: Icon.sadEmotion.image),
+        EmotionPickerData(name: "angry", emotionImage: Icon.angryEmotion.image),
+        EmotionPickerData(name: "inspiration", emotionImage: Icon.inspirationEmotion.image),
+        EmotionPickerData(name: "move", emotionImage: Icon.moveEmotion.image)
     ]
 }

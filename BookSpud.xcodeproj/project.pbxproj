@@ -221,7 +221,7 @@
 		483628F82BE4D37D0070FD7F /* HomeTap */ = {
 			isa = PBXGroup;
 			children = (
-				483968452BFCE762002A3035 /* emotionGraph */,
+				483968452BFCE762002A3035 /* EmotionGraph */,
 				48E24C582BFC69A300A46E77 /* BookRecommend */,
 				4876A8382BF60B2D00E1B204 /* EmotionVerses */,
 				489795852BF28F56008ED803 /* TopUserInfo */,
@@ -232,7 +232,7 @@
 			path = HomeTap;
 			sourceTree = "<group>";
 		};
-		483968452BFCE762002A3035 /* emotionGraph */ = {
+		483968452BFCE762002A3035 /* EmotionGraph */ = {
 			isa = PBXGroup;
 			children = (
 				483968462BFCE80D002A3035 /* NoRegistEmotion.swift */,
@@ -240,7 +240,7 @@
 				4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */,
 				4839684D2BFCF688002A3035 /* EmotionChartData.swift */,
 			);
-			path = emotionGraph;
+			path = EmotionGraph;
 			sourceTree = "<group>";
 		};
 		486348012BF2C72A006628F3 /* APITargets */ = {
