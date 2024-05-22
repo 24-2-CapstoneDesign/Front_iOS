@@ -8,9 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct EmotionChartData: Identifiable {
+struct EmotionChartBeforeData: Identifiable {
     var id = UUID()
     let name: String
     let value: Int
     let color: Color
+}
+
+struct EmotionData: Codable {
+    var information: [EmotionDetailData]
+}
+
+struct EmotionDetailData: Codable {
+    var name: String
+    var value: Int
 }

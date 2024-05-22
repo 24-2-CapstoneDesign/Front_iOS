@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EmotionPickerView: View {
     
-    let emotionList: [EmotionData] = EmotionDataList.emotionList
+    let emotionList: [EmotionPickerData] = EmotionDataList.emotionList
     @StateObject var emotionVersesViewModel: EmotionVersesViewModel
     
     var body: some View {

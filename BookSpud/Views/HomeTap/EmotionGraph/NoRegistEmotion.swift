@@ -19,7 +19,7 @@ struct NoRegistEmotion: View {
             emptyBackgroundView
             noticeText
         })
-        .frame(maxWidth: 334, maxHeight: 500)
+        .frame(width: 334, height: 500)
     }
     
     /// 뒷 배경
@@ -39,7 +39,6 @@ struct NoRegistEmotion: View {
                 )
             )
             .clipShape(.rect(cornerRadius: 4))
-            .shadow02()
     }
     
     private var noticeText: some View {
@@ -48,7 +47,7 @@ struct NoRegistEmotion: View {
                 .font(.spoqaHans(type: .bold, size: 20))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)
-            Text("나의 감정 그래프드 보고 싶다면?")
+            Text("나의 감정 그래프를 보고 싶다면?")
                 .font(.spoqaHans(type: .medium, size: 12))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)

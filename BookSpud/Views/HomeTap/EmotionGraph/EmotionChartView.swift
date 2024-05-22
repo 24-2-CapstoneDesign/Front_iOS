@@ -20,6 +20,16 @@ struct EmotionChartView: View {
     // MARK: - Property
     /// Vstack내부 뷰 그룹
     private var allViewGroup: some View {
+        ZStack(alignment: .center, content: {
+            containsValueChart
+            
+            if emotionChartViewModel.emotionData == nil{
+                NoRegistEmotion()
+            }
+        })
+    }
+    
+    private var containsValueChart: some View {
         VStack(alignment: .center, spacing: 29, content: {
             
             chartTitle
@@ -37,7 +47,6 @@ struct EmotionChartView: View {
                 .clipShape(.rect(cornerRadius: 4))
                 .shadow02()
         )
-        
     }
     
     /// 차트 타이틀
