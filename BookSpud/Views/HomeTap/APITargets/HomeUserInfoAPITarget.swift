@@ -2,39 +2,39 @@
 //  ProfileAPITarget.swift
 //  BookSpud
 //
-//  Created by 정의찬 on 5/12/24.
+//  Created by 정의찬 on 5/14/24.
 //
 
-import Moya
 import Foundation
+import Moya
 
-enum ProfileAPITarget {
-    case sendUserData(userInfo: ProfileModel)
+enum HomeUserInfoAPITarget {
+    case getProfileInfo
 }
 
-extension ProfileAPITarget: TargetType {
+extension HomeUserInfoAPITarget : TargetType {
     var baseURL: URL {
         return URL(string: "example")!
     }
     
     var path: String {
         switch self {
-        case .sendUserData:
-            return "userData"
+        case .getProfileInfo:
+            return "exampl2"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .sendUserData:
-            return .post
+        case .getProfileInfo:
+            return .get
         }
     }
     
     var task: Task {
         switch self {
-        case .sendUserData(let data):
-            return .requestParameters(parameters: ["userData" : data], encoding: JSONEncoding.default)
+        case .getProfileInfo:
+            return .requestPlain
         }
     }
     

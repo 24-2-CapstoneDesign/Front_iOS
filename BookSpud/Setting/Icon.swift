@@ -14,7 +14,7 @@ enum Icon: String {
     case kakao = "kakaoLogin"
     case apple = "iosLogin"
     
-    // MARK: - Profil
+    // MARK: - Profile
     case profil = "profil"
     case checkNickname = "nickNameCheck"
     case notCheckNickname = "notNicknameCheck"
@@ -34,6 +34,28 @@ enum Icon: String {
     case clickedISBN = "clickedISBN"
     case clickedSpud = "clickedSpud"
     case clickedReport = "clickedReport"
+    
+    // MARK: - HomeTap
+    
+    /* 상단 유저 프로필 정보 이미지 */
+    case cutyPotato = "cutyPotato"
+    case optionBtn = "optionBtn"
+    
+    /* 감정 선택 배경 */
+    case emotionBackground = "emotionBackground"
+    
+    /* 감정 피커 종류 */
+    case angryEmotion = "angryEmotion"
+    case happyEmtion = "happyEmtion"
+    case inspirationEmotion = "inspirationEmotion"
+    case moveEmotion = "moveEmotion"
+    case sadEmotion = "sadEmotion"
+    
+    /* 감정 구절 */
+    case versesBorder = "versesBorder"
+    
+    /* 감정 구절 책 표지 */
+    case emptyBookPoster = "emptyBookPoster"
     
     // MARK: - Function
     var image: Image {

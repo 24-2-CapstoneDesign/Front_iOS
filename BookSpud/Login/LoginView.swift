@@ -46,13 +46,13 @@ struct LoginView: View {
             Text("Book Spud")
                 .font(.spoqaHans(type: .bold, size: 28))
                 .kerning(-2)
-                .foregroundStyle(.blackText)
+                .foregroundStyle(Color.gray07)
                 .frame(maxWidth: 150, maxHeight: 35)
             
             Text("독서, 무한한 지식의 여정을 시작하세요!")
                 .font(.spoqaHans(type: .regular, size: 14))
                 .kerning(-2)
-                .foregroundStyle(.subText)
+                .foregroundStyle(.gray05)
                 .frame(maxWidth: 240, maxHeight: 18)
         }
     }
@@ -66,7 +66,7 @@ struct LoginView: View {
             Text("로그인")
                 .font(.spoqaHans(type: .medium, size: 14))
                 .kerning(-2)
-                .foregroundStyle(.blackText)
+                .foregroundStyle(Color.gray07)
             
             Divider()
                 .background(Color.gray04)

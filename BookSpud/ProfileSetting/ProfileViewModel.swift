@@ -12,6 +12,10 @@ import Alamofire
 
 class ProfileViewModel: ObservableObject, ImageHandling {
     
+    
+    private let keyChainManger = KeyChainManager.standard
+    private let imageCacheManager = ImageCacheManager.shared
+    
     // MARK: - API Property
     private let tokenProvider: TokenProviding
     private let accessTokenRefresher: AccessTokenRefresher
@@ -87,7 +91,34 @@ class ProfileViewModel: ObservableObject, ImageHandling {
         }
     }
     
-    //TODO: - 사진 이미지 전송 API 작성 및 유저 데이터 전송
+    /// 프로필 지정 값 서버로 전송
+    public func sendUserProfile() {
+        guard let userInfo = inputUserData() else { return }
+        
+        provider.request(.sendUserData(userInfo: userInfo)) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.handleResponse(response: response)
+            case .failure(let error):
+                print("User profile trans error: \(error)")
+            }
+        }
+    }
+    
+    /// API 응답 처리 및 이미지 다운로드
+    /// - Parameter response: 호출 성공 시 받는 데이터
+    private func handleResponse(response: Response) {
+        do {
+            let decodedData = try JSONDecoder().decode(UserInfo.self, from: response.data)
+            keyChainManger.updateNickname(self.nickNameText, for: "userSession")
+            
+            if let imageUrl = URL(string: decodedData.profileImageURL ?? "") {
+                self.imageCacheManager.downloadAndSaveImage(from: imageUrl)
+            }
+        } catch {
+            print("유저 정보 디코드 오류 : \(error)")
+        }
+    }
     
     
 }

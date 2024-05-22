@@ -32,7 +32,25 @@ extension Font {
         }
     }
     
+    
+    enum GangwonEduSaeeum {
+        case basic
+        
+        var value: String {
+            switch self {
+            case .basic:
+                return "GangwonEduSaeeum-OTFMedium"
+            }
+        }
+    }
+    
     static func spoqaHans(type: SpoqaHanSans, size: CGFloat) -> Font {
         return .custom(type.value, size: size)
     }
+    
+    
+    static func gangwonEdu(type: GangwonEduSaeeum, size: CGFloat) -> Font {
+        return .custom(type.value, size: size)
+    }
+    
 }
