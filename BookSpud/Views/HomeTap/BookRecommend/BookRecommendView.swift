@@ -17,7 +17,7 @@ struct BookRecommendView: View {
         allView
     }
     
-    // MARK: - Property
+    // MARK: - BookRecommendView Components
     
     private var allView: some View {
         VStack(alignment: .center, spacing: 21, content: {

@@ -25,6 +25,7 @@
 		4839684C2BFCEF64002A3035 /* EmotionChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */; };
 		4839684F2BFCFAD1002A3035 /* EmotionChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4839684D2BFCF688002A3035 /* EmotionChartData.swift */; };
 		483968502BFCFAD3002A3035 /* EmotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBAA2BF72BC100EF520C /* EmotionData.swift */; };
+		4859170B2BFED2A800DC3650 /* BookRecommendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859170A2BFED2A800DC3650 /* BookRecommendDetailView.swift */; };
 		48607EFA2BE4D46500284E38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48607EF92BE4D46500284E38 /* RoundedCorner.swift */; };
 		486348002BF2C6C2006628F3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486347FF2BF2C6C2006628F3 /* HomeViewModel.swift */; };
 		486348032BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486348022BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift */; };
@@ -103,6 +104,7 @@
 		483968482BFCEE4F002A3035 /* EmotionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionChartView.swift; sourceTree = "<group>"; };
 		4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionChartViewModel.swift; sourceTree = "<group>"; };
 		4839684D2BFCF688002A3035 /* EmotionChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionChartData.swift; sourceTree = "<group>"; };
+		4859170A2BFED2A800DC3650 /* BookRecommendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendDetailView.swift; sourceTree = "<group>"; };
 		48607EF92BE4D46500284E38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		486347FF2BF2C6C2006628F3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		486348022BF2C7E7006628F3 /* HomeUserInfoAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUserInfoAPITarget.swift; sourceTree = "<group>"; };
@@ -424,6 +426,13 @@
 			path = Pretendard;
 			sourceTree = "<group>";
 		};
+		48A48D2C2BFEC80F00552A28 /* BookRecommendDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BookRecommendDetail;
+			sourceTree = "<group>";
+		};
 		48ABDBB22BF733DF00EF520C /* EmotionVersesView */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,7 +496,8 @@
 		48E24C582BFC69A300A46E77 /* BookRecommend */ = {
 			isa = PBXGroup;
 			children = (
-				48E24C602BFC711800A46E77 /* BookRecommendView */,
+				48A48D2C2BFEC80F00552A28 /* BookRecommendDetail */,
+				48E24C602BFC711800A46E77 /* BookRecommendCardView */,
 				48E24C5B2BFC6B0900A46E77 /* BookRecommendData.swift */,
 				48875DF42BFC7C6500847986 /* BookRecommendView.swift */,
 				48875DF62BFC7F1F00847986 /* BookRecommendViewModel.swift */,
@@ -495,13 +505,14 @@
 			path = BookRecommend;
 			sourceTree = "<group>";
 		};
-		48E24C602BFC711800A46E77 /* BookRecommendView */ = {
+		48E24C602BFC711800A46E77 /* BookRecommendCardView */ = {
 			isa = PBXGroup;
 			children = (
 				48E24C5E2BFC6C4300A46E77 /* BookRecommendCardViewModel.swift */,
 				48E24C612BFC713500A46E77 /* BookRecommendCard.swift */,
+				4859170A2BFED2A800DC3650 /* BookRecommendDetailView.swift */,
 			);
-			path = BookRecommendView;
+			path = BookRecommendCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,6 +661,7 @@
 				483968472BFCE80D002A3035 /* NoRegistEmotion.swift in Sources */,
 				4876A83C2BF60B5200E1B204 /* EmotionVersesView.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
+				4859170B2BFED2A800DC3650 /* BookRecommendDetailView.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
 				48DE6DFF2BEF5D8B0096A069 /* HomeView.swift in Sources */,
