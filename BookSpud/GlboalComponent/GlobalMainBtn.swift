@@ -19,6 +19,12 @@ struct GlobalMainBtn: View {
     
     // MARK: - Init
     
+    /// 북스푸드 메인 테마색 버튼
+    /// - Parameters:
+    ///   - clickBool: 버튼 초기 불러올 때, 활성화 상태
+    ///   - btnName: 버튼 내부 닉네임
+    ///   - btnImg: 버튼 내부 사진
+    ///   - onClicked: 클릭했을 때 실행할 함수
     init(clickBool: Binding<Bool>,
          btnName: String,
          btnImg: Icon?,

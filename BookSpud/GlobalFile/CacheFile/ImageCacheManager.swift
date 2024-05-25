@@ -23,7 +23,7 @@ class ImageCacheManager {
     }
     
     
-    /// 이미지 캐시로 저장하기
+    /// 이미지 캐시로 불러오기
     /// - Parameter url: 저장하고자 하는 Image URL 압력하기
     /// - Returns: Image 값 리턴하기
     public func loadImageData(from url: URL) -> Image? {

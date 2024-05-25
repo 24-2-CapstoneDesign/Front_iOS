@@ -13,10 +13,14 @@ class BookRecommendCardViewModel: ObservableObject {
     
     @Published var bookRecommendDetailData: BookRecommendDetailData
     @Published var bookCover: SwiftUI.Image? = nil
+    var mainBtnCliked: Bool = true
     
+    // MARK: - Init
     init(bookRecommendDetailData: BookRecommendDetailData) {
         self.bookRecommendDetailData = bookRecommendDetailData
     }
+    
+    // MARK: - Book Recommend Individual Function
     
     private var imageChache = ImageCacheManager.shared
     
@@ -37,5 +41,10 @@ class BookRecommendCardViewModel: ObservableObject {
         loadCache()
     }
     
+    // MARK: - Book Recommend DetailView Function
+    
+    public func puerchaseBook() {
+        print("책 구입")
+    }
     
 }

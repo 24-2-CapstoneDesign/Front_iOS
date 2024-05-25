@@ -21,6 +21,11 @@
 		<string>SpoqaHanSansNeo-Regular.otf</string>
 		<string>SpoqaHanSansNeo-Thin.otf</string>
 		<string>GangwonEduSaeeum.otf</string>
+		<string>Pretendard-Bold.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
+		<string>Pretendard-Light.otf</string>
+		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-Regular.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

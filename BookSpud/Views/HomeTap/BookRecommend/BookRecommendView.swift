@@ -17,7 +17,7 @@ struct BookRecommendView: View {
         allView
     }
     
-    // MARK: - Property
+    // MARK: - BookRecommendView Components
     
     private var allView: some View {
         VStack(alignment: .center, spacing: 21, content: {
@@ -32,7 +32,7 @@ struct BookRecommendView: View {
             if !data.information.isEmpty {
                 individualBookConnecting
             } else {
-                emptyView
+                EmptyBookView()
                 notice
             }
         })
@@ -68,32 +68,6 @@ struct BookRecommendView: View {
         }
         .frame(width: 390, height: 180)
         .padding(.vertical, -10)
-    }
-    
-    /// 책 데이터 비었을 경우 표시 포스터
-    private var emptyView: some View {
-        ZStack(alignment: .center, content: {
-            Rectangle()
-                .foregroundStyle(.clear)
-                .frame(maxWidth: 100, maxHeight: 150)
-                .background(
-                    LinearGradient(
-                        stops: [
-                            Gradient.Stop(color: .white, location: 0.00),
-                            Gradient.Stop(color: Color(red: 0.97, green: 0.81, blue: 0.27), location: 1.00),
-                        ],
-                        startPoint: UnitPoint(x: 0.5, y: 0),
-                        endPoint: UnitPoint(x: 0.5, y: 1)
-                    )
-                )
-                .shadow(color: .black.opacity(0.25), radius: 5, x: 0, y: 2)
-            
-            
-            Text("!")
-                .font(.spoqaHans(type: .medium, size: 40))
-                .kerning(-0.4)
-                .foregroundStyle(Color.backgrounYellow)
-        })
     }
     
     /// 책 데이터 비었을 경우 안내글

@@ -44,12 +44,40 @@ extension Font {
         }
     }
     
+    enum Pretendard {
+        case bold
+        case semiBold
+        case light
+        case medium
+        case regular
+        
+        var value: String {
+            switch self {
+            case .bold:
+                return "Pretendard-Bold"
+            case .semiBold:
+                return "Pretendard-SemiBold"
+            case .light:
+                return "Pretendard-Light"
+            case .medium:
+                return "Pretendard-Medium"
+            case .regular:
+                return "Pretendard-Regular"
+            }
+        }
+        
+    }
+    
     static func spoqaHans(type: SpoqaHanSans, size: CGFloat) -> Font {
         return .custom(type.value, size: size)
     }
     
     
     static func gangwonEdu(type: GangwonEduSaeeum, size: CGFloat) -> Font {
+        return .custom(type.value, size: size)
+    }
+    
+    static func pretendard(type: Pretendard, size: CGFloat) -> Font {
         return .custom(type.value, size: size)
     }
     

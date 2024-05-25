@@ -23,7 +23,7 @@ struct BookRecommendCard: View {
         }
     }
     
-    // MARK: - ProvertyView
+    // MARK: - BookRecommendCard Componenet
     
     /// 책 커버
     private var bookCoverImage: some View {

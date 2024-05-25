@@ -22,7 +22,7 @@ struct BookVerses: Codable {
 
 final class EmotionDataList {
     static let emotionList: [EmotionPickerData] = [
-        EmotionPickerData(name: "happy", emotionImage: Icon.happyEmtion.image),
+        EmotionPickerData(name: "happy", emotionImage: Icon.happyEmotion.image),
         EmotionPickerData(name: "sad", emotionImage: Icon.sadEmotion.image),
         EmotionPickerData(name: "angry", emotionImage: Icon.angryEmotion.image),
         EmotionPickerData(name: "inspiration", emotionImage: Icon.inspirationEmotion.image),
