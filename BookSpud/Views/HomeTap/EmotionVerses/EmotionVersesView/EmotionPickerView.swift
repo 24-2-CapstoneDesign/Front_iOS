@@ -34,7 +34,7 @@ struct EmotionPickerView: View {
             
             ForEach(emotionList, id: \.name) { emotion in
                 Button(action: {
-                    emotionVersesViewModel.selectedEmotionImage = emotion.emotionImage
+                    emotionVersesViewModel.changeEmotionImage(emotion.emotionImage)
                     emotionVersesViewModel.easeOutAnimationEffect()
                 }, label: {
                     emotion.emotionImage

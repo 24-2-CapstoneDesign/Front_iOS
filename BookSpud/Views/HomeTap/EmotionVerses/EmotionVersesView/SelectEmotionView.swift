@@ -20,7 +20,7 @@ struct SelectEmotionView: View {
                 guideImage
                 guideTextRight
             })
-            .frame(maxWidth: 345, maxHeight: 34)
+            .frame(maxWidth: 360, maxHeight: 34)
     }
     
     // MARK: - View Property
@@ -50,19 +50,26 @@ struct SelectEmotionView: View {
             
             Button(action: {
                 emotionVersesViewModel.chagePickerPresented()
-                print(emotionVersesViewModel.isEmotionPickerPresented)
             }, label: {
                 Icon.emotionBackground.image
                     .resizable()
-                    .frame(maxWidth: 147, maxHeight: 29)
+                    .frame(minWidth: 147, maxHeight: 29)
                     .aspectRatio(contentMode: .fit)
             })
             .padding(.top, 8)
             
-            emotionVersesViewModel.selectedEmotionImage
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 57, maxHeight: 32)
+            HStack(alignment: .center, spacing: 6, content: {
+                
+                emotionVersesViewModel.spudFace
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 25.69, maxHeight: 27.38)
+                
+                emotionVersesViewModel.selectedEmotionImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 57, maxHeight: 32)
+            })
         })
     }
 }

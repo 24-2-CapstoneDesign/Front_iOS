@@ -17,7 +17,8 @@ class EmotionVersesViewModel: ObservableObject {
     private let imageCacheManager = ImageCacheManager.shared
     
     /* EmotionVerses  Propert */
-    @Published var selectedEmotionImage: SwiftUI.Image = Icon.happyEmtion.image
+    @Published var spudFace: SwiftUI.Image = Icon.happySpud.image
+    @Published var selectedEmotionImage: SwiftUI.Image = Icon.happyEmotion.image
     @Published var isEmotionPickerPresented: Bool = false
     @Published var isEmotionPickerViewAnimation = false
     
@@ -66,8 +67,30 @@ class EmotionVersesViewModel: ObservableObject {
         }
     }
     
+    public func changeEmotionImage(_ image: SwiftUI.Image) {
+        switch image {
+        case Icon.happyEmotion.image:
+            self.spudFace = Icon.happySpud.image
+            self.selectedEmotionImage = Icon.happyEmotion.image
+        case Icon.sadEmotion.image:
+            self.spudFace = Icon.sadSpud.image
+            self.selectedEmotionImage = Icon.sadEmotion.image
+        case Icon.angryEmotion.image:
+            self.spudFace = Icon.angrySpud.image
+            self.selectedEmotionImage = Icon.angryEmotion.image
+        case Icon.inspirationEmotion.image:
+            self.spudFace = Icon.inspirationSpud.image
+            self.selectedEmotionImage = Icon.inspirationEmotion.image
+        case Icon.moveEmotion.image:
+            self.spudFace = Icon.sensationSpud.image
+            self.selectedEmotionImage = Icon.moveEmotion.image
+        default:
+            break
+        }
+    }
     
-    /// 피컵 이이지 클릭시 작동 버튼(피커뷰 아웃)
+    
+    /// 피커뷰 이이지 클릭시 작동 버튼(피커뷰 아웃)
     public func easeOutAnimationEffect() {
         withAnimation(.easeOut(duration: 0.5)) {
             self.isEmotionPickerViewAnimation = false

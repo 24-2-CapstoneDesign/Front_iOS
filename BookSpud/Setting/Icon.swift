@@ -46,7 +46,7 @@ enum Icon: String {
     
     /* 감정 피커 종류 */
     case angryEmotion = "angryEmotion"
-    case happyEmtion = "happyEmtion"
+    case happyEmotion = "happyEmotion"
     case inspirationEmotion = "inspirationEmotion"
     case moveEmotion = "moveEmotion"
     case sadEmotion = "sadEmotion"
@@ -56,6 +56,13 @@ enum Icon: String {
     
     /* 감정 구절 책 표지 */
     case emptyBookPoster = "emptyBookPoster"
+    
+    // MARK: - SpudFace
+    case happySpud = "happySpud"
+    case sadSpud = "sadSpud"
+    case angrySpud = "angrySpud"
+    case inspirationSpud = "inspirationSpud"
+    case sensationSpud = "sensationSpud"
     
     // MARK: - Function
     var image: Image {
