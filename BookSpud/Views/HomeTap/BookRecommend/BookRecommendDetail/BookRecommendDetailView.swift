@@ -10,7 +10,7 @@ import SwiftUI
 /// 추천 받은 책 내부 정보 뷰
 struct BookRecommendDetailView: View {
     
-    @StateObject var bookRecommendCardViewModel: BookRecommendCardViewModel
+    @StateObject var viewModel: BookRecommendCardViewModel
     let data = sampleDataLists.datalist
     
     // MARK: - Property
@@ -48,7 +48,7 @@ struct BookRecommendDetailView: View {
     @ViewBuilder
     /// 책 표지
     private var bookCover: some View {
-        if let bookCover = bookRecommendCardViewModel.bookCover {
+        if let bookCover = viewModel.bookCover {
             bookCover
                 .resizable()
                 .frame(maxWidth: 100, maxHeight: 150)
@@ -88,11 +88,11 @@ struct BookRecommendDetailView: View {
     /// 오른쪽 책 정보 뷰
     private var bookDetailInfo: some View {
         VStack(alignment: .leading, spacing: 16, content: {
-            BookRecommendDetailRow(title: "도서명", value: bookRecommendCardViewModel.bookRecommendDetailData.bookName)
-            BookRecommendDetailRow(title: "저     자", value: bookRecommendCardViewModel.bookRecommendDetailData.author)
-            BookRecommendDetailRow(title: "장     르", value: bookRecommendCardViewModel.bookRecommendDetailData.subject)
-            BookRecommendDetailRow(title: "가     격", value: self.formattedPrice(bookRecommendCardViewModel.bookRecommendDetailData.price))
-            BookRecommendDetailRow(title: "책소개", value: bookRecommendCardViewModel.bookRecommendDetailData.introduce, hegiht: 63, alignment: .top, onOff: true)
+            BookRecommendDetailRow(title: "도서명", value: viewModel.bookRecommendDetailData.bookName)
+            BookRecommendDetailRow(title: "저     자", value: viewModel.bookRecommendDetailData.author)
+            BookRecommendDetailRow(title: "장     르", value: viewModel.bookRecommendDetailData.subject)
+            BookRecommendDetailRow(title: "가     격", value: self.formattedPrice(viewModel.bookRecommendDetailData.price))
+            BookRecommendDetailRow(title: "책소개", value: viewModel.bookRecommendDetailData.introduce, hegiht: 63, alignment: .top, onOff: true)
         })
         .frame(maxWidth: 224, maxHeight: 197)
     }
@@ -108,12 +108,23 @@ struct BookRecommendDetailView: View {
         }
         return "\(price) 원"
     }
-}
-
-struct BookRecommendDetailView_Preview: PreviewProvider {
-    static var previews: some View {
-        BookRecommendDetailView(bookRecommendCardViewModel: BookRecommendCardViewModel(bookRecommendDetailData: BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", subject: "소설", price: 12800, introduce: "하하하하하 재밌어요asdkhajdhasdjhaskdhakdhasjkdhajksdhasjkdhakjsdhkasjdhakjdhaskdajsdhjdhakjsdhkdhksdhskjdhsakj!!")))
+    
+    // MARK: - BookRecommendDetail UserProfile
+    /// 북마크 남긴 사람들
+    private var bookMarkUserData: some View {
+        HStack(alignment: .center, spacing: 13, content: {
+            Text("북마크 남긴 사람들 🔖")
+                .font(.spoqaHans(type: .bold, size: 12))
+                .foregroundStyle(Color.black)
+                .kerning(-0.2)
+        })
     }
+//    
+//    private var bookMarkProfileList: some View {
+//        LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 100))], spacing: 8, content: {
+//            ForEach(viewModel.emotionBookMardData?.information ?? [], id: \.self) { information in
+//                
+//            }
+//        })
+//    }
 }
-
-
