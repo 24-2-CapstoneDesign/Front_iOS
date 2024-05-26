@@ -90,6 +90,8 @@
 		48E24C5C2BFC6B0900A46E77 /* BookRecommendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E24C5B2BFC6B0900A46E77 /* BookRecommendData.swift */; };
 		48E24C5F2BFC6C4300A46E77 /* BookRecommendCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E24C5E2BFC6C4300A46E77 /* BookRecommendCardViewModel.swift */; };
 		48E24C622BFC713500A46E77 /* BookRecommendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E24C612BFC713500A46E77 /* BookRecommendCard.swift */; };
+		48EB4F212C0381C6007B5668 /* EmotionUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */; };
+		48EB4F242C038237007B5668 /* EmotionUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4F232C038237007B5668 /* EmotionUserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +171,8 @@
 		48E24C5B2BFC6B0900A46E77 /* BookRecommendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendData.swift; sourceTree = "<group>"; };
 		48E24C5E2BFC6C4300A46E77 /* BookRecommendCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendCardViewModel.swift; sourceTree = "<group>"; };
 		48E24C612BFC713500A46E77 /* BookRecommendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendCard.swift; sourceTree = "<group>"; };
+		48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionUserProfile.swift; sourceTree = "<group>"; };
+		48EB4F232C038237007B5668 /* EmotionUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionUserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +438,7 @@
 		48A48D2C2BFEC80F00552A28 /* BookRecommendDetail */ = {
 			isa = PBXGroup;
 			children = (
+				48EB4F222C0381F2007B5668 /* EmotionUserProfile */,
 				4859170A2BFED2A800DC3650 /* BookRecommendDetailView.swift */,
 				48D5C2B12C01CBCC0088FD26 /* BookRecommendDetailRow.swift */,
 			);
@@ -519,6 +524,15 @@
 				48E24C612BFC713500A46E77 /* BookRecommendCard.swift */,
 			);
 			path = BookRecommendCardView;
+			sourceTree = "<group>";
+		};
+		48EB4F222C0381F2007B5668 /* EmotionUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */,
+				48EB4F232C038237007B5668 /* EmotionUserData.swift */,
+			);
+			path = EmotionUserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -618,7 +632,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EB4F242C038237007B5668 /* EmotionUserData.swift in Sources */,
 				483968502BFCFAD3002A3035 /* EmotionData.swift in Sources */,
+				48EB4F212C0381C6007B5668 /* EmotionUserProfile.swift in Sources */,
 				4839684F2BFCFAD1002A3035 /* EmotionChartData.swift in Sources */,
 				48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
