@@ -10,7 +10,7 @@ import SwiftUI
 /// 추천책 전체 뷰
 struct BookRecommendView: View {
     
-    @StateObject var bookRecommendViewModel: BookRecommendViewModel
+    @StateObject var viewModel: BookRecommendViewModel
     let data = sampleDataLists.datalist
     
     var body: some View {
@@ -27,8 +27,6 @@ struct BookRecommendView: View {
                 
                 Spacer()
             })
-            //TODO: - 기본 뷰로 돌릴것
-//            if let dataList = bookRecommendViewModel.friendConnecting?.information, !dataList.isEmpty {
             if !data.information.isEmpty {
                 individualBookConnecting
             } else {
@@ -49,7 +47,7 @@ struct BookRecommendView: View {
 //    private var individualBookConnecting: some View {
 //        ScrollView(.horizontal) {
 //            LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
-//                ForEach(bookRecommendViewModel.friendConnecting?.information ?? [], id: \.self) { connectingData in
+//                ForEach(viewModel.friendConnecting?.information ?? [], id: \.self) { connectingData in
 //                    ConnectingBookView(friendConnectingViewModel: FriendConnectingViewModel(friendConnectingDetailData: connectingData))
 //                }
 //            })
@@ -62,7 +60,7 @@ struct BookRecommendView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
                 ForEach(data.information, id: \.self) { book in
-                    BookRecommendCard(bookRecommendCardViewModel:BookRecommendCardViewModel(bookRecommendDetailData: book))
+                    BookRecommendCard(viewModel: BookRecommendCardViewModel(bookRecommendDetailData: book))
                 }
             })
         }
@@ -81,7 +79,7 @@ struct BookRecommendView: View {
 
 struct FriendConnectingLinkView_Preview: PreviewProvider {
     static var previews: some View {
-        BookRecommendView(bookRecommendViewModel: BookRecommendViewModel())
+        BookRecommendView(viewModel: BookRecommendViewModel())
             .previewLayout(.sizeThatFits)
     }
 }

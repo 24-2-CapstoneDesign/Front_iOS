@@ -46,7 +46,7 @@ struct BookRecommendDetailRow: View {
             .frame(maxHeight: height)
             
             Text(value)
-                .frame(maxWidth: width, alignment: alignment)
+                .frame(maxWidth: width, maxHeight: height ,alignment: alignment)
                 .font(.spoqaHans(type: .medium, size: 12))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)

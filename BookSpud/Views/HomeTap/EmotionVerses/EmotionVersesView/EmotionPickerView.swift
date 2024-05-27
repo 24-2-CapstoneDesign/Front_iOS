@@ -10,19 +10,19 @@ import SwiftUI
 struct EmotionPickerView: View {
     
     let emotionList: [EmotionPickerData] = EmotionDataList.emotionList
-    @StateObject var emotionVersesViewModel: EmotionVersesViewModel
+    @StateObject var viewModel: EmotionVersesViewModel
     
     var body: some View {
         emotionPickerView
-            .opacity(emotionVersesViewModel.isEmotionPickerViewAnimation ? 1 : 0)
+            .opacity(viewModel.isEmotionPickerViewAnimation ? 1 : 0)
             .onAppear {
                 withAnimation(.easeIn(duration: 0.5)) {
-                    emotionVersesViewModel.isEmotionPickerViewAnimation = true
+                    viewModel.isEmotionPickerViewAnimation = true
                 }
             }
             .onDisappear {
                 withAnimation(.bouncy(duration: 1.5)) {
-                    emotionVersesViewModel.isEmotionPickerViewAnimation = false
+                    viewModel.isEmotionPickerViewAnimation = false
                 }
             }
     }
@@ -34,8 +34,8 @@ struct EmotionPickerView: View {
             
             ForEach(emotionList, id: \.name) { emotion in
                 Button(action: {
-                    emotionVersesViewModel.changeEmotionImage(emotion.emotionImage)
-                    emotionVersesViewModel.easeOutAnimationEffect()
+                    viewModel.changeEmotionImage(emotion.emotionImage)
+                    viewModel.easeOutAnimationEffect()
                 }, label: {
                     emotion.emotionImage
                         .resizable()

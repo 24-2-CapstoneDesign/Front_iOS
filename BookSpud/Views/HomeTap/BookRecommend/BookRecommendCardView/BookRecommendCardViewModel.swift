@@ -12,6 +12,16 @@ import SwiftUI
 class BookRecommendCardViewModel: ObservableObject {
     
     @Published var bookRecommendDetailData: BookRecommendDetailData
+    @Published var emotionUserData: EmotionUserData?
+//     = EmotionUserData(information: [
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로로"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로노"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로트"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로비"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키"),
+//        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키니")
+//     ])
     @Published var bookCover: SwiftUI.Image? = nil
     var mainBtnCliked: Bool = true
     

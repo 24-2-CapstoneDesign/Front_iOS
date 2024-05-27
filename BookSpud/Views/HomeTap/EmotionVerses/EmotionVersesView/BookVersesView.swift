@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookVersesView: View {
     
-    @StateObject var emotionVersesViewModel: EmotionVersesViewModel
+    @StateObject var viewModel: EmotionVersesViewModel
     
     var body: some View {
         viewGroup
@@ -44,13 +44,13 @@ struct BookVersesView: View {
                 )
                 .clipShape(.rect(cornerRadius: 8))
             
-            if emotionVersesViewModel.bookVerses?.verses != nil{
+            if viewModel.bookVerses?.verses != nil{
                 Icon.versesBorder.image
                     .fixedSize()
                     .aspectRatio(contentMode: .fit)
             }
             
-            Text(emotionVersesViewModel.bookVerses?.verses ?? "저장한 구절이 없습니다.")
+            Text(viewModel.bookVerses?.verses ?? "저장한 구절이 없습니다.")
                 .font(.gangwonEdu(type: .basic, size: 16))
                 .foregroundStyle(Color.gray07)
                 .multilineTextAlignment(.center)
@@ -69,7 +69,7 @@ struct BookVersesView: View {
         })
         .onAppear {
             Task {
-                await emotionVersesViewModel.showBookPosterImg()
+                await viewModel.showBookPosterImg()
             }
         }
     }
@@ -77,8 +77,8 @@ struct BookVersesView: View {
     @ViewBuilder
     /// 북포스터 또는 새싹 이미지 리턴
     private var bookPosterOrSprout: some View {
-        if let bookPosterImg = emotionVersesViewModel.bookPosterImg {
-            if emotionVersesViewModel.isDefaultPosterImage {
+        if let bookPosterImg = viewModel.bookPosterImg {
+            if viewModel.isDefaultPosterImage {
                 bookPosterImg
                     .fixedSize()
                     .aspectRatio(contentMode: .fit)
@@ -88,7 +88,7 @@ struct BookVersesView: View {
                         .resizable()
                         .frame(maxWidth: 67, maxHeight: 100)
                         .aspectRatio(contentMode: .fit)
-                    Text(emotionVersesViewModel.bookVerses?.bookName ?? "")
+                    Text(viewModel.bookVerses?.bookName ?? "")
                         .font(.spoqaHans(type: .medium, size: 8))
                         .frame(minWidth: 45, minHeight: 10)
                         .foregroundStyle(Color.black)
@@ -113,7 +113,7 @@ struct BookVersesView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(devices, id: \.self) { devices in
-            BookVersesView(emotionVersesViewModel: EmotionVersesViewModel())
+            BookVersesView(viewModel: EmotionVersesViewModel())
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName(devices)
                 .previewDevice(PreviewDevice(rawValue: devices))

@@ -11,7 +11,7 @@ import SwiftUI
 struct SelectEmotionView: View {
     
     // MARK: - Propery
-    @StateObject var emotionVersesViewModel: EmotionVersesViewModel
+    @StateObject var viewModel: EmotionVersesViewModel
     
     // MARK: - View
     var body: some View {
@@ -49,7 +49,7 @@ struct SelectEmotionView: View {
         ZStack(alignment: .top, content: {
             
             Button(action: {
-                emotionVersesViewModel.chagePickerPresented()
+                viewModel.chagePickerPresented()
             }, label: {
                 Icon.emotionBackground.image
                     .resizable()
@@ -60,12 +60,12 @@ struct SelectEmotionView: View {
             
             HStack(alignment: .center, spacing: 6, content: {
                 
-                emotionVersesViewModel.spudFace
+                viewModel.spudFace
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 25.69, maxHeight: 27.38)
                 
-                emotionVersesViewModel.selectedEmotionImage
+                viewModel.selectedEmotionImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 57, maxHeight: 32)
@@ -79,7 +79,7 @@ struct SelectEmotion_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
-            SelectEmotionView(emotionVersesViewModel: EmotionVersesViewModel())
+            SelectEmotionView(viewModel: EmotionVersesViewModel())
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)

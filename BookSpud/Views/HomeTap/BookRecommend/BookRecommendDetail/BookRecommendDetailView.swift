@@ -13,14 +13,34 @@ struct BookRecommendDetailView: View {
     @StateObject var viewModel: BookRecommendCardViewModel
     let data = sampleDataLists.datalist
     
-    // MARK: - Property
+    // MARK: - Main View
     var body: some View {
-        allGroupView
+            VStack(alignment: .center, spacing: 50, content: {
+                CustomNavigation(title: "책 정보")
+                mainGroupView
+                
+                Spacer()
+            })
+            .ignoresSafeArea(.all)
     }
     
-    // MARK: - AllView
+    ///책정보 속 모든 정보 포함 그룹 뷰
+    private var mainGroupView: some View {
+        VStack(alignment: .center, spacing: 30, content: {
+            topBookData
+            bookMarkUserData
+        })
+        .frame(maxWidth: 382, maxHeight: 400)
+        .padding(.top, 25)
+        .background(
+            RoundedRectangle(cornerRadius: 4)
+                .foregroundStyle(Color.white)
+                .shadow03()
+        )
+    }
     
-    private var allGroupView: some View {
+    /// 상단 책 정보 뷰
+    private var topBookData: some View {
         HStack(spacing: 14, content: {
             leftBookInfo
             
@@ -33,7 +53,7 @@ struct BookRecommendDetailView: View {
         .frame(maxWidth: 342, maxHeight: 197)
     }
     
-
+    
     // MARK: - BookRecommendDetail Cover and PurchaseBtn
     
     /// 왼쪽 북마크 책정보(책 표지 + 구입 링크)
@@ -66,7 +86,10 @@ struct BookRecommendDetailView: View {
                 .fixedSize()
             
             Button(action: {
-                print("구매 버튼 누름")
+                if let url = URL(string: viewModel.bookRecommendDetailData.purchaseURL) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    print("클릭 주소 : \(url)")
+                }
             }, label: {
                 Text("구매하기")
                     .font(.spoqaHans(type: .bold, size: 12))
@@ -92,7 +115,7 @@ struct BookRecommendDetailView: View {
             BookRecommendDetailRow(title: "저     자", value: viewModel.bookRecommendDetailData.author)
             BookRecommendDetailRow(title: "장     르", value: viewModel.bookRecommendDetailData.subject)
             BookRecommendDetailRow(title: "가     격", value: self.formattedPrice(viewModel.bookRecommendDetailData.price))
-            BookRecommendDetailRow(title: "책소개", value: viewModel.bookRecommendDetailData.introduce, hegiht: 63, alignment: .top, onOff: true)
+            BookRecommendDetailRow(title: "책소개", value: viewModel.bookRecommendDetailData.introduce, hegiht: 63, alignment: .topLeading, onOff: true)
         })
         .frame(maxWidth: 224, maxHeight: 197)
     }
@@ -110,21 +133,68 @@ struct BookRecommendDetailView: View {
     }
     
     // MARK: - BookRecommendDetail UserProfile
+    
     /// 북마크 남긴 사람들
     private var bookMarkUserData: some View {
-        HStack(alignment: .center, spacing: 13, content: {
+        VStack(alignment: .leading, spacing: 13, content: {
+            
             Text("북마크 남긴 사람들 🔖")
                 .font(.spoqaHans(type: .bold, size: 12))
                 .foregroundStyle(Color.black)
                 .kerning(-0.2)
+            
+            bookMarkProfileList
         })
+        .frame(maxWidth: 352, maxHeight: 249, alignment: .topLeading)
     }
-//    
-//    private var bookMarkProfileList: some View {
-//        LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 100))], spacing: 8, content: {
-//            ForEach(viewModel.emotionBookMardData?.information ?? [], id: \.self) { information in
-//                
-//            }
-//        })
-//    }
+    
+    @ViewBuilder
+    /// 북마크 프로필 리스트
+    private var bookMarkProfileList: some View {
+        
+        if let emotionUserData = viewModel.emotionUserData {
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6),
+                content: {
+                ForEach(emotionUserData.information, id: \.self) { information in
+                    EmotionUserProfile(viewModel: EmotionUserViewModel(emotionUserDetailData: information))
+                }
+            })
+            .frame(maxWidth: 352, alignment: .top)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 10)
+        } else {
+            HStack(content: {
+                
+                Spacer()
+                
+                VStack(alignment: .center, spacing: 16, content: {
+                    Icon.sadSpud.image
+                        .resizable()
+                        .frame(maxWidth: 50, maxHeight: 53)
+                    Text("등록된 북마크가 없습니다.")
+                        .font(.spoqaHans(type: .regular, size: 10))
+                        .foregroundStyle(Color.gray06)
+                        .kerning(-0.2)
+                })
+                
+                Spacer()
+            })
+            .frame(maxWidth: 352, maxHeight: 100)
+        }
+    }
+}
+
+struct BookRecommendDetailView_Preview: PreviewProvider {
+    
+    static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
+    
+    static var previews: some View {
+        
+        ForEach(devices, id: \.self) { device in
+            BookRecommendDetailView(viewModel: BookRecommendCardViewModel(bookRecommendDetailData: BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", subject: "소설", price: 12800, introduce: "하하하하하 재밌어요!!", purchaseURL: "https://www.naver.com")))
+                .previewDevice(PreviewDevice(rawValue: device))
+                .previewDisplayName(device)
+        }
+    }
 }

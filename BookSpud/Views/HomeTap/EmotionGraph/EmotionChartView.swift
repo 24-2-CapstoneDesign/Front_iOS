@@ -10,7 +10,7 @@ import Charts
 
 struct EmotionChartView: View {
     
-    @StateObject var emotionChartViewModel: EmotionChartViewModel
+    @StateObject var viewModel: EmotionChartViewModel
     
     var body: some View {
         allViewGroup
@@ -23,7 +23,7 @@ struct EmotionChartView: View {
         ZStack(alignment: .center, content: {
             containsValueChart
             
-            if emotionChartViewModel.emotionData == nil{
+            if viewModel.emotionData == nil{
                 NoRegistEmotion()
             }
         })
@@ -39,7 +39,7 @@ struct EmotionChartView: View {
         })
         .frame(width: 334, height: 500)
         .onAppear {
-            emotionChartViewModel.onApearData()
+            viewModel.onApearData()
         }
         .background(
             Rectangle()
@@ -52,13 +52,13 @@ struct EmotionChartView: View {
     /// 차트 타이틀
     private var chartTitle: some View {
         VStack(alignment: .center, spacing: 8, content: {
-            Text(emotionChartViewModel.currentDate ?? "")
+            Text(viewModel.currentDate ?? "")
                 .frame(minWidth: 80)
                 .font(.spoqaHans(type: .bold, size: 12))
                 .foregroundStyle(Color.gray05)
                 .kerning(-0.2)
             
-            Text("\(emotionChartViewModel.userName)의 감정 그래프 📊")
+            Text("\(viewModel.userName)의 감정 그래프 📊")
                 .frame(minWidth: 163)
                 .font(.spoqaHans(type: .bold, size: 18))
                 .foregroundStyle(Color.black)
@@ -67,7 +67,7 @@ struct EmotionChartView: View {
     
     /// 가운데 파이 그래프
     private var chartPieGrahp: some View {
-        Chart(emotionChartViewModel.emotions) { emotion in
+        Chart(viewModel.emotions) { emotion in
             SectorMark(
                 angle: .value("Value", emotion.value),
                 innerRadius: .ratio(0.6),
@@ -85,7 +85,7 @@ struct EmotionChartView: View {
                             .font(.spoqaHans(type: .bold, size: 12))
                             .foregroundStyle(Color.gray05)
                             .kerning(-0.2)
-                        Image(emotionChartViewModel.dominationEmotion.name)
+                        Image(viewModel.dominationEmotion.name)
                             .resizable()
                             .frame(maxWidth: 59, maxHeight: 33)
                             .aspectRatio(contentMode: .fit)
@@ -99,10 +99,10 @@ struct EmotionChartView: View {
     
     private var charStickGraph: some View {
         VStack(alignment: .center, spacing: 12, content: {
-            ForEach(emotionChartViewModel.emotions) { emotion in
+            ForEach(viewModel.emotions) { emotion in
                 HStack(alignment: .center, spacing: 5, content: {
                     
-                    Text(emotionChartViewModel.stickGraphName(emotion.name))
+                    Text(viewModel.stickGraphName(emotion.name))
                         .font(.spoqaHans(type: .bold, size: 12))
                         .kerning(-0.2)
                         .foregroundStyle(.gray05)
@@ -126,7 +126,7 @@ struct EmotionChartView: View {
 
 struct EmotionChartView_Preview: PreviewProvider {
     static var previews: some View {
-        EmotionChartView(emotionChartViewModel: EmotionChartViewModel())
+        EmotionChartView(viewModel: EmotionChartViewModel())
             .previewLayout(.sizeThatFits)
     }
 }
