@@ -17,7 +17,9 @@ struct HomeView: View {
     @StateObject var emotionChartViewModel = EmotionChartViewModel()
     
     var body: some View {
-        allView
+        NavigationStack {
+            allView
+        }
     }
     
     /// 홈탭 뷰 모든 뷰 그룹

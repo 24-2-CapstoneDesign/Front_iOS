@@ -11,7 +11,6 @@ import SwiftUI
 struct BookRecommendDetailView: View {
     
     @StateObject var viewModel: BookRecommendCardViewModel
-    let data = sampleDataLists.datalist
     
     // MARK: - Main View
     var body: some View {
@@ -22,6 +21,7 @@ struct BookRecommendDetailView: View {
                 Spacer()
             })
             .ignoresSafeArea(.all)
+            .navigationBarBackButtonHidden()
     }
     
     ///책정보 속 모든 정보 포함 그룹 뷰
@@ -30,7 +30,7 @@ struct BookRecommendDetailView: View {
             topBookData
             bookMarkUserData
         })
-        .frame(maxWidth: 382, maxHeight: 400)
+        .frame(maxWidth: 382, maxHeight: 500)
         .padding(.top, 25)
         .background(
             RoundedRectangle(cornerRadius: 4)
@@ -60,6 +60,9 @@ struct BookRecommendDetailView: View {
     private var leftBookInfo: some View {
         VStack(alignment: .center, spacing: 11, content: {
             bookCover
+                .onAppear {
+                    viewModel.imageCacheHandler()
+                }
             purchaseBtn
         })
         .frame(maxWidth: 102, maxHeight: 193)
@@ -86,10 +89,7 @@ struct BookRecommendDetailView: View {
                 .fixedSize()
             
             Button(action: {
-                if let url = URL(string: viewModel.bookRecommendDetailData.purchaseURL) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    print("클릭 주소 : \(url)")
-                }
+                viewModel.purchaseBook()
             }, label: {
                 Text("구매하기")
                     .font(.spoqaHans(type: .bold, size: 12))
@@ -154,7 +154,7 @@ struct BookRecommendDetailView: View {
         
         if let emotionUserData = viewModel.emotionUserData {
             LazyVGrid(
-                columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6),
+                columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6), spacing: 30,
                 content: {
                 ForEach(emotionUserData.information, id: \.self) { information in
                     EmotionUserProfile(viewModel: EmotionUserViewModel(emotionUserDetailData: information))
@@ -181,20 +181,6 @@ struct BookRecommendDetailView: View {
                 Spacer()
             })
             .frame(maxWidth: 352, maxHeight: 100)
-        }
-    }
-}
-
-struct BookRecommendDetailView_Preview: PreviewProvider {
-    
-    static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
-    
-    static var previews: some View {
-        
-        ForEach(devices, id: \.self) { device in
-            BookRecommendDetailView(viewModel: BookRecommendCardViewModel(bookRecommendDetailData: BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", subject: "소설", price: 12800, introduce: "하하하하하 재밌어요!!", purchaseURL: "https://www.naver.com")))
-                .previewDevice(PreviewDevice(rawValue: device))
-                .previewDisplayName(device)
         }
     }
 }

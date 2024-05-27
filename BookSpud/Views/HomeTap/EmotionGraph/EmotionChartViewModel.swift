@@ -24,7 +24,7 @@ class EmotionChartViewModel: ObservableObject {
     
     init() {
         let initialData = [
-            EmotionChartBeforeData(name: "happyEmtion", value: 99, color: .touchedYellow),
+            EmotionChartBeforeData(name: "happyEmotion", value: 99, color: .touchedYellow),
             EmotionChartBeforeData(name: "sadEmotion", value: 29, color: .sadBlue),
             EmotionChartBeforeData(name: "angryEmotion", value: 59, color: .angryRed),
             EmotionChartBeforeData(name: "inspirationEmotion", value: 49, color: .inspiredGreen),
@@ -61,7 +61,7 @@ class EmotionChartViewModel: ObservableObject {
     /// - Returns: 감정 그래프 데이터 속 감정 이름
     public func stickGraphName(_ name: String) -> String {
         switch name {
-        case "happyEmtion":
+        case "happyEmotion":
             return "기쁨"
         case "sadEmotion":
             return "슬픔"

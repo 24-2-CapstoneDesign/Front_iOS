@@ -11,6 +11,9 @@ import SwiftUI
 struct BookRecommendView: View {
     
     @StateObject var viewModel: BookRecommendViewModel
+    @State private var selectedBookViewModel: BookRecommendCardViewModel? = nil
+    @State private var isSelectedBook: Bool = false
+    
     let data = sampleDataLists.datalist
     
     var body: some View {
@@ -60,7 +63,10 @@ struct BookRecommendView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
                 ForEach(data.information, id: \.self) { book in
-                    BookRecommendCard(viewModel: BookRecommendCardViewModel(bookRecommendDetailData: book))
+                    let viewModel = BookRecommendCardViewModel(bookRecommendDetailData: book)
+                    NavigationLink(destination: BookRecommendDetailView(viewModel: viewModel)) {
+                        BookRecommendCard(viewModel: viewModel)
+                    }
                 }
             })
         }
@@ -74,12 +80,5 @@ struct BookRecommendView: View {
             .font(.spoqaHans(type: .medium, size: 12))
             .kerning(-0.4)
             .foregroundStyle(Color.gray05)
-    }
-}
-
-struct FriendConnectingLinkView_Preview: PreviewProvider {
-    static var previews: some View {
-        BookRecommendView(viewModel: BookRecommendViewModel())
-            .previewLayout(.sizeThatFits)
     }
 }
