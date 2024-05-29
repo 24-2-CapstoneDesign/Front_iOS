@@ -66,6 +66,10 @@ enum Icon: String {
     case inspirationSpud = "inspirationSpud"
     case sensationSpud = "sensationSpud"
     
+    // MARK: - ISBN
+    
+    case resgistISBN = "resgistISBN"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)

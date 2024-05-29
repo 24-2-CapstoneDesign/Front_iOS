@@ -87,7 +87,7 @@ struct GlboalMainBtn_Preview: PreviewProvider {
         
         GlobalMainBtn(clickBool: $clickedBool,
                       btnName: "시작하기",
-                      btnImg: Icon.inputISBN,
+                      btnImg: Icon.resgistISBN,
                       onClicked: {
             print("hello")
         })

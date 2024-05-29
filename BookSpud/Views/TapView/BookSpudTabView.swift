@@ -37,7 +37,7 @@ struct BookSpudTabView: View {
                     }
                     .tag(BookSpudTab.bookTap)
                 
-                ISBNView()
+                ISBNCameraView()
                     .tabItem {
                         Icon.isbnTap.image
                             .fixedSize()
