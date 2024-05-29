@@ -11,6 +11,7 @@ import SwiftUI
 struct BookRecommendDetailView: View {
     
     @StateObject var viewModel: BookRecommendCardViewModel
+    @State var showSheet: Bool = false
     
     // MARK: - Main View
     var body: some View {
@@ -22,6 +23,12 @@ struct BookRecommendDetailView: View {
             })
             .ignoresSafeArea(.all)
             .navigationBarBackButtonHidden()
+            .sheet(isPresented: $showSheet, content: {
+                CheckingUserBookMarkView(viewModel: CheckingUserBookMarkViewModel(checkingUserBookData: CheckingUserBookData(name: "감정", emotion: "sda", memoText: "슬퍼요")),
+                                         isPresented: $showSheet)
+                .presentationDetents([.fraction(0.8)])
+                .presentationDragIndicator(.visible)
+            })
     }
     
     ///책정보 속 모든 정보 포함 그룹 뷰
@@ -158,6 +165,9 @@ struct BookRecommendDetailView: View {
                 content: {
                 ForEach(emotionUserData.information, id: \.self) { information in
                     EmotionUserProfile(viewModel: EmotionUserViewModel(emotionUserDetailData: information))
+                        .onTapGesture {
+                            self.showSheet = true
+                        }
                 }
             })
             .frame(maxWidth: 352, alignment: .top)
@@ -182,5 +192,11 @@ struct BookRecommendDetailView: View {
             })
             .frame(maxWidth: 352, maxHeight: 100)
         }
+    }
+}
+
+struct BookRecommendDetailView_Preview: PreviewProvider {
+    static var previews: some View {
+        BookRecommendDetailView(viewModel: BookRecommendCardViewModel(bookRecommendDetailData:  BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", subject: "소설노잼", price: 12800, introduce: "하하하하하 재밌어요!!", purchaseURL: "https://www.naver.com")))
     }
 }
