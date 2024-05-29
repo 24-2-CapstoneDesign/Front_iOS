@@ -10,24 +10,24 @@ import SwiftUI
 /// 감정선택과 감정에 해당하는 최근 책의 구절 보이는 뷰
 struct EmotionVersesView: View {
     
-    @StateObject var emotionVersesViewModel: EmotionVersesViewModel
+    @StateObject var viewModel: EmotionVersesViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 15, content: {
-            SelectEmotionView(emotionVersesViewModel: emotionVersesViewModel)
+            SelectEmotionView(viewModel: viewModel)
             
-            if emotionVersesViewModel.isEmotionPickerPresented {
-                EmotionPickerView(emotionVersesViewModel: emotionVersesViewModel)
+            if viewModel.isEmotionPickerPresented {
+                EmotionPickerView(viewModel: viewModel)
             }
             
-            BookVersesView(emotionVersesViewModel: emotionVersesViewModel)
+            BookVersesView(viewModel: viewModel)
         })
         .frame(maxWidth: 380, minHeight: 210)
-        .animation(.easeInOut, value: emotionVersesViewModel.isEmotionPickerPresented)
+        .animation(.easeInOut, value: viewModel.isEmotionPickerPresented)
     }
 }
 
 #Preview {
-    EmotionVersesView(emotionVersesViewModel: EmotionVersesViewModel())
+    EmotionVersesView(viewModel: EmotionVersesViewModel())
         .previewLayout(.sizeThatFits)
 }

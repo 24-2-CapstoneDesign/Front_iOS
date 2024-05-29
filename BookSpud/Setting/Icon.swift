@@ -53,6 +53,8 @@ enum Icon: String {
     
     /* 감정 구절 */
     case versesBorder = "versesBorder"
+    case leftQuota = "leftQuota"
+    case rightQuota = "rightQuota"
     
     /* 감정 구절 책 표지 */
     case emptyBookPoster = "emptyBookPoster"

@@ -12,6 +12,16 @@ import SwiftUI
 class BookRecommendCardViewModel: ObservableObject {
     
     @Published var bookRecommendDetailData: BookRecommendDetailData
+    @Published var emotionUserData: EmotionUserData?
+     = EmotionUserData(information: [
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로로"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로노"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로트"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로비"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키니")
+     ])
     @Published var bookCover: SwiftUI.Image? = nil
     var mainBtnCliked: Bool = true
     
@@ -31,7 +41,7 @@ class BookRecommendCardViewModel: ObservableObject {
     
     /// 이미지 데이터 캐시에서 로드하기
     private func loadCache() {
-        guard let image = imageChache.loadImageData(from: URL(string: bookRecommendDetailData.bookCoverUrl)!) else { return }
+        guard let image = imageChache.loadImageData(from: URL(string: bookRecommendDetailData.bookCoverUrl)!) else { return self.bookCover = nil }
         self.bookCover = image
     }
     
@@ -43,8 +53,13 @@ class BookRecommendCardViewModel: ObservableObject {
     
     // MARK: - Book Recommend DetailView Function
     
-    public func puerchaseBook() {
-        print("책 구입")
+    /// 책 구매 사이트로 연결
+    public func purchaseBook() {
+        if let url = URL(string: self.bookRecommendDetailData.purchaseURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            print("클릭 주소 : \(url)")
+        } else {
+            print(self.bookRecommendDetailData.purchaseURL)
+        }
     }
-    
 }

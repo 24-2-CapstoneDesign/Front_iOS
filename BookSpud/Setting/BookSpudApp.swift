@@ -3,7 +3,7 @@
 //  BookSpud
 //
 //  Created by 정의찬 on 4/12/24.
-//
+
 
 import SwiftUI
 import KakaoSDKCommon
@@ -22,13 +22,15 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if !loginViewModel.isLogin {
-                LoginView(loginViewModel: loginViewModel)
-            } else if !profileViewModel.isProfileCompleted {
-                ProfileSettingView(profileVM: profileViewModel)
-            } else {
-                BookSpudTabView()
-            }
+//            if !loginViewModel.isLogin {
+//                LoginView(loginViewModel: loginViewModel)
+//            } else if !profileViewModel.isProfileCompleted {
+//                ProfileSettingView(profileVM: profileViewModel)
+//            } else {
+//                BookSpudTabView()
+//            }
+            
+            HomeView()
         }
     }
 }

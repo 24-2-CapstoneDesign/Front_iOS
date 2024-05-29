@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TopUserView: View {
     
-    @StateObject var topUserViewModel: TopUserViewModel
+    @StateObject var viewModel: TopUserViewModel
     
     var body: some View {
         topRoundView
             .onAppear {
-                topUserViewModel.getUserData()
+                viewModel.getUserData()
             }
     }
     
@@ -32,9 +32,9 @@ struct TopUserView: View {
     private var userData: some View {
         HStack(alignment: .center, spacing: 10, content: {
             
-            PotatoCircle(image: topUserViewModel.userProfileImage)
+            PotatoCircle(image: viewModel.userProfileImage)
             
-            Text("Hello!, \(topUserViewModel.userNickname)")
+            Text("Hello!, \(viewModel.userNickname)")
                 .frame(maxWidth: 250, alignment: .leading)
                 .font(.spoqaHans(type: .bold, size: 24))
                 .lineSpacing(-2)
@@ -59,7 +59,7 @@ struct TopUserView_Preview: PreviewProvider {
     
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
-            TopUserView(topUserViewModel: TopUserViewModel())
+            TopUserView(viewModel: TopUserViewModel())
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)

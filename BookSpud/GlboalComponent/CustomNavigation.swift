@@ -58,14 +58,14 @@ struct CustomNavigation: View {
             Spacer()
             
             Text(title)
-                .font(.pretendard(type: .bold, size: 16))
-                .kerning(-0.2)
+                .font(.pretendard(type: .regular, size: 16))
+                .kerning(-0.5)
                 .foregroundStyle(Color.black)
                 .frame(minWidth: 44)
             
             Spacer()
         })
-        .frame(maxWidth: 320)
+        .frame(maxWidth: 360)
         .padding(.bottom, 21)
     }
 }

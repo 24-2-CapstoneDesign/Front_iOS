@@ -17,26 +17,29 @@ struct HomeView: View {
     @StateObject var emotionChartViewModel = EmotionChartViewModel()
     
     var body: some View {
-        allView
+        NavigationStack {
+            allView
+        }
     }
     
     /// 홈탭 뷰 모든 뷰 그룹
     private var allView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 29, content: {
-                TopUserView(topUserViewModel: topUserViewModel)
+                TopUserView(viewModel: topUserViewModel)
                 
-                EmotionVersesView(emotionVersesViewModel: emotionVersesViewModel)
-                
-                MainDotLine
-                
-                BookRecommendView(bookRecommendViewModel: bookCommendViewModel)
+                EmotionVersesView(viewModel: emotionVersesViewModel)
                 
                 MainDotLine
                 
-                EmotionChartView(emotionChartViewModel: emotionChartViewModel)
+                BookRecommendView(viewModel: bookCommendViewModel)
+                
+                MainDotLine
+                
+                EmotionChartView(viewModel: emotionChartViewModel)
             })
             .frame(minHeight: 1300, maxHeight: 1350, alignment: .top).ignoresSafeArea(.all)
+            .background(Color.backgrounYellow)
         }
         .ignoresSafeArea(.all)
     }
