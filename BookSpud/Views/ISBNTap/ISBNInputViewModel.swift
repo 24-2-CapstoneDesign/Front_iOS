@@ -18,4 +18,6 @@ class ISBNInputViewModel: ObservableObject {
         }
     }
     @Published var isbnTextClicked: Bool = false
+    @Published var showManualView: Bool = false
+    @Published var scannedCode: String?
 }

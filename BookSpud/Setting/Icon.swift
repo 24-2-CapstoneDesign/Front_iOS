@@ -69,6 +69,9 @@ enum Icon: String {
     // MARK: - ISBN
     
     case resgistISBN = "resgistISBN"
+    case scanGuide = "scanGuide"
+    case manualCode = "manualCode"
+    case exiteCamera = "exiteCamera"
     
     // MARK: - Function
     var image: Image {

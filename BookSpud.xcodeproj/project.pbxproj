@@ -61,6 +61,7 @@
 		488D41692C0763230031F5E1 /* WritedMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488D41682C0763230031F5E1 /* WritedMemo.swift */; };
 		488D416B2C0780540031F5E1 /* ISBNInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488D416A2C0780540031F5E1 /* ISBNInputViewModel.swift */; };
 		488D416D2C0782A20031F5E1 /* ISBNCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488D416C2C0782A20031F5E1 /* ISBNCameraView.swift */; };
+		488D416F2C07A94E0031F5E1 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488D416E2C07A94E0031F5E1 /* BarcodeScannerView.swift */; };
 		489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489469742BDDF6F200A4C942 /* ImageHandling.swift */; };
 		4897958A2BF29104008ED803 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489795892BF29104008ED803 /* ImageCacheManager.swift */; };
 		4897958E2BF29454008ED803 /* TopUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897958D2BF29454008ED803 /* TopUserView.swift */; };
@@ -154,6 +155,7 @@
 		488D41682C0763230031F5E1 /* WritedMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritedMemo.swift; sourceTree = "<group>"; };
 		488D416A2C0780540031F5E1 /* ISBNInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNInputViewModel.swift; sourceTree = "<group>"; };
 		488D416C2C0782A20031F5E1 /* ISBNCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNCameraView.swift; sourceTree = "<group>"; };
+		488D416E2C07A94E0031F5E1 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		489469742BDDF6F200A4C942 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
 		489795892BF29104008ED803 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		4897958D2BF29454008ED803 /* TopUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserView.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				48DE6E022BEF5DA30096A069 /* ISBNInputView.swift */,
 				488D416C2C0782A20031F5E1 /* ISBNCameraView.swift */,
 				488D416A2C0780540031F5E1 /* ISBNInputViewModel.swift */,
+				488D416E2C07A94E0031F5E1 /* BarcodeScannerView.swift */,
 			);
 			path = ISBNTap;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */,
 				488D416D2C0782A20031F5E1 /* ISBNCameraView.swift in Sources */,
 				487170F52BC841F400ED8D2F /* FontExtension.swift in Sources */,
+				488D416F2C07A94E0031F5E1 /* BarcodeScannerView.swift in Sources */,
 				488D41672C071CDA0031F5E1 /* VersesBackground.swift in Sources */,
 				481F69BD2C049D5A0095867F /* CheckingUserBookMarkView.swift in Sources */,
 				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
