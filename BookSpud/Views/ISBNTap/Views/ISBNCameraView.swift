@@ -13,7 +13,22 @@ struct ISBNCameraView: View {
     @State var clickManual: Bool = true
     
     var body: some View {
-        overlayView
+        BarcodeScannerView { code in
+            viewModel.scannedCode = code
+            print(viewModel.scannedCode)
+        }
+        .overlay(
+            overlayView
+        )
+        .sheet(isPresented: $viewModel.showManualView, content: {
+            ISBNManualView(viewModel: ISBNInputViewModel())
+                .presentationDragIndicator(.visible)
+        })
+        .sheet(isPresented: $viewModel.isShowSaveView, content: {
+            SuccessISBN(viewModel: viewModel)
+                .presentationDetents([.fraction(0.4)])
+                .presentationDragIndicator(.visible)
+        })
     }
     
     // MARK: - Barcode Scan OverlayView

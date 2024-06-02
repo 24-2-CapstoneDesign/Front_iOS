@@ -1,10 +1,3 @@
-//
-//  CameraOpen.swift
-//  BookSpud
-//
-//  Created by 정의찬 on 5/30/24.
-//
-
 import Foundation
 import AVFoundation
 import SwiftUI
@@ -22,7 +15,9 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
                 guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
                 guard let stringValue = readableObject.stringValue else { return }
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                parent.didFindCode(stringValue)
+                
+                let cleanedISBN = stringValue.replacingOccurrences(of: "-", with: "")
+                parent.didFindCode(cleanedISBN)
             }
         }
     }
@@ -68,7 +63,9 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
         previewLayer.videoGravity = .resizeAspectFill
         viewController.view.layer.addSublayer(previewLayer)
         
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .background).async {
+            captureSession.startRunning()
+        }
         
         return viewController
     }

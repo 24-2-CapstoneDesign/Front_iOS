@@ -30,7 +30,7 @@ struct BookSpudApp: App {
 //                BookSpudTabView()
 //            }
             
-            HomeView()
+            ISBNCameraView()
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ISBNInputView: View {
+struct ISBNManualView: View {
     
     @ObservedObject var viewModel: ISBNInputViewModel
     
@@ -24,8 +24,13 @@ struct ISBNInputView: View {
                           btnName: "등록하기",
                           btnImg: Icon.resgistISBN,
                           onClicked: {
-                print("수동 입력")
+                viewModel.registBtn()
             })
+        })
+        .sheet(isPresented: $viewModel.isShowSaveView, content: {
+            SuccessISBN(viewModel: viewModel)
+                .presentationDetents([.fraction(0.4)])
+                .presentationDragIndicator(.visible)
         })
         .frame(maxWidth: 343)
     }
@@ -46,8 +51,8 @@ struct ISBNInputView: View {
     }
 }
 
-struct ISBNInputView_Preview:  PreviewProvider {
+struct ISBNManualView_Preview:  PreviewProvider {
     static var previews: some View {
-        ISBNInputView(viewModel: ISBNInputViewModel())
+        ISBNManualView(viewModel: ISBNInputViewModel())
     }
 }

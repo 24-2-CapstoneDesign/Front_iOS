@@ -45,14 +45,12 @@ struct BookRecommendDetailRow: View {
             })
             .frame(maxHeight: height)
             
-            Text(value)
+            Text(value.split(separator: "").joined(separator: "\u{200B}"))
                 .frame(maxWidth: width, maxHeight: height ,alignment: alignment)
                 .font(.spoqaHans(type: .medium, size: 12))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)
                 .multilineTextAlignment(.leading)
-                .lineLimit(10)
-                .truncationMode(.tail)
         })
         .frame(maxWidth: 209, maxHeight: height, alignment: .center)
     }
