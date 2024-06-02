@@ -11,7 +11,7 @@ struct BookSpudTabView: View {
     
     // MARK: - Property
     @State private var selectedTab: BookSpudTab = .homeTab
-    @State private var opacity = 0
+    @State private var opacity = 0.0
     
     // MARK: - Init
     init() {
@@ -37,7 +37,7 @@ struct BookSpudTabView: View {
                     }
                     .tag(BookSpudTab.bookTap)
                 
-                ISBNView()
+                ISBNCameraView()
                     .tabItem {
                         Icon.isbnTap.image
                             .fixedSize()
@@ -65,10 +65,10 @@ struct BookSpudTabView: View {
             
             CustomTabView(selectedTab: $selectedTab)
         })
-        .opacity(0)
+        .opacity(opacity)
         .onAppear {
             withAnimation(.easeInOut(duration: 1.5)) {
-                self.opacity = 1
+                self.opacity = 1.0
             }
         }
     }

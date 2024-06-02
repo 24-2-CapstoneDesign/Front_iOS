@@ -29,6 +29,7 @@ struct BookRecommendDetailView: View {
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
             })
+            .background(Color.backgrounYellow)
     }
     
     ///책정보 속 모든 정보 포함 그룹 뷰
@@ -120,8 +121,8 @@ struct BookRecommendDetailView: View {
         VStack(alignment: .leading, spacing: 16, content: {
             BookRecommendDetailRow(title: "도서명", value: viewModel.bookRecommendDetailData.bookName)
             BookRecommendDetailRow(title: "저     자", value: viewModel.bookRecommendDetailData.author)
-            BookRecommendDetailRow(title: "장     르", value: viewModel.bookRecommendDetailData.subject)
-            BookRecommendDetailRow(title: "가     격", value: self.formattedPrice(viewModel.bookRecommendDetailData.price))
+            BookRecommendDetailRow(title: "정상가", value: self.formattedPrice(viewModel.bookRecommendDetailData.price))
+            BookRecommendDetailRow(title: "할인가", value: self.formattedPrice(viewModel.bookRecommendDetailData.sale))
             BookRecommendDetailRow(title: "책소개", value: viewModel.bookRecommendDetailData.introduce, hegiht: 63, alignment: .topLeading, onOff: true)
         })
         .frame(maxWidth: 224, maxHeight: 197)
@@ -197,6 +198,6 @@ struct BookRecommendDetailView: View {
 
 struct BookRecommendDetailView_Preview: PreviewProvider {
     static var previews: some View {
-        BookRecommendDetailView(viewModel: BookRecommendCardViewModel(bookRecommendDetailData:  BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", subject: "소설노잼", price: 12800, introduce: "하하하하하 재밌어요!!", purchaseURL: "https://www.naver.com")))
+        BookRecommendDetailView(viewModel: BookRecommendCardViewModel(bookRecommendDetailData:  BookRecommendDetailData(bookCoverUrl: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791168418011.jpg", bookName: "Book One", author: "Author A", price: 12800, sale: 999, introduce: "하하하하하 재밌어요!!", purchaseURL: "https://www.naver.com")))
     }
 }

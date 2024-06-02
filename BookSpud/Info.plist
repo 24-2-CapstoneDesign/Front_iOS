@@ -36,5 +36,7 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>책 등록을 위해 카메라를 허용해주세요!</string>
 </dict>
 </plist>
