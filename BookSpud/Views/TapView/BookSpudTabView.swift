@@ -29,7 +29,7 @@ struct BookSpudTabView: View {
                     }
                     .tag(BookSpudTab.homeTab)
                 
-                BookView()
+                BookListView()
                     .tabItem {
                         Icon.bookTap.image
                             .fixedSize()
