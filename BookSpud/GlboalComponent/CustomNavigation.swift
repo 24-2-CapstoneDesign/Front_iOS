@@ -14,14 +14,20 @@ struct CustomNavigation: View {
     
     var title: String
     var chevron: Image
+    var onOff: Bool
+    var height: CGFloat
     @Environment(\.dismiss) var dimiss
     
     init(
         title: String,
-        chevron: Image = Image(systemName: "chevron.left")
+        chevron: Image = Image(systemName: "chevron.left"),
+        onOff: Bool = true,
+        height: CGFloat = 120
     ) {
         self.title = title
         self.chevron = chevron
+        self.onOff = onOff
+        self.height = height
     }
     
     
@@ -34,10 +40,12 @@ struct CustomNavigation: View {
     /// 전체 네비게이션 뷰
     private var navigationView: some View {
         ZStack(alignment: .bottom, content: {
-            TopRadiusView(radius: 0, height: 120)
+            if onOff {
+                TopRadiusView(radius: 0, height: 120)
+            }
             navigationViewComponents
         })
-        .frame(width: 430, height: 120)
+        .frame(width: 430, height: height)
     }
     
     /// 네비게이션 아이템 그룹

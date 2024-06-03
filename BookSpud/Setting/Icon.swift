@@ -73,6 +73,14 @@ enum Icon: String {
     case manualCode = "manualCode"
     case exiteCamera = "exiteCamera"
     
+    // MARK: - BookMark
+    
+    case angryMark = "angryMark"
+    case happyMark = "happyMark"
+    case inspirationMark = "inspirationMark"
+    case moveMark = "moveMark"
+    case sadMark = "sadMark"
+    
     // MARK: - Function
     var image: Image {
         return Image(self.rawValue)
@@ -83,6 +91,24 @@ enum Icon: String {
         let iconName = isSelected ? self.clickedIconName : self.rawValue
         return Image(iconName)
     }
+    
+    // MARK: - bookMarkEmotion
+    static func icon(for emotion: String) -> Icon {
+            switch emotion {
+            case "happy":
+                return .happyMark
+            case "sad":
+                return .sadMark
+            case "angry":
+                return .angryMark
+            case "inspiration":
+                return .inspirationMark
+            case "move":
+                return .moveMark
+            default:
+                return .happyMark // 기본 아이콘 설정 (필요 시 수정)
+            }
+        }
     
     private var clickedIconName: String {
         switch self {
