@@ -29,6 +29,11 @@ struct BookListDetailView: View {
             bottomBookMarkView
         })
         .navigationBarBackButtonHidden()
+        .sheet(isPresented: $isShowBoookMark, content: {
+            BookMarkRegistView(isShowBookMarkRegist: $isShowBoookMark)
+                .presentationDetents([.fraction(0.8)])
+                .presentationDragIndicator(.visible)
+        })
     }
     
     // MARK: - Top BookInfo
@@ -115,7 +120,7 @@ struct BookListDetailView: View {
     private var btnGroup: some View {
         HStack(alignment: .center, spacing: 10, content: {
             makeBtn(title: "북마크 생성하기", action: {
-                self.isShowBoookMark = false
+                self.isShowBoookMark = true
             }, color: Color.primaryDark)
             
             makeBtn(title: "페이지 업데이트", action: {
@@ -211,7 +216,7 @@ struct BookListDetailView: View {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundStyle(Color.clear)
                 )
-                
+            
                 .clipShape(.rect(cornerRadius: 50))
         })
     }
@@ -229,15 +234,4 @@ struct BookListDetailView_Preview: PreviewProvider {
                 .previewDisplayName(device)
         }
     }
-}
-
-
-// MARK: - Enum
-
-enum BookEmotionKind: String {
-    case happy = "기쁨"
-    case sad = "슬픔"
-    case angry = "분노"
-    case inspiration = "영감"
-    case move = "감동"
 }

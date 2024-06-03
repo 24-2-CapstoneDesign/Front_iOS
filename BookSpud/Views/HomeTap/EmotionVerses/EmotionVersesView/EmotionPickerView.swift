@@ -36,6 +36,9 @@ struct EmotionPickerView: View {
                 Button(action: {
                     viewModel.changeEmotionImage(emotion.emotionImage)
                     viewModel.easeOutAnimationEffect()
+                    Task {
+                        await viewModel.showBookPosterImg()
+                    }
                 }, label: {
                     emotion.emotionImage
                         .resizable()

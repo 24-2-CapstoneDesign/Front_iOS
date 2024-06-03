@@ -34,7 +34,7 @@ struct TopUserView: View {
             
             PotatoCircle(image: viewModel.userProfileImage)
             
-            Text("Hello!, \(viewModel.userNickname)")
+            Text("Hello! \(viewModel.userNickname)")
                 .frame(maxWidth: 250, alignment: .leading)
                 .font(.spoqaHans(type: .bold, size: 24))
                 .lineSpacing(-2)

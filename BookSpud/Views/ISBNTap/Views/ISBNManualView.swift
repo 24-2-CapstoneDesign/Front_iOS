@@ -25,6 +25,7 @@ struct ISBNManualView: View {
                           btnImg: Icon.resgistISBN,
                           onClicked: {
                 viewModel.registBtn()
+                viewModel.showManualView = false
             })
         })
         .sheet(isPresented: $viewModel.isShowSaveView, content: {
@@ -33,6 +34,9 @@ struct ISBNManualView: View {
                 .presentationDragIndicator(.visible)
         })
         .frame(maxWidth: 343)
+        .onAppear(perform: {
+            UIApplication.shared.hideKeyboard()
+        })
     }
     
     private var topComponents: some View {

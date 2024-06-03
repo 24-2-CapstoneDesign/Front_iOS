@@ -30,7 +30,7 @@ struct BookRecommendCard: View {
         viewModel.bookCover?
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: 100, maxHeight: 150)
+            .frame(maxWidth: 100, minHeight: 150)
             .shadow03()
     }
     

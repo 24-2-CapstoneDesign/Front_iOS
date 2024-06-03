@@ -96,6 +96,12 @@
 		48ABDBAF2BF732C100EF520C /* TopUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBAE2BF732C100EF520C /* TopUserViewModel.swift */; };
 		48ABDBB12BF7336500EF520C /* EmotionVersesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */; };
 		48B422F92BFF2AF1009839AD /* EmptyBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B422F82BFF2AF1009839AD /* EmptyBookView.swift */; };
+		48C053672C0DF4DA0032969B /* BookMarkRegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C053662C0DF4DA0032969B /* BookMarkRegistView.swift */; };
+		48C053692C0DF59A0032969B /* BookEmotionKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C053682C0DF59A0032969B /* BookEmotionKind.swift */; };
+		48C0536D2C0DF7060032969B /* BookMarkTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C0536C2C0DF7060032969B /* BookMarkTitleView.swift */; };
+		48C053702C0E00BC0032969B /* BookMarkResgistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C0536F2C0E00BC0032969B /* BookMarkResgistViewModel.swift */; };
+		48C053722C0E06680032969B /* MemoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C053712C0E06680032969B /* MemoTextField.swift */; };
+		48C053742C0E2EB40032969B /* OnBoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C053732C0E2EB40032969B /* OnBoardScreen.swift */; };
 		48C19A742BC93497007B5B1F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A732BC93497007B5B1F /* LoginViewModel.swift */; };
 		48C19A772BC939A4007B5B1F /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A762BC939A4007B5B1F /* KakaoSDK */; };
 		48C19A792BC939A4007B5B1F /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A782BC939A4007B5B1F /* KakaoSDKAuth */; };
@@ -206,6 +212,12 @@
 		48ABDBAE2BF732C100EF520C /* TopUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserViewModel.swift; sourceTree = "<group>"; };
 		48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionVersesViewModel.swift; sourceTree = "<group>"; };
 		48B422F82BFF2AF1009839AD /* EmptyBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookView.swift; sourceTree = "<group>"; };
+		48C053662C0DF4DA0032969B /* BookMarkRegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkRegistView.swift; sourceTree = "<group>"; };
+		48C053682C0DF59A0032969B /* BookEmotionKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEmotionKind.swift; sourceTree = "<group>"; };
+		48C0536C2C0DF7060032969B /* BookMarkTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTitleView.swift; sourceTree = "<group>"; };
+		48C0536F2C0E00BC0032969B /* BookMarkResgistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkResgistViewModel.swift; sourceTree = "<group>"; };
+		48C053712C0E06680032969B /* MemoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextField.swift; sourceTree = "<group>"; };
+		48C053732C0E2EB40032969B /* OnBoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardScreen.swift; sourceTree = "<group>"; };
 		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
 		48D5C2B12C01CBCC0088FD26 /* BookRecommendDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendDetailRow.swift; sourceTree = "<group>"; };
@@ -274,6 +286,7 @@
 				48B422F82BFF2AF1009839AD /* EmptyBookView.swift */,
 				488D41662C071CDA0031F5E1 /* VersesBackground.swift */,
 				488D41682C0763230031F5E1 /* WritedMemo.swift */,
+				48C053712C0E06680032969B /* MemoTextField.swift */,
 			);
 			path = GlboalComponent;
 			sourceTree = "<group>";
@@ -413,6 +426,7 @@
 				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
 				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
 				4898711C2BF7786400F1903E /* ShadowReuse.swift */,
+				48C053732C0E2EB40032969B /* OnBoardScreen.swift */,
 				487170DB2BC8380800ED8D2F /* Assets.xcassets */,
 				487170E52BC839F200ED8D2F /* Color.xcassets */,
 			);
@@ -558,6 +572,16 @@
 			path = EmotionVersesView;
 			sourceTree = "<group>";
 		};
+		48C053652C0DF4350032969B /* BookMarkRegist */ = {
+			isa = PBXGroup;
+			children = (
+				48C053662C0DF4DA0032969B /* BookMarkRegistView.swift */,
+				48C0536C2C0DF7060032969B /* BookMarkTitleView.swift */,
+				48C0536F2C0E00BC0032969B /* BookMarkResgistViewModel.swift */,
+			);
+			path = BookMarkRegist;
+			sourceTree = "<group>";
+		};
 		48C19A802BC93B24007B5B1F /* Kakao */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,12 +603,14 @@
 		48DE6DFA2BEF5D420096A069 /* BookTap */ = {
 			isa = PBXGroup;
 			children = (
+				48C053652C0DF4350032969B /* BookMarkRegist */,
 				4874F3B92C0D784C0034698E /* BookListDetailView */,
 				482F3F112C0C9D23003E7B00 /* BookListCard */,
 				48DE6E002BEF5D960096A069 /* BookListView.swift */,
 				482F3F162C0CA334003E7B00 /* BookListBookData.swift */,
 				482F3F0D2C0C833E003E7B00 /* BookStatusBtn.swift */,
 				48920C402C0CD7CF008D7715 /* BookListViewModel.swift */,
+				48C053682C0DF59A0032969B /* BookEmotionKind.swift */,
 			);
 			path = BookTap;
 			sourceTree = "<group>";
@@ -748,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48C053702C0E00BC0032969B /* BookMarkResgistViewModel.swift in Sources */,
 				48EB4F242C038237007B5668 /* EmotionUserData.swift in Sources */,
 				483968502BFCFAD3002A3035 /* EmotionData.swift in Sources */,
 				48EB4F212C0381C6007B5668 /* EmotionUserProfile.swift in Sources */,
@@ -760,6 +787,7 @@
 				4874F3C12C0D7DD40034698E /* BookCountView.swift in Sources */,
 				488D41672C071CDA0031F5E1 /* VersesBackground.swift in Sources */,
 				481F69BD2C049D5A0095867F /* CheckingUserBookMarkView.swift in Sources */,
+				48C053672C0DF4DA0032969B /* BookMarkRegistView.swift in Sources */,
 				487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */,
 				48A48D192BFEBDD200552A28 /* CustomNavigation.swift in Sources */,
 				486348052BF2CA1E006628F3 /* LoginAPITarget.swift in Sources */,
@@ -783,6 +811,7 @@
 				488D41692C0763230031F5E1 /* WritedMemo.swift in Sources */,
 				480F6D372BC99943008D958E /* ProfileModel.swift in Sources */,
 				48ABDBB12BF7336500EF520C /* EmotionVersesViewModel.swift in Sources */,
+				48C053692C0DF59A0032969B /* BookEmotionKind.swift in Sources */,
 				48920C412C0CD7CF008D7715 /* BookListViewModel.swift in Sources */,
 				483968492BFCEE4F002A3035 /* EmotionChartView.swift in Sources */,
 				48D5C2B22C01CBCC0088FD26 /* BookRecommendDetailRow.swift in Sources */,
@@ -820,14 +849,17 @@
 				48B422F92BFF2AF1009839AD /* EmptyBookView.swift in Sources */,
 				483968472BFCE80D002A3035 /* NoRegistEmotion.swift in Sources */,
 				4876A83C2BF60B5200E1B204 /* EmotionVersesView.swift in Sources */,
+				48C053742C0E2EB40032969B /* OnBoardScreen.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
 				4859170B2BFED2A800DC3650 /* BookRecommendDetailView.swift in Sources */,
 				480F6D392BC99969008D958E /* ProfileSettingView.swift in Sources */,
 				482055832BDFE1F2004E0D78 /* UserInfo.swift in Sources */,
 				48DE6DFF2BEF5D8B0096A069 /* HomeView.swift in Sources */,
+				48C0536D2C0DF7060032969B /* BookMarkTitleView.swift in Sources */,
 				48DE6E0D2BEF6EC90096A069 /* CustomTabView.swift in Sources */,
 				482F3F172C0CA334003E7B00 /* BookListBookData.swift in Sources */,
 				4819A1B32BE4C65800DDED13 /* KeyboardHideExtension.swift in Sources */,
+				48C053722C0E06680032969B /* MemoTextField.swift in Sources */,
 				48E2446C2C042E1900B7F695 /* EmotionUserViewModel.swift in Sources */,
 				482F3F102C0C876D003E7B00 /* ReadingStatus.swift in Sources */,
 				482F3F1C2C0CAA25003E7B00 /* BookReadProgressView.swift in Sources */,

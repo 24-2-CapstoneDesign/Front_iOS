@@ -23,9 +23,9 @@ struct EmotionChartView: View {
         ZStack(alignment: .center, content: {
             containsValueChart
             
-            if viewModel.emotionData == nil{
-                NoRegistEmotion()
-            }
+//            if viewModel.emotionData == nil{
+//                NoRegistEmotion()
+//            }
         })
     }
     

@@ -61,7 +61,7 @@ struct BookRecommendView: View {
     
     private var individualBookConnecting: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
+            LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 20, content: {
                 ForEach(data.information, id: \.self) { book in
                     let viewModel = BookRecommendCardViewModel(bookRecommendDetailData: book)
                     NavigationLink(destination: BookRecommendDetailView(viewModel: viewModel)) {
@@ -70,7 +70,7 @@ struct BookRecommendView: View {
                 }
             })
         }
-        .frame(width: 390, height: 180)
+        .frame(width: 390)
         .padding(.vertical, -10)
     }
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel: LoginViewModel
+    @State private var isAnimated: Bool = false
     
     var body: some View {
             allGroup
@@ -24,6 +25,13 @@ struct LoginView: View {
             Spacer().frame(maxHeight: 220)
             loginBottomView
         })
+        .opacity(isAnimated ? 1 : 0)
+        .offset(y: isAnimated ? 0 : 20)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.0)) {
+                isAnimated = true
+            }
+        }
     }
     
     

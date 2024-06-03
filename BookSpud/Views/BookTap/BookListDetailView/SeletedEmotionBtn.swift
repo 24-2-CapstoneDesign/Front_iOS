@@ -39,6 +39,7 @@ struct SeletedEmotionBtn: View {
                 }
             })
         })
+        .animation(.easeInOut, value: selected)
     }
     
     private func returnColor(_ current: BookEmotionKind) -> Color {

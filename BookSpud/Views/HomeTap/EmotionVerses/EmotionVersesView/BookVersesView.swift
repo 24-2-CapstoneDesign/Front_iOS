@@ -54,7 +54,7 @@ struct BookVersesView: View {
                 .font(.gangwonEdu(type: .basic, size: 16))
                 .foregroundStyle(Color.gray07)
                 .multilineTextAlignment(.center)
-                .lineLimit(0)
+                .frame(maxWidth: 185, maxHeight: 62)
         })
     }
     

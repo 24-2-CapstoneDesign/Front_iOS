@@ -14,13 +14,11 @@ class BookRecommendCardViewModel: ObservableObject {
     @Published var bookRecommendDetailData: BookRecommendDetailData
     @Published var emotionUserData: EmotionUserData?
      = EmotionUserData(information: [
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로로"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로노"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로트"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로비"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키"),
-        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/lFQp5iA6G_3iaFhP3HLa7HSMc-KAqw8KgQHlbgoJ9AvECILvQrkE6_Qj6VJWioWcX-7ARDubNiog1hNcZRnyCyNi9_A0qaZEwLde5xcMbGuqPpc6eXQJ9tC6I3Zq_U_fFuJ78V61TVkhRItfoclgNw.webp", bookMarkName: "뽀로키니")
+        EmotionUserDetailData(bookMarkProfile: "https://images.kbench.com/kbench/article/2015_05/k150016p1n17.jpg", bookMarkName: "정문에 주먹"),
+        EmotionUserDetailData(bookMarkProfile: "https://i.namu.wiki/i/sDpa4ff-basni7Hfapgtafw_zilZi08zSil9fWX1GZAykXRgYOmYW5larG-tF5ezrfC296MvOAxS5r6Ti-X5eDhbwfI9F8E-BEwfs0vaCvQW-FWz7Fu013nOBKKL4lcl1LkgHY-VuoBFBktlglCoog.webp", bookMarkName: "뽀로로"),
+        EmotionUserDetailData(bookMarkProfile: "http://tnnews.co.kr/wp-content/uploads/2021/09/사진설명_와디즈-팬즈메이커로-진로-두꺼비-제품-만든다0.jpg", bookMarkName: "두껍 왕자"),
+        EmotionUserDetailData(bookMarkProfile: "https://www.cau.ac.kr/cau/img/campusinfo/mascot-tab1_01.jpg", bookMarkName: "푸앙이"),
+        EmotionUserDetailData(bookMarkProfile: "https://velog.velcdn.com/images/leewoojye/post/1dc6dc4d-5120-4743-9837-f4d0904c7a7e/image.png", bookMarkName: "유엠씨"),
      ])
     @Published var bookCover: SwiftUI.Image? = nil
     var mainBtnCliked: Bool = true
@@ -45,6 +43,8 @@ class BookRecommendCardViewModel: ObservableObject {
         self.bookCover = image
     }
     
+    
+    //TODO: - 로드 방식 바꾸기
     /// 이미지 캐시 핸들러
     public func imageCacheHandler() {
         saveCache()
