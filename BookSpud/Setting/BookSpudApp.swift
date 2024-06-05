@@ -15,7 +15,7 @@ struct BookSpudApp: App {
     
     @StateObject private var loginViewModel = LoginViewModel()
     @StateObject private var profileViewModel = ProfileViewModel()
-    @AppStorage("hasScreenOnboard") private var hasScreenOnboard: Bool = false
+    @State private var showOnboard: Bool = true
     
     init() {
         // Kakao SDK 초기화
@@ -24,8 +24,8 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if !hasScreenOnboard {
-                OnBoardScreen(hasScreenOnboard: $hasScreenOnboard)
+            if showOnboard {
+                OnBoardScreen(showOnboard: $showOnboard)
             } else if !loginViewModel.isLogin {
                 LoginView(loginViewModel: loginViewModel)
             } else if !profileViewModel.isProfileCompleted {

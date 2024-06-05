@@ -50,7 +50,7 @@ struct BookListDetailView: View {
                     btnGroup
                 }
             })
-            .padding(.top, 35)
+            .padding(.top, 30)
             .frame(alignment: .bottom)
         })
         .frame(maxWidth: .infinity).ignoresSafeArea(.all)
@@ -66,7 +66,7 @@ struct BookListDetailView: View {
     
     
     private var topNavigation: some View {
-        CustomNavigation(title: "책 정보", onOff: false, height: 40)
+        CustomNavigation(title: "책 정보", onOff: false, height: 35, padding: -5)
     }
     
     /// 상단 책 정보

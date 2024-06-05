@@ -28,6 +28,10 @@ struct BookMarkRegistView: View {
         .onAppear(perform: {
             UIApplication.shared.hideKeyboard()
         })
+        .sheet(isPresented: $viewModel.isShowOCR, content: {
+            OCRView(viewModel: viewModel)
+
+        })
     }
     
     // MARK: - TopView

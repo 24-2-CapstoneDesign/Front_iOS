@@ -67,6 +67,9 @@
 		487AF4B32BEF415500EADE67 /* TokenProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B22BEF415500EADE67 /* TokenProviding.swift */; };
 		487AF4B52BEF418600EADE67 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B42BEF418600EADE67 /* TokenProvider.swift */; };
 		487AF4B72BEF433100EADE67 /* AuthAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */; };
+		487F18FC2C0EC57F00DA93E5 /* OCRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F18FB2C0EC57F00DA93E5 /* OCRViewModel.swift */; };
+		487F18FE2C0EC59700DA93E5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F18FD2C0EC59700DA93E5 /* CameraView.swift */; };
+		487F19022C0EC5BC00DA93E5 /* OCRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F19012C0EC5BC00DA93E5 /* OCRView.swift */; };
 		48875DF52BFC7C6500847986 /* BookRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48875DF42BFC7C6500847986 /* BookRecommendView.swift */; };
 		48875DF72BFC7F1F00847986 /* BookRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48875DF62BFC7F1F00847986 /* BookRecommendViewModel.swift */; };
 		488D1C1F2C082BD70080CCCC /* SuccessISBN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488D1C1E2C082BD70080CCCC /* SuccessISBN.swift */; };
@@ -182,6 +185,9 @@
 		487AF4B22BEF415500EADE67 /* TokenProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProviding.swift; sourceTree = "<group>"; };
 		487AF4B42BEF418600EADE67 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPITarget.swift; sourceTree = "<group>"; };
+		487F18FB2C0EC57F00DA93E5 /* OCRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewModel.swift; sourceTree = "<group>"; };
+		487F18FD2C0EC59700DA93E5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		487F19012C0EC5BC00DA93E5 /* OCRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRView.swift; sourceTree = "<group>"; };
 		48875DF42BFC7C6500847986 /* BookRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendView.swift; sourceTree = "<group>"; };
 		48875DF62BFC7F1F00847986 /* BookRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendViewModel.swift; sourceTree = "<group>"; };
 		488D1C1E2C082BD70080CCCC /* SuccessISBN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessISBN.swift; sourceTree = "<group>"; };
@@ -480,6 +486,16 @@
 			path = TokenRefresh;
 			sourceTree = "<group>";
 		};
+		487F18FA2C0EC54C00DA93E5 /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+				487F18FB2C0EC57F00DA93E5 /* OCRViewModel.swift */,
+				487F18FD2C0EC59700DA93E5 /* CameraView.swift */,
+				487F19012C0EC5BC00DA93E5 /* OCRView.swift */,
+			);
+			path = OCR;
+			sourceTree = "<group>";
+		};
 		489469722BDDF6DB00A4C942 /* GlobalFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +591,7 @@
 		48C053652C0DF4350032969B /* BookMarkRegist */ = {
 			isa = PBXGroup;
 			children = (
+				487F18FA2C0EC54C00DA93E5 /* OCR */,
 				48C053662C0DF4DA0032969B /* BookMarkRegistView.swift */,
 				48C0536C2C0DF7060032969B /* BookMarkTitleView.swift */,
 				48C0536F2C0E00BC0032969B /* BookMarkResgistViewModel.swift */,
@@ -797,6 +814,7 @@
 				4897958E2BF29454008ED803 /* TopUserView.swift in Sources */,
 				489469752BDDF6F200A4C942 /* ImageHandling.swift in Sources */,
 				48ABDBAD2BF7324900EF520C /* EmotionPickerView.swift in Sources */,
+				487F18FE2C0EC59700DA93E5 /* CameraView.swift in Sources */,
 				482F3F0C2C0C60CA003E7B00 /* KakaoBookAPITarget.swift in Sources */,
 				48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */,
 				48DE6E012BEF5D960096A069 /* BookListView.swift in Sources */,
@@ -823,6 +841,7 @@
 				482F3F132C0C9D35003E7B00 /* BookListCardView.swift in Sources */,
 				481F69BF2C049D960095867F /* CheckingUserBookMarkViewModel.swift in Sources */,
 				480638892C0D9D6200EA9B91 /* BookMarkData.swift in Sources */,
+				487F19022C0EC5BC00DA93E5 /* OCRView.swift in Sources */,
 				487AF4B12BEF412E00EADE67 /* AccessTokenRefresher.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				488D416B2C0780540031F5E1 /* ISBNInputViewModel.swift in Sources */,
@@ -840,6 +859,7 @@
 				489795902BF296F8008ED803 /* PotatoCircle.swift in Sources */,
 				48DE6E072BEF5DB10096A069 /* ReportView.swift in Sources */,
 				48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */,
+				487F18FC2C0EC57F00DA93E5 /* OCRViewModel.swift in Sources */,
 				4825672C2BEFC2E000B4C6E8 /* ProfileAPITarget.swift in Sources */,
 				48DE6DF12BEF47C30096A069 /* TokenResponse.swift in Sources */,
 				486348002BF2C6C2006628F3 /* HomeViewModel.swift in Sources */,

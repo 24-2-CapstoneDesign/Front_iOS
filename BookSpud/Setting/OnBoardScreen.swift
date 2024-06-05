@@ -10,9 +10,9 @@ import AVFoundation
 
 struct OnBoardScreen: View {
     @State private var isVisible: Bool = false
-    @Binding var hasScreenOnboard: Bool
+    @Binding var showOnboard: Bool
     @State private var showingCameraAlert = false
-
+    
     var body: some View {
         VStack(alignment: .center, spacing: 5, content: {
             Spacer()
@@ -58,12 +58,11 @@ struct OnBoardScreen: View {
     
     private func requestCameraAccess() {
         AVCaptureDevice.requestAccess(for: .video) { response in
-            if response {
-                DispatchQueue.main.async {
-                    hasScreenOnboard = true
+            DispatchQueue.main.async {
+                if response {
+                    showOnboard = false
+                } else {
                 }
-            } else {
-                hasScreenOnboard = false
             }
         }
     }
