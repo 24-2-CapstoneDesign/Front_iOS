@@ -8,12 +8,14 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
+import AVFoundation
 
 @main
 struct BookSpudApp: App {
     
     @StateObject private var loginViewModel = LoginViewModel()
     @StateObject private var profileViewModel = ProfileViewModel()
+    @State private var showOnboard: Bool = true
     
     init() {
         // Kakao SDK 초기화
@@ -22,15 +24,16 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            if !loginViewModel.isLogin {
+//            if showOnboard {
+//                OnBoardScreen(showOnboard: $showOnboard)
+//            } else if !loginViewModel.isLogin {
 //                LoginView(loginViewModel: loginViewModel)
 //            } else if !profileViewModel.isProfileCompleted {
 //                ProfileSettingView(profileVM: profileViewModel)
 //            } else {
 //                BookSpudTabView()
 //            }
-            
-            ISBNCameraView()
+            CurrentPage(viewModel: ReportDraftViewModel())
         }
     }
 }

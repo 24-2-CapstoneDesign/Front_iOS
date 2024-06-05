@@ -107,7 +107,7 @@ struct CustomTextField: View {
     /// - Returns: 체크 표시 혹은 비표시 이미지
     private func IconinField() -> Image {
         /* 체크 표시 이미지 */
-        if text.count >= 3 {
+        if text.count >= 2 {
             return Icon.checkNickname.image
         } else {
             return Icon.notCheckNickname.image

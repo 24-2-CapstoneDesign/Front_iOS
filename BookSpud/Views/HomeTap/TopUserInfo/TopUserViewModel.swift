@@ -26,7 +26,7 @@ class TopUserViewModel: ObservableObject {
         
         /* 삭제 요소 */
         
-        var userInfo = UserInfo(nickname: "호호", profileImageURL: "https://i.namu.wiki/i/Dl5b3RuXcsIGc2UpN8yqtYjoroMc2-DPtJlQDQU8hbDYzKSujybfjrIw6ziq8Q6tgjlJlCG3joVZC_uWA6UlK2tTqfgyyMvjtbXIAbR_kfx-rI4IYKkxavBQ7av_1ZIPvSXpjOFE80MVQJaVBhLskA.webp")
+        var userInfo = UserInfo(nickname: "으창", profileImageURL: "https://i.namu.wiki/i/Dl5b3RuXcsIGc2UpN8yqtYjoroMc2-DPtJlQDQU8hbDYzKSujybfjrIw6ziq8Q6tgjlJlCG3joVZC_uWA6UlK2tTqfgyyMvjtbXIAbR_kfx-rI4IYKkxavBQ7av_1ZIPvSXpjOFE80MVQJaVBhLskA.webp")
         
         keyChainManager.saveSession(userInfo, for: "userSession")
         var userInfo1 = keyChainManager.loadSession(for: "userSession")

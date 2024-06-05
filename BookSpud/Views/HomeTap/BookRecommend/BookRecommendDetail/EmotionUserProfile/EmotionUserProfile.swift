@@ -29,7 +29,7 @@ struct EmotionUserProfile: View {
         viewModel.emotionUserProfile
             .resizable()
             .frame(maxWidth: 44, maxHeight: 44)
-            .aspectRatio(contentMode: .fit)
+            .aspectRatio(contentMode: .fill)
             .background(Color(red: 0.56, green: 0.56, blue: 0.56).opacity(0.3))
             .clipShape(Circle())
     }
@@ -38,7 +38,7 @@ struct EmotionUserProfile: View {
         Text(viewModel.emotionUserDetailData?.bookMarkName ?? "유저 닉네임 정보 없음")
             .font(.spoqaHans(type: .medium, size: 12))
             .kerning(-0.2)
-            .frame(maxWidth: 44)
+            .frame(maxWidth: 44, minHeight: 30, alignment: .top)
             .lineLimit(nil)
             .foregroundStyle(Color.gray07)
     }

@@ -37,7 +37,7 @@ class ProfileViewModel: ObservableObject, ImageHandling {
     /// 입력한 닉네임 길이
     @Published public var nickNameText: String = "" {
         didSet {
-            if nickNameText.count >= 3 {
+            if nickNameText.count >= 2 {
                 beginBtn = true
             } else {
                 beginBtn = false

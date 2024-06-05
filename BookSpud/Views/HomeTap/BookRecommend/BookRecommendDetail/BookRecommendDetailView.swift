@@ -69,7 +69,10 @@ struct BookRecommendDetailView: View {
         VStack(alignment: .center, spacing: 11, content: {
             bookCover
                 .onAppear {
-                    viewModel.imageCacheHandler()
+                    let urlString = viewModel.bookRecommendDetailData.bookCoverUrl
+                    if let url = URL(string: urlString) {
+                        viewModel.loadImage(from: url)
+                    }
                 }
             purchaseBtn
         })

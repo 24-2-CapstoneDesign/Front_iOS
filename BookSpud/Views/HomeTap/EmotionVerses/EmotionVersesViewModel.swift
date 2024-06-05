@@ -29,7 +29,7 @@ class EmotionVersesViewModel: ObservableObject {
     }
     
     /* API DataModel */
-    @Published var bookVerses: BookVerses? = BookVerses(verses: "asdasd", bookName: "Asdsd", bookImgURL: "https://image.yes24.com/goods/85931281/XL")
+    @Published var bookVerses: BookVerses? = BookVerses(verses: "기분이 형편없고 걱정할 것이 한가득해도, 긍정적인 것을 찾을 수 있다.", bookName: "긍정 효과", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791190227322.jpg")
     
     // MARK: - Function
     
@@ -72,18 +72,23 @@ class EmotionVersesViewModel: ObservableObject {
         case Icon.happyEmotion.image:
             self.spudFace = Icon.happySpud.image
             self.selectedEmotionImage = Icon.happyEmotion.image
+            self.bookVerses = BookVerses(verses: "기분이 형편없고 걱정할 것이 한가득해도, 긍정적인 것을 찾을 수 있다.", bookName: "긍정 효과", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791190227322.jpg")
         case Icon.sadEmotion.image:
             self.spudFace = Icon.sadSpud.image
             self.selectedEmotionImage = Icon.sadEmotion.image
+            self.bookVerses = BookVerses(verses: "시간을 낭비하는다는 건 시도했는데 잘 안되거나 실패한게 아니다. 할 수 있는 일 들을 하지 않고 바라만 본 것이다.", bookName: "고민의 답", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791192237022.jpg")
         case Icon.angryEmotion.image:
             self.spudFace = Icon.angrySpud.image
             self.selectedEmotionImage = Icon.angryEmotion.image
+            self.bookVerses = BookVerses(verses: "상대방의 말을 앵무새처럼 활용하라", bookName: "고수의 대화법: 말감각", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791190227186.jpg")
         case Icon.inspirationEmotion.image:
             self.spudFace = Icon.inspirationSpud.image
             self.selectedEmotionImage = Icon.inspirationEmotion.image
+            self.bookVerses = BookVerses(verses: "'충분'한것도 결코 적은것이 아니다.", bookName: "돈의 심리학", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191056372.jpg")
         case Icon.moveEmotion.image:
             self.spudFace = Icon.sensationSpud.image
             self.selectedEmotionImage = Icon.moveEmotion.image
+            self.bookVerses = BookVerses(verses: "목표를 향한 강렬한 몰입이 필요하다", bookName: "마지막 몰입", bookImgURL: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162543665.jpg")
         default:
             break
         }
