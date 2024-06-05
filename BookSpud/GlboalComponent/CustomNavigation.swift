@@ -83,7 +83,7 @@ struct CustomNavigation: View {
             Spacer()
             
             Text(title)
-                .font(.pretendard(type: .regular, size: 16))
+                .font(.pretendard(type: .bold, size: 16))
                 .kerning(-0.5)
                 .foregroundStyle(Color.black)
                 .frame(minWidth: 44)

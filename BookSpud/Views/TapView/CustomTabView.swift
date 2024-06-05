@@ -39,7 +39,7 @@ struct CustomTabView: View {
             .roundedCorner(20, corners: [.topLeft, .topRight])
             .shadow(color: .black.opacity(0.25), radius: 20, x: 0, y: -1)
             .ignoresSafeArea(.keyboard)
-            .position(x: geo.size.width / 2, y: geo.size.height - 9)
+            .position(x: geo.size.width / 2, y: geo.size.height - 5)
         }
     }
 }

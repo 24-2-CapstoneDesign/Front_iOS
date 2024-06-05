@@ -19,19 +19,28 @@ struct BookRecommendCard: View {
         })
         .frame(maxWidth: 100, maxHeight: 191)
         .onAppear {
-            viewModel.imageCacheHandler()
+            let urlString = viewModel.bookRecommendDetailData.bookCoverUrl
+            if let url = URL(string: urlString) {
+                viewModel.loadImage(from: url)
+            }
         }
     }
     
     // MARK: - BookRecommendCard Componenet
     
     /// 책 커버
+    @ViewBuilder
     private var bookCoverImage: some View {
-        viewModel.bookCover?
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: 100, minHeight: 150)
-            .shadow03()
+        if let image = viewModel.bookCover {
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 100, minHeight: 150)
+                .shadow03()
+        } else {
+            ProgressView()
+                .frame(width: 100, height: 150)
+        }
     }
     
     /// 책 이름 및 작가 이름

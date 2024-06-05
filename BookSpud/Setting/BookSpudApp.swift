@@ -24,15 +24,16 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if showOnboard {
-                OnBoardScreen(showOnboard: $showOnboard)
-            } else if !loginViewModel.isLogin {
-                LoginView(loginViewModel: loginViewModel)
-            } else if !profileViewModel.isProfileCompleted {
-                ProfileSettingView(profileVM: profileViewModel)
-            } else {
-                BookSpudTabView()
-            }
+//            if showOnboard {
+//                OnBoardScreen(showOnboard: $showOnboard)
+//            } else if !loginViewModel.isLogin {
+//                LoginView(loginViewModel: loginViewModel)
+//            } else if !profileViewModel.isProfileCompleted {
+//                ProfileSettingView(profileVM: profileViewModel)
+//            } else {
+//                BookSpudTabView()
+//            }
+            CurrentPage(viewModel: ReportDraftViewModel())
         }
     }
 }

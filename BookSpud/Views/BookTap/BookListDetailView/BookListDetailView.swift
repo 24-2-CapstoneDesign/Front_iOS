@@ -175,7 +175,9 @@ struct BookListDetailView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 64), spacing: 15), count: 4), spacing: 15, content: {
                 ForEach(filteredMark(), id: \.self) { information in
                     Icon.icon(for: information.emotion).image
-                        .fixedSize()
+                        .resizable()
+                        .frame(maxWidth: 50, maxHeight: 50)
+                        .aspectRatio(contentMode: .fit)
                         .padding([.vertical, .horizontal], 5)
                 }
             })

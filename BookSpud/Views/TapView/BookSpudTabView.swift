@@ -75,7 +75,7 @@ struct BookSpudTabView: View {
 }
 
 struct BookSpudTabView_Previews: PreviewProvider {
-    static let devices = ["iPhone 11", "iPhone 15 Pro"]
+    static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
     
     static var previews: some View {
         ForEach(devices, id: \.self) { device in

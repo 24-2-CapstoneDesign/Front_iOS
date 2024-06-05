@@ -51,7 +51,7 @@ struct MemoTextField: View {
     private var placeholderInField: some View {
         Text(placeholder)
             .font(.spoqaHans(type: .regular, size: 12))
-            .frame(minWidth: maxWidth, minHeight: maxHeight)
+            .frame(maxWidth: maxWidth, minHeight: maxHeight - 10, maxHeight: maxHeight)
             .foregroundStyle(Color.gray06)
             .padding([.vertical, .horizontal], 5)
             .onTapGesture {
@@ -60,11 +60,13 @@ struct MemoTextField: View {
     }
     
     private var customTextField: some View {
-        TextField("", text: $text, axis: .horizontal)
+        TextField("", text: $text, axis: .vertical)
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)
             .font(.spoqaHans(type: .regular, size: 12))
-            .multilineTextAlignment(.leading)
+            .multilineTextAlignment(.center)
             .foregroundStyle(Color.gray07)
+            .padding([.top, .bottom], 10)
+            .padding([.leading, .trailing], 10)
             .focused($isTextFocused)
             .background(Color.white)
             .clipShape(.rect(cornerRadius: cornerSize))

@@ -12,4 +12,5 @@ class BookMarkResgistViewModel: ObservableObject {
     @Published var versesText: String = ""
     @Published var memoText: String = ""
     @Published var isShowOCR: Bool = false
+    @Published var savePage: String = ""
 }
