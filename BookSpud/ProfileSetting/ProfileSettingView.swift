@@ -10,7 +10,9 @@ import SwiftUI
 struct ProfileSettingView: View {
     
     // MARK: - Property
-    @StateObject var profileVM: ProfileViewModel
+    
+    @EnvironmentObject var userState: UserState
+    @StateObject var viewModel: ProfileViewModel
     
     var body: some View {
         allGroup
@@ -32,16 +34,17 @@ struct ProfileSettingView: View {
             
             Spacer().frame(maxHeight: 310)
             
-            GlobalMainBtn(clickBool: $profileVM.beginBtn,
+            GlobalMainBtn(clickBool: $viewModel.beginBtn,
                           btnName: "시작하기",
                           btnImg: nil,
                           onClicked: {
-                profileVM.sendUserProfile()
-                profileVM.isProfileCompleted = true
+                viewModel.sendUserNickName(appState: userState)
+                viewModel.sendUserProfileImage(app: userState)
+                viewModel.isProfileCompleted = true
             })
         })
-        .sheet(isPresented: $profileVM.isImagePickerPresendted, content: {
-            ShowImagePicker(imageHandler: profileVM)
+        .sheet(isPresented: $viewModel.isImagePickerPresendted, content: {
+            ShowImagePicker(imageHandler: viewModel)
         })
     }
     
@@ -63,9 +66,9 @@ struct ProfileSettingView: View {
         VStack(alignment: .center, spacing: 21, content: {
             
             Button(action: {
-                profileVM.showImagePicker()
+                viewModel.showImagePicker()
             }, label: {
-                if let selectedImage = profileVM.selectedImage {
+                if let selectedImage = viewModel.selectedImage {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -87,7 +90,7 @@ struct ProfileSettingView: View {
     
     /// 닉네임 입력 필드
     private var nickNameTextField: some View {
-        CustomTextField(text: $profileVM.nickNameText,
+        CustomTextField(text: $viewModel.nickNameText,
                         placeholder: "사용하고 싶은 닉네임을 작성해주세요!",
                         showCheckIcon: true,
                         maxWidth: 297,
@@ -100,7 +103,7 @@ struct ProfileSetting_Preview: PreviewProvider {
     static let devices = ["iPhone 11", "iPhone 15 Pro Max"]
     static var previews: some View {
         ForEach(devices, id: \.self) { device in
-            ProfileSettingView(profileVM: ProfileViewModel())
+            ProfileSettingView(viewModel: ProfileViewModel())
                 .previewLayout(.sizeThatFits)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)

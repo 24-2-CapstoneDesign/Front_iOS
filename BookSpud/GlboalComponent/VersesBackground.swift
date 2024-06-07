@@ -24,7 +24,7 @@ struct VersesBackground: View {
             background
             
             Text(versesText ?? "입력된 구절이 없습니다.")
-                .font(.gangwonEdu(type: .basic, size: 16))
+                .font(.gangwonEdu(type: .basic, size: 20))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray07)
                 .frame(maxWidth: 300, maxHeight: 87)

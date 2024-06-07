@@ -89,6 +89,12 @@ struct CustomTextField: View {
                         .inset(by: 0.5)
                         .stroke(Color.subBtn, lineWidth: 1)
                 )
+                .onTapGesture {
+                    if !isTextFocused {
+                        text = ""
+                        isTextFocused = true
+                    }
+                }
             
             if showCheckIcon && !text.isEmpty {
                 IconinField()

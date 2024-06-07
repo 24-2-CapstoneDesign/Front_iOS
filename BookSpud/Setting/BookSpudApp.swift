@@ -13,6 +13,7 @@ import AVFoundation
 @main
 struct BookSpudApp: App {
     
+    @StateObject private var userState = UserState()
     @StateObject private var loginViewModel = LoginViewModel()
     @StateObject private var profileViewModel = ProfileViewModel()
     @State private var showOnboard: Bool = true
@@ -24,16 +25,17 @@ struct BookSpudApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            if showOnboard {
-//                OnBoardScreen(showOnboard: $showOnboard)
-//            } else if !loginViewModel.isLogin {
-//                LoginView(loginViewModel: loginViewModel)
-//            } else if !profileViewModel.isProfileCompleted {
-//                ProfileSettingView(profileVM: profileViewModel)
-//            } else {
-//                BookSpudTabView()
-//            }
-            CurrentPage(viewModel: ReportDraftViewModel())
+            if showOnboard {
+                OnBoardScreen(showOnboard: $showOnboard)
+            } else if !loginViewModel.isLogin {
+                LoginView(loginViewModel: loginViewModel)
+            } else if !profileViewModel.isProfileCompleted {
+                ProfileSettingView(viewModel: profileViewModel)
+                    .environmentObject(userState)
+            } else {
+                BookSpudTabView()
+                    .environmentObject(userState)
+            }
         }
     }
 }

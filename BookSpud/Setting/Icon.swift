@@ -95,15 +95,15 @@ enum Icon: String {
     // MARK: - bookMarkEmotion
     static func icon(for emotion: String) -> Icon {
             switch emotion {
-            case "happy":
+            case "JOY":
                 return .happyMark
-            case "sad":
+            case "SADNESS":
                 return .sadMark
-            case "angry":
+            case "ANGER":
                 return .angryMark
-            case "inspiration":
+            case "INSPIRATION":
                 return .inspirationMark
-            case "move":
+            case "MOVED":
                 return .moveMark
             default:
                 return .happyMark // 기본 아이콘 설정 (필요 시 수정)

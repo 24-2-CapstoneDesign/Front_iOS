@@ -100,7 +100,7 @@ class KeyChainManager {
             userInfo.nickname = nickName
             
             let updated = KeyChainManager.standard.saveSession(userInfo, for: key)
-            print("닉네임 업데이트 완려 : \(updated)")
+            print("닉네임 업데이트 완료 : \(updated)")
         } else {
             print("닉네임 업데이트 불가")
         }
@@ -109,13 +109,13 @@ class KeyChainManager {
     /// 유저 프로필 업데이트
     /// - Parameters:
     ///   - imageUrl: 유저 프로필 주소
-    ///   - key: 유저 정보 ㅋ
+    ///   - key: 유저 정보 업데이트
     public func updateUserProfile(_ imageUrl: String, for key: String) {
         if var userInfo = KeyChainManager.standard.loadSession(for: key) {
             userInfo.profileImageURL = imageUrl
             
             let updated = KeyChainManager.standard.saveSession(userInfo, for: key)
-            print("프로필 이미지 로드 완료: \(updated)")
+            print("프로필 이미지 로드 완료: \(userInfo)")
         } else {
             print("프로피 업데이트 불가")
         }
