@@ -39,7 +39,7 @@ class ImageCacheManager {
     /// - Parameters:
     ///   - data: 이미지 파일을 메모리에서 관리하기 위해 데이터 타입으로 저장
     ///   - url: 이미지가 저장되는 url 주소
-    private func saveImageData(_ data: Data, for url: URL) {
+    public func saveImageData(_ data: Data, for url: URL) {
         let fileURL = cachePath(for: url)
         do {
             try data.write(to: fileURL, options: .atomic)

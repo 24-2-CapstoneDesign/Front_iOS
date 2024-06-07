@@ -15,13 +15,13 @@ enum LoginAPITarget {
 extension LoginAPITarget: TargetType {
     
     var baseURL: URL {
-        return URL(string: "example")!
+        return URL(string: "http://www.bookspud.kro.kr:8080")!
     }
     
     var path: String {
         switch self {
         case .loginStart:
-            return "exaple"
+            return "/api/login/kakao"
         }
     }
     
@@ -33,25 +33,15 @@ extension LoginAPITarget: TargetType {
     }
     
     var task: Task {
-        switch self {
-        case .loginStart(let token):
-            return .requestParameters(parameters: ["accessToken": token], encoding: JSONEncoding.default)
+            switch self {
+            case .loginStart(let token):
+                return .requestParameters(parameters: ["authorizationCode": token], encoding: URLEncoding.queryString)
+            }
         }
-    }
     
-    var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
-    }
     
-    var sampleData: Data {
-        switch self {
-        case .loginStart:
-            return Data("""
-                {
-                    "accessToken": "access-token-sample",
-                    "refreshToken": "refresh-token-sample",
-                }
-                """.utf8)
-        }
-    }
+    var headers: [String: String]? {
+        
+           return ["accept": "*/*"]
+       }
 }

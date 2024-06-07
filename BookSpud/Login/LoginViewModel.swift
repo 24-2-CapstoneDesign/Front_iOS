@@ -17,6 +17,10 @@ class LoginViewModel: ObservableObject {
     private let session: Session
     var provider: MoyaProvider<LoginAPITarget>
     
+    
+    @Published var loginData: LoginData?
+    @Published var userInfo: UserInfo = UserInfo()
+    
     init() {
         tokenProvider = TokenProvider()
         accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
@@ -59,10 +63,13 @@ class LoginViewModel: ObservableObject {
     /// - Parameter response: 전달받은 유저 데이터(액세스, 리프레시) 토큰 값
     private func handleUserInfo(response: Response) {
         do {
-            let decodedData = try JSONDecoder().decode(UserInfo.self, from: response.data)
-            let saveUserInfo = self.keyChainManager.saveSession(decodedData, for: "userSession")
-            print("저장된 유저 정보: \(String(describing: saveUserInfo))")
-        } catch {
+            let decodedData = try JSONDecoder().decode(LoginData.self, from: response.data)
+            self.loginData = decodedData
+            self.userInfo = UserInfo(accessToken: loginData?.data.accessToken, refreshToken: loginData?.data.refreshToken)
+            
+            let saveTrue = keyChainManager.saveSession(userInfo, for: "userSession")
+            print("키체인 저장 \(saveTrue)")
+            } catch {
             print("유저 정보 저장 에러: \(error)")
         }
     }
