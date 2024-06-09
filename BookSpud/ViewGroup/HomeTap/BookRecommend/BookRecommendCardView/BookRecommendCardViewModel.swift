@@ -14,55 +14,31 @@ import Moya
 class BookRecommendCardViewModel: ObservableObject {
     
     @Published var authorImage: SwiftUI.Image?
-    @Published var bookRecommendDetailData: BookRecommendDetailData
-    @Published var individualBookData: IndividualBookData? = nil
+    @Published var individualBookData: IndividualBookData?
     @Published var emotionUserData: EmotionUserData?
-    @Published var bookCover: SwiftUI.Image? = nil
-    var mainBtnCliked: Bool = true
+    
+    var mainBtnCliked: Bool
+    var provider: MoyaProvider<BookRecommendDetailAPI>
     
     // MARK: - Init
-    init(bookRecommendDetailData: BookRecommendDetailData) {
-        self.bookRecommendDetailData = bookRecommendDetailData
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<BookToBook>(session: session)
-        userProvider = MoyaProvider<EmotionUserAPI>(session: session)
+    
+    init(authorImage: SwiftUI.Image? = nil,
+         individualBookData: IndividualBookData? = nil,
+         emotionUserData: EmotionUserData? = nil,
+         mainBtnCliked: Bool = true,
+         provider: MoyaProvider<BookRecommendDetailAPI> = APIManager.shared.testProvider(for: BookRecommendDetailAPI.self)
+    ) {
+        self.authorImage = authorImage
+        self.individualBookData = individualBookData
+        self.emotionUserData = emotionUserData
+        self.mainBtnCliked = mainBtnCliked
+        self.provider = provider
     }
-    
-    // MARK: - API Property
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
-    var provider: MoyaProvider<BookToBook>
-    var userProvider: MoyaProvider<EmotionUserAPI>
-    
-    // MARK: - Book Recommend Individual Function
-    
-    private var imageCache = ImageCacheManager.shared
-    private var cancellable: AnyCancellable?
-
-    
-    func loadImage(from url: URL) {
-            if let cachedImage = ImageService.shared.loadImage(from: url) {
-                self.authorImage = cachedImage
-            } else {
-                cancellable = URLSession.shared.dataTaskPublisher(for: url)
-                    .map { $0.data }
-                    .catch { _ in Just(Data()) }
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] data in
-                        guard !data.isEmpty, let self = self, let uiImage = UIImage(data: data) else { return }
-                        ImageService.shared.downloadImage(from: url) { image in
-                            self.authorImage = image
-                        }
-                    })
-            }
-        }
-
     
     // MARK: - API
     
+    /// 책 상세 정보 받아오기
+    /// - Parameter id: 책 아이디 값
     public func getDetailBookInfo(id: Int) {
         provider.request(.detailBookInfo(id: id)) { [weak self] result in
             switch result {
@@ -74,6 +50,8 @@ class BookRecommendCardViewModel: ObservableObject {
         }
     }
     
+    /// 책 상세 정보 받아오기 핸들 데이터
+    /// - Parameter response: API 반응값
     private func handleResponse(response: Response) {
         do {
             let decodedData = try JSONDecoder().decode(IndividualBookData.self, from: response.data)
@@ -97,21 +75,29 @@ class BookRecommendCardViewModel: ObservableObject {
     }
     
     
+    /// 추천 책이 들고 있는 여러가지 북마크 데이터
+    /// - Parameter id: 책 아이디
      public func getDataProfile(id: Int) {
-         userProvider.request(.emotionBookMark(id: id)) { [weak self] result in
+         provider.request(.emotionBookMark(id: id)) { [weak self] result in
              switch result {
              case .success(let response):
-                 do {
-                     let decodedData = try JSONDecoder().decode(EmotionUserData.self, from: response.data)
-                     self?.emotionUserData = decodedData
-                     print("유저 북마크 받아오기 : \(decodedData)")
-                 } catch {
-                     print("유저 북마크 받아오기 디코더 오류 : \(error)")
-                 }
+                 self?.handleResponseProfile(response: response)
              case .failure(let error):
-                 print("유저 받아오기 네트워크 오류: \(error)")
+                 print("북투북 유저 북마크 받아오기 네트워크 오류 : \(error)")
              }
          }
-                
      }
+    
+    
+    /// 추천 책 북마크 받아오기 핸들 데이터
+    /// - Parameter response: API 반응 값
+    private func handleResponseProfile(response: Response) {
+        do {
+            let decodedData = try JSONDecoder().decode(EmotionUserData.self, from: response.data)
+            self.emotionUserData = decodedData
+            print("유저 북마크 받아오기 : \(decodedData)")
+        } catch {
+            print("유저 북마크 받아오기 디코더 오류 : \(error)")
+        }
+    }
 }

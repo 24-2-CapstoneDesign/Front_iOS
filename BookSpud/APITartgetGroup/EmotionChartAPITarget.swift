@@ -8,11 +8,11 @@
 import Foundation
 import Moya
 
-enum EmotionAPITarget {
+enum EmotionChartAPITarget {
     case getChart
 }
 
-extension EmotionAPITarget: TargetType {
+extension EmotionChartAPITarget: TargetType {
     var baseURL: URL {
         return URL(string: "http://www.bookspud.kro.kr:8080")!
     }
@@ -20,7 +20,7 @@ extension EmotionAPITarget: TargetType {
     var path: String {
         switch self {
         case .getChart:
-            return "/api/bookmark/count"
+            return "/api/bookmark/count" //감정 차트 북마크 갯수 조회
         }
     }
     
@@ -43,5 +43,26 @@ extension EmotionAPITarget: TargetType {
             "Content-Type": "application/json",
             "accept": "*/*"
         ]
+    }
+    
+    var sampleData: Data {
+        switch self {
+        case .getChart:
+            let sampleJSON = """
+                {
+                  "status": 200,
+                  "message": "성공",
+                  "result": {
+                    "JOY": 12,
+                    "SADNESS": 2,
+                    "ANGER": 1,
+                    "INSPIRATION": 4,
+                    "MOVED": 13
+                  }
+                }
+                """
+            
+            return Data(sampleJSON.utf8)
+        }
     }
 }

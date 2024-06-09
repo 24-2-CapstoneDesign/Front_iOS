@@ -8,14 +8,19 @@
 import SwiftUI
 import Charts
 
+/// 감정 그래프, 감정 북마크 갯수를 기반으로 작동한다.
 struct EmotionChartView: View {
+        
+    @EnvironmentObject var userState: UserState
+    @ObservedObject var viewModel: EmotionChartViewModel
     
-    @StateObject var viewModel: EmotionChartViewModel
+    init(viewModel: EmotionChartViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         allViewGroup
             .onAppear {
-                viewModel.loadUser()
                 viewModel.getChartData()
             }
     }
@@ -42,9 +47,6 @@ struct EmotionChartView: View {
             
         })
         .frame(width: 334, height: 500)
-        .onAppear {
-            viewModel.onApearData()
-        }
         .background(
             Rectangle()
                 .foregroundStyle(Color.white)
@@ -62,7 +64,7 @@ struct EmotionChartView: View {
                 .foregroundStyle(Color.gray05)
                 .kerning(-0.2)
             
-            Text("\(viewModel.userName)의 감정 그래프 📊")
+            Text("\(userState.userName ?? "감자님")의 감정 그래프 📊")
                 .frame(minWidth: 163)
                 .font(.spoqaHans(type: .bold, size: 18))
                 .foregroundStyle(Color.black)
@@ -101,6 +103,7 @@ struct EmotionChartView: View {
         .frame(width: 200, height: 200)
     }
     
+    /// 막대 게이지
     private var charStickGraph: some View {
         VStack(alignment: .center, spacing: 12, content: {
             ForEach(viewModel.emotions) { emotion in

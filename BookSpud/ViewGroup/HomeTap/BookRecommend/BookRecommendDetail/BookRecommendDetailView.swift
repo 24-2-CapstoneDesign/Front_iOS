@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 /// 추천 받은 책 내부 정보 뷰
 struct BookRecommendDetailView: View {
     
-    @StateObject var viewModel: BookRecommendCardViewModel
-    @State var showSheet: Bool = false
+    @ObservedObject var viewModel: BookRecommendCardViewModel
+    @State var showSheet: Bool
+    let bookData: BookRecommendDetailData
+    
+    init(viewModel: BookRecommendCardViewModel,
+         showSheet: Bool = false,
+         bookData: BookRecommendDetailData
+    ) {
+        self.viewModel = viewModel
+        self.showSheet = showSheet
+        self.bookData = bookData
+    }
     
     // MARK: - Main View
     var body: some View {
@@ -24,6 +35,10 @@ struct BookRecommendDetailView: View {
             .ignoresSafeArea(.all)
             .navigationBarBackButtonHidden()
             .background(Color.backgrounYellow)
+            .onAppear {
+                viewModel.getDetailBookInfo(id: bookData.bookId)
+//                viewModel.getDataProfile(id: bookData.bookId)
+            }
     }
     
     ///책정보 속 모든 정보 포함 그룹 뷰
@@ -62,12 +77,6 @@ struct BookRecommendDetailView: View {
     private var leftBookInfo: some View {
         VStack(alignment: .center, spacing: 11, content: {
             bookCover
-                .onAppear {
-                    let urlString = viewModel.bookRecommendDetailData.cover
-                    if let url = URL(string: urlString) {
-                        viewModel.loadImage(from: url)
-                    }
-                }
             purchaseBtn
         })
         .frame(maxWidth: 102, maxHeight: 193)
@@ -76,8 +85,12 @@ struct BookRecommendDetailView: View {
     @ViewBuilder
     /// 책 표지
     private var bookCover: some View {
-        if let bookCover = viewModel.bookCover {
-            bookCover
+        if let bookCover = URL(string: bookData.cover) {
+            KFImage(bookCover)
+                .placeholder {
+                    ProgressView()
+                        .frame(width: 100, height: 150)
+                }.retry(maxCount: 2, interval: .seconds(2))
                 .resizable()
                 .frame(maxWidth: 100, maxHeight: 150)
                 .aspectRatio(contentMode: .fill)
@@ -116,8 +129,8 @@ struct BookRecommendDetailView: View {
     /// 오른쪽 책 정보 뷰
     private var bookDetailInfo: some View {
         VStack(alignment: .leading, spacing: 16, content: {
-            BookRecommendDetailRow(title: "도서명", value: viewModel.bookRecommendDetailData.title)
-            BookRecommendDetailRow(title: "저     자", value: viewModel.bookRecommendDetailData.author)
+            BookRecommendDetailRow(title: "도서명", value: viewModel.individualBookData?.result.title ?? "책 정보 못 받아왔음")
+            BookRecommendDetailRow(title: "저     자", value: viewModel.individualBookData?.result.author ?? "책 정보 못 받아왔음")
             BookRecommendDetailRow(title: "정상가", value: self.formattedPrice(viewModel.individualBookData?.result.price ?? 0))
             BookRecommendDetailRow(title: "할인가", value: self.formattedPrice(viewModel.individualBookData?.result.salePrice ?? 0))
             BookRecommendDetailRow(title: "책소개", value: viewModel.individualBookData?.result.content ?? "책 소개 없음", hegiht: 63, alignment: .topLeading, onOff: true)
@@ -150,9 +163,6 @@ struct BookRecommendDetailView: View {
             
             bookMarkProfileList
         })
-        .onAppear {
-            viewModel.getDataProfile(id: viewModel.bookRecommendDetailData.bookId)
-        }
         .frame(maxWidth: 352, maxHeight: 249, alignment: .topLeading)
     }
     

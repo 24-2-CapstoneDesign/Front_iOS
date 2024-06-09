@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 책정보 중복 컴포넌트
 struct BookRecommendDetailRow: View {
     
     var title: String

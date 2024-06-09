@@ -15,10 +15,6 @@ class EmotionVersesViewModel: ObservableObject {
     
     // MARK: - Property
     
-    /* ImagCache */
-    
-    private let imageCache = ImageCacheManager.shared
-    
     /* EmotionVerses  Propert */
     @Published var authorImage: SwiftUI.Image?
     @Published var spudFace: SwiftUI.Image

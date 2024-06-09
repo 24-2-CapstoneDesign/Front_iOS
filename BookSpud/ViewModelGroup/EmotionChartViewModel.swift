@@ -18,17 +18,15 @@ class EmotionChartViewModel: ObservableObject {
     @Published var dominationEmotion: EmotionChartBeforeData
     @Published var emotionData: EmotionData? = nil
     
-    let keyChainManager = KeyChainManager.standard
-    // MARK: - API Property
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
-    var provider: MoyaProvider<EmotionAPITarget>
+    var provider: MoyaProvider<EmotionChartAPITarget>
     
     
     // MARK: - Init
     
-    init() {
+    init(
+        provider: MoyaProvider<EmotionChartAPITarget> = APIManager.shared.testProvider(for: EmotionChartAPITarget.self
+        )
+    ) {
         let initialData = [
             EmotionChartBeforeData(name: "JOY", value: 99, color: .touchedYellow),
             EmotionChartBeforeData(name: "SADNESS", value: 29, color: .sadBlue),
@@ -38,18 +36,7 @@ class EmotionChartViewModel: ObservableObject {
         ]
         self.emotions = initialData
         self.dominationEmotion = initialData.max(by: { $0.value < $1.value})!
-        
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<EmotionAPITarget>(session: session)
-    }
-    
-    public func loadUser() {
-        if let user = KeyChainManager.standard.loadSession(for: "userSession"),
-           let name = user.nickname {
-            self.userName = name
-        }
+        self.provider = provider
     }
     
     // MARK: - Function
@@ -60,20 +47,6 @@ class EmotionChartViewModel: ObservableObject {
         formatter.dateFormat = "yyyy년 MM월 dd일"
         currentDate = formatter.string(from: Date())
     }
-    
-    /// 키체인에 등록된 유저 닉네임 가져오기
-    private func getUserName() {
-        guard let userInfo = keyChainManager.loadSession(for: "userSession") else { return }
-        
-        userName = userInfo.nickname ?? "감자"
-    }
-    
-    /// 차트 뷰 등장 시 값 초기화
-    public func onApearData() {
-        getCurrentData()
-        getUserName()
-    }
-    
     /// 막대 그래프
     /// - Parameter name: 막대 그래프 감정 이름
     /// - Returns: 감정 그래프 데이터 속 감정 이름
@@ -94,7 +67,7 @@ class EmotionChartViewModel: ObservableObject {
         }
     }
     
-    //TODO: - EmotionData API로 받아온 후, 값 할당 하는 함수 필요
+    /// 감정 차트 데이터 불러오기
     public func getChartData() {
         provider.request(.getChart) { [weak self] result in
             switch result {
@@ -106,6 +79,8 @@ class EmotionChartViewModel: ObservableObject {
         }
     }
     
+    /// 감정 차트 데이터 핸들 리스폰스
+    /// - Parameter response: 감정 차트 핸들 리스폰스
     private func handleResponse(response: Response) {
         do {
             let decodedData = try JSONDecoder().decode(EmotionData.self, from: response.data)
@@ -116,6 +91,8 @@ class EmotionChartViewModel: ObservableObject {
         }
     }
     
+    /// 도넛 차트 중심 감정 표시 함수
+    /// - Parameter data: 중심에 들어갈 감정 값
     private func updateEmotions(with data: EmotionDetailData) {
             let updatedData = [
                 EmotionChartBeforeData(name: "JOY", value: data.JOY, color: .touchedYellow),

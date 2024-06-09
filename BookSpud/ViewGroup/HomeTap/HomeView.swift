@@ -31,23 +31,30 @@ struct HomeView: View {
     private var allView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 29, content: {
+                
+                /* 상단 유저 프로필 정보 */
                 TopUserComponent()
                     .environmentObject(userState)
                 
+                /* 감정 구절 랜덤 뷰 */
                 EmotionVersesView(viewModel: emotionVersesViewModel)
                 
                 MainDotLine
                 
+                /* 북투북 북투유저 책 추천 뷰*/
                 BookRecommendView(viewModel: bookCommendViewModel)
                 
                 MainDotLine
                 
                 EmotionChartView(viewModel: emotionChartViewModel)
+                    .environmentObject(userState)
             })
-            .frame(minHeight: 1405, maxHeight: .infinity, alignment: .top).ignoresSafeArea(.all)
+            .frame(minHeight: 1390, maxHeight: .infinity, alignment: .top).ignoresSafeArea(.all)
             .background(Color.backgrounYellow)
         }
+        .background(Color.backgrounYellow)
         .ignoresSafeArea(.all)
+        
     }
     
     private var MainDotLine: some View {

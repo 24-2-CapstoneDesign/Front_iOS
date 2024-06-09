@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - BookToBook
 struct BookRecommendData: Codable, Hashable {
     var status: Int
     var message: String
@@ -24,7 +25,7 @@ struct BookRecommendDetailData: Codable, Hashable{
     var cover: String
 }
 
-// MARK: - DetailBook
+// MARK: - Detail BookToBook
 
 struct IndividualBookData: Codable {
     var status: Int

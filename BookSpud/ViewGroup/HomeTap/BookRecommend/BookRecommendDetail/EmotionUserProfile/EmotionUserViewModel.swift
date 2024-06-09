@@ -23,7 +23,7 @@ class EmotionUserViewModel: ObservableObject {
     private let tokenProvider: TokenProviding
     private let accessTokenRefresher: AccessTokenRefresher
     private let session: Session
-    var provider: MoyaProvider<EmotionUserAPI>
+    var provider: MoyaProvider<BookRecommendDetailAPI>
     
     
     init(emotionUserDetailData: EmotionUserDetailData?) {
@@ -31,7 +31,7 @@ class EmotionUserViewModel: ObservableObject {
         tokenProvider = TokenProvider()
         accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
         session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<EmotionUserAPI>(session: session)
+        provider = MoyaProvider<BookRecommendDetailAPI>(session: session)
     }
     
     // MARK: - ImageFunction
