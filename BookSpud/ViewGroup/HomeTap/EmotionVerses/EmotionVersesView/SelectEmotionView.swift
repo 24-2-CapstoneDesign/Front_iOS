@@ -11,7 +11,7 @@ import SwiftUI
 struct SelectEmotionView: View {
     
     // MARK: - Propery
-    @StateObject var viewModel: EmotionVersesViewModel
+    @ObservedObject var viewModel: EmotionVersesViewModel
     
     // MARK: - View
     var body: some View {
@@ -44,7 +44,7 @@ struct SelectEmotionView: View {
             .padding(.top, 8)
     }
     
-    /// 감정 선택 이미지 창
+    /// 감정 선택한 이미지 보이는 컴포넌트
     private var guideImage: some View {
         ZStack(alignment: .top, content: {
             
