@@ -39,8 +39,7 @@ struct TopUserComponent: View {
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
         } else {
-            ProgressView()
-                .frame(width: 53, height: 53)
+            PotatoCircle(image: Icon.cutyPotato.image)
         }
     }
     

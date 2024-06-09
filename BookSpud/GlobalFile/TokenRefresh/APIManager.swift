@@ -25,4 +25,8 @@ class APIManager {
     public func createProvider<T: TargetType>(for targetType: T.Type) -> MoyaProvider<T> {
         return MoyaProvider<T>(session: session)
     }
+    
+    public func testProvider<T: TargetType>(for targetType: T.Type) -> MoyaProvider<T> {
+        return MoyaProvider<T>(stubClosure: MoyaProvider.immediatelyStub)
+    }
 }

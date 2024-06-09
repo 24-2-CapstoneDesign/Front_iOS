@@ -33,7 +33,7 @@ extension EmotionVersesAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .bookMarkVerses(let emotion):
+        case .bookMarkVerses:
             return .requestPlain
         }
     }

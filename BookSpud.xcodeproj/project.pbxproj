@@ -587,8 +587,8 @@
 			isa = PBXGroup;
 			children = (
 				48C19A732BC93497007B5B1F /* LoginViewModel.swift */,
-				4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */,
 				48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */,
+				4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */,
 				4800C5C92BDC7F78001431BE /* ProfileViewModel.swift */,
 			);
 			path = ViewModelGroup;

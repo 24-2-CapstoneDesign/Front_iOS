@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 import Moya
 
+/// 홈태의 감정 구절 랜덤으로 보는 뷰모델
 class EmotionVersesViewModel: ObservableObject {
     
     // MARK: - Property
@@ -20,45 +21,52 @@ class EmotionVersesViewModel: ObservableObject {
     
     /* EmotionVerses  Propert */
     @Published var authorImage: SwiftUI.Image?
-    @Published var spudFace: SwiftUI.Image = Icon.happySpud.image
-    @Published var selectedEmotionImage: SwiftUI.Image = Icon.happyEmotion.image
-    @Published var isEmotionPickerPresented: Bool = false
-    @Published var isEmotionPickerViewAnimation = false
+    @Published var spudFace: SwiftUI.Image
+    @Published var selectedEmotionImage: SwiftUI.Image
+    @Published var isEmotionPickerPresented: Bool
+    @Published var isEmotionPickerViewAnimation: Bool
     
     /* BookPoster */
     @Published var bookCover: SwiftUI.Image?
     
-    var isDefaultPosterImage: Bool {
-        return bookCover == Icon.emptyBookPoster.image
-    }
-    
     /* API DataModel */
-    @Published var bookVerses: DetailBookVerses?
-    private var cancellable: AnyCancellable?
+    @Published var bookVersesData: DetailBookVerses?
+    private let provider: MoyaProvider<EmotionVersesAPI>
     
+    // MARK: - Init
     
-    // MARK: - API Property
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
-    var provider: MoyaProvider<EmotionVersesAPI>
-    
-    init() {
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<EmotionVersesAPI>(session: session)
+    init(
+        authorImage: SwiftUI.Image? = nil,
+        spudFace: SwiftUI.Image = Icon.happySpud.image,
+        selectedEmotionImage: SwiftUI.Image = Icon.happyEmotion.image,
+        isEmotionPickerPresented: Bool = false,
+        isEmotionPickerViewAnimation: Bool = false,
+        bookCover: SwiftUI.Image? = nil,
+        bookVersesData: DetailBookVerses? = nil,
+        provider: MoyaProvider<EmotionVersesAPI> = APIManager.shared.createProvider(for: EmotionVersesAPI.self)
+    ) {
+        
+        self.authorImage = authorImage
+        self.spudFace = spudFace
+        self.selectedEmotionImage = selectedEmotionImage
+        self.isEmotionPickerPresented = isEmotionPickerPresented
+        self.isEmotionPickerViewAnimation = isEmotionPickerViewAnimation
+        self.bookCover = bookCover
+        self.bookVersesData = bookVersesData
+        self.provider = provider
     }
     
-    // MARK: - Function
+    // MARK: - PickerFunction
     
-    /// 감정 선택 피커뷰
+    /// 감정 선택 피커뷰 등장 애니메이션 처리
     public func chagePickerPresented() {
         withAnimation(.easeIn(duration: 0.5)) {
             self.isEmotionPickerPresented.toggle()
         }
     }
     
+    /// 감정 글자 선택 시 변경될 아이콘 및 감정 글자
+    /// - Parameter image: 감정 이미지
     public func changeEmotionImage(_ image: SwiftUI.Image) {
         switch image {
         case Icon.happyEmotion.image:
@@ -95,7 +103,10 @@ class EmotionVersesViewModel: ObservableObject {
         }
     }
     
-    // MARK: API
+    // MARK: - EmotionPicker API
+    
+    /// 북 구절 랜덤 생성 API
+    /// - Parameter emotion: 선택한 감정
     public func getVerses(emotion: String) {
         provider.request(.bookMarkVerses(emotion: emotion)) { [weak self] result in
             switch result {
@@ -107,13 +118,17 @@ class EmotionVersesViewModel: ObservableObject {
         }
     }
     
+    /// 북 구절 랜덤 생성 API 처리
+    /// - Parameter response: 호출 시 응답처리
     private func handleResponse(response: Response) {
         do {
             let decodedData = try JSONDecoder().decode(BookVerses.self, from: response.data)
-            bookVerses = decodedData.result
+            bookVersesData = decodedData.result
             print("북 구절 받아오기 완료")
         } catch {
-            print("구절 정보 디코드 오류: \(error)")
+            bookVersesData = nil
+            print("구절 정보 안 들어 있음: \(error)")
+            
         }
     }
     
