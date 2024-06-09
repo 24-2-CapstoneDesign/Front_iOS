@@ -105,7 +105,6 @@
 		48A650512BEF9C93006D4267 /* TopRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A650502BEF9C93006D4267 /* TopRadiusView.swift */; };
 		48AAA7172BDE6E720079F939 /* ShowImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */; };
 		48ABDBAD2BF7324900EF520C /* EmotionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBAC2BF7324900EF520C /* EmotionPickerView.swift */; };
-		48ABDBAF2BF732C100EF520C /* TopUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBAE2BF732C100EF520C /* TopUserViewModel.swift */; };
 		48ABDBB12BF7336500EF520C /* EmotionVersesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */; };
 		48ADB3122C11BC59006B7BA8 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ADB3112C11BC59006B7BA8 /* LoginData.swift */; };
 		48B422F92BFF2AF1009839AD /* EmptyBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B422F82BFF2AF1009839AD /* EmptyBookView.swift */; };
@@ -122,6 +121,7 @@
 		48C19A7D2BC939A4007B5B1F /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7C2BC939A4007B5B1F /* KakaoSDKCertCore */; };
 		48C19A7F2BC939A4007B5B1F /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48C19A7E2BC939A4007B5B1F /* KakaoSDKCommon */; };
 		48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */; };
+		48CD96FD2C15C8C10084B4D5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD96FC2C15C8C10084B4D5 /* APIManager.swift */; };
 		48CF8F172C12702F003DF132 /* DetailReportData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF8F162C12702F003DF132 /* DetailReportData.swift */; };
 		48CF8F1B2C127288003DF132 /* ReadWriteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF8F1A2C127288003DF132 /* ReadWriteText.swift */; };
 		48CF8F1F2C127A1E003DF132 /* SelectBookListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF8F1E2C127A1E003DF132 /* SelectBookListAPI.swift */; };
@@ -254,7 +254,6 @@
 		48AAA7162BDE6E720079F939 /* ShowImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagePicker.swift; sourceTree = "<group>"; };
 		48ABDBAA2BF72BC100EF520C /* EmotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionData.swift; sourceTree = "<group>"; };
 		48ABDBAC2BF7324900EF520C /* EmotionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPickerView.swift; sourceTree = "<group>"; };
-		48ABDBAE2BF732C100EF520C /* TopUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserViewModel.swift; sourceTree = "<group>"; };
 		48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionVersesViewModel.swift; sourceTree = "<group>"; };
 		48ADB3112C11BC59006B7BA8 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		48B422F82BFF2AF1009839AD /* EmptyBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookView.swift; sourceTree = "<group>"; };
@@ -266,6 +265,7 @@
 		48C053732C0E2EB40032969B /* OnBoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardScreen.swift; sourceTree = "<group>"; };
 		48C19A732BC93497007B5B1F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		48C19A812BC93B36007B5B1F /* KakaoLoginMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginMananger.swift; sourceTree = "<group>"; };
+		48CD96FC2C15C8C10084B4D5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		48CF8F162C12702F003DF132 /* DetailReportData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReportData.swift; sourceTree = "<group>"; };
 		48CF8F1A2C127288003DF132 /* ReadWriteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteText.swift; sourceTree = "<group>"; };
 		48CF8F1E2C127A1E003DF132 /* SelectBookListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookListAPI.swift; sourceTree = "<group>"; };
@@ -401,6 +401,7 @@
 		483628F72BE4D3600070FD7F /* ViewGroup */ = {
 			isa = PBXGroup;
 			children = (
+				480F6D342BC9991B008D958E /* ProfileSetting */,
 				48DE6DF52BEF554D0096A069 /* TapView */,
 				483628F82BE4D37D0070FD7F /* HomeTap */,
 				48DE6DFA2BEF5D420096A069 /* BookTap */,
@@ -419,7 +420,6 @@
 				4876A8382BF60B2D00E1B204 /* EmotionVerses */,
 				4897958D2BF29454008ED803 /* TopUserComponent.swift */,
 				48DE6DFE2BEF5D8B0096A069 /* HomeView.swift */,
-				488FF0C12C1324AA00E942D4 /* UserState.swift */,
 			);
 			path = HomeTap;
 			sourceTree = "<group>";
@@ -459,7 +459,6 @@
 				483628F72BE4D3600070FD7F /* ViewGroup */,
 				489469722BDDF6DB00A4C942 /* GlobalFile */,
 				480F6D3A2BC99D83008D958E /* GlboalComponent */,
-				480F6D342BC9991B008D958E /* ProfileSetting */,
 				487170F92BC8463300ED8D2F /* Login */,
 				487170F62BC845BB00ED8D2F /* Setting */,
 				487170E82BC840C500ED8D2F /* Fonts */,
@@ -492,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				487170D72BC8380700ED8D2F /* BookSpudApp.swift */,
+				488FF0C12C1324AA00E942D4 /* UserState.swift */,
 				487170F72BC845D600ED8D2F /* Icon.swift */,
 				4819A1B22BE4C65800DDED13 /* KeyboardHideExtension.swift */,
 				48607EF92BE4D46500284E38 /* RoundedCorner.swift */,
@@ -510,8 +510,6 @@
 				4820557F2BDFDD10004E0D78 /* KeyChain */,
 				48C19A802BC93B24007B5B1F /* Kakao */,
 				487170D92BC8380700ED8D2F /* LoginView.swift */,
-				48C19A732BC93497007B5B1F /* LoginViewModel.swift */,
-				486348042BF2CA1E006628F3 /* LoginAPITarget.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -547,6 +545,7 @@
 				487AF4B22BEF415500EADE67 /* TokenProviding.swift */,
 				487AF4B62BEF433100EADE67 /* AuthAPITarget.swift */,
 				48DE6DF02BEF47C30096A069 /* TokenResponse.swift */,
+				48CD96FC2C15C8C10084B4D5 /* APIManager.swift */,
 			);
 			path = TokenRefresh;
 			sourceTree = "<group>";
@@ -587,9 +586,9 @@
 		488FF0BC2C1323CD00E942D4 /* ViewModelGroup */ = {
 			isa = PBXGroup;
 			children = (
+				48C19A732BC93497007B5B1F /* LoginViewModel.swift */,
 				4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */,
 				48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */,
-				48ABDBAE2BF732C100EF520C /* TopUserViewModel.swift */,
 				4800C5C92BDC7F78001431BE /* ProfileViewModel.swift */,
 			);
 			path = ViewModelGroup;
@@ -645,6 +644,7 @@
 		489E49112C130BE900410CEB /* APITartgetGroup */ = {
 			isa = PBXGroup;
 			children = (
+				486348042BF2CA1E006628F3 /* LoginAPITarget.swift */,
 				4825672B2BEFC2E000B4C6E8 /* ProfileAPITarget.swift */,
 			);
 			path = APITartgetGroup;
@@ -991,13 +991,13 @@
 				48DF68822C12626F0041DFE8 /* BookMarkReadView.swift in Sources */,
 				48E24C572BFC651A00A46E77 /* MainDotLine.swift in Sources */,
 				482055812BDFDD23004E0D78 /* KeyChainManager.swift in Sources */,
-				48ABDBAF2BF732C100EF520C /* TopUserViewModel.swift in Sources */,
 				482F3F132C0C9D35003E7B00 /* BookListCardView.swift in Sources */,
 				481F69BF2C049D960095867F /* CheckingUserBookMarkViewModel.swift in Sources */,
 				480638892C0D9D6200EA9B91 /* BookMarkData.swift in Sources */,
 				48DF68762C124AAC0041DFE8 /* EmotionAPITarget.swift in Sources */,
 				487F19022C0EC5BC00DA93E5 /* OCRView.swift in Sources */,
 				487AF4B12BEF412E00EADE67 /* AccessTokenRefresher.swift in Sources */,
+				48CD96FD2C15C8C10084B4D5 /* APIManager.swift in Sources */,
 				48C19A822BC93B36007B5B1F /* KakaoLoginMananger.swift in Sources */,
 				488D416B2C0780540031F5E1 /* ISBNInputViewModel.swift in Sources */,
 				4876A83E2BF60B6F00E1B204 /* SelectEmotionView.swift in Sources */,

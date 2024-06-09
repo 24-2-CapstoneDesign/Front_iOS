@@ -9,8 +9,6 @@ import SwiftUI
 import Kingfisher
 
 struct TopUserComponent: View {
-    
-    @ObservedObject var viewModel: TopUserViewModel
     @EnvironmentObject var userState: UserState
     var body: some View {
         topRoundView   
