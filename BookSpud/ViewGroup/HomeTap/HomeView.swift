@@ -12,14 +12,10 @@ struct HomeView: View {
     
     // MARK: - ViewModel
     @EnvironmentObject var userState: UserState
-    @StateObject var topUserViewModel: TopUserViewModel
     @StateObject var emotionVersesViewModel = EmotionVersesViewModel()
     @StateObject var bookCommendViewModel = BookRecommendViewModel()
     @StateObject var emotionChartViewModel = EmotionChartViewModel()
-    
-    init() {
-            _topUserViewModel = StateObject(wrappedValue: TopUserViewModel(userState: UserState()))
-        }
+
     
     var body: some View {
         NavigationStack {
@@ -35,7 +31,7 @@ struct HomeView: View {
     private var allView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 29, content: {
-                TopUserComponent(viewModel: topUserViewModel)
+                TopUserComponent()
                     .environmentObject(userState)
                 
                 EmotionVersesView(viewModel: emotionVersesViewModel)

@@ -117,22 +117,4 @@ class EmotionVersesViewModel: ObservableObject {
         }
     }
     
-    
-    func loadImage(from url: URL) {
-            if let cachedImage = ImageService.shared.loadImage(from: url) {
-                self.authorImage = cachedImage
-            } else {
-                cancellable = URLSession.shared.dataTaskPublisher(for: url)
-                    .map { $0.data }
-                    .catch { _ in Just(Data()) }
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] data in
-                        guard !data.isEmpty, let self = self, let uiImage = UIImage(data: data) else { return }
-                        ImageService.shared.downloadImage(from: url) { image in
-                            self.authorImage = image
-                        }
-                    })
-            }
-        }
-    
 }

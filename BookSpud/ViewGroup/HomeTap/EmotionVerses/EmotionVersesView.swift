@@ -10,7 +10,7 @@ import SwiftUI
 /// 감정선택과 감정에 해당하는 최근 책의 구절 보이는 뷰
 struct EmotionVersesView: View {
     
-    @StateObject var viewModel: EmotionVersesViewModel
+    @ObservedObject var viewModel: EmotionVersesViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 15, content: {
