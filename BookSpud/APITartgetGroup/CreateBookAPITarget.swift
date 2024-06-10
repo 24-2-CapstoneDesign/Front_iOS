@@ -34,16 +34,7 @@ extension CreateBook: TargetType {
     var task: Task {
         switch self {
         case .createBook(let bookData):
-            return .requestParameters(parameters: [
-                "isbn": bookData.documents.first?.isbn ?? "",
-                "title": bookData.documents.first?.title ?? "",
-                "author": bookData.documents.first?.authors.first ?? "",
-                "cover": bookData.documents.first?.thumbnail ?? 0,
-                "price": bookData.documents.first?.price ?? 0,
-                "salePrice": bookData.documents.first?.salePrice ?? 0,
-                "content": bookData.documents.first?.contents ?? "",
-                "purchaseLink": bookData.documents.first?.url ?? ""
-            ], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: bookData.toParameters(), encoding: JSONEncoding.default)
         }
     }
     

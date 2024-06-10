@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 수동으로 ISBN 입력받기 뷰
 struct ISBNManualView: View {
     
     @ObservedObject var viewModel: ISBNInputViewModel

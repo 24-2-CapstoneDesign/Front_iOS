@@ -9,19 +9,18 @@ import SwiftUI
 
 struct ISBNCameraView: View {
     
-    @ObservedObject var viewModel = ISBNInputViewModel()
+    @StateObject var viewModel = ISBNInputViewModel()
     @State var clickManual: Bool = true
     
     var body: some View {
         BarcodeScannerView { code in
             viewModel.scannedCode = code
-            print(viewModel.scannedCode)
         }
         .overlay(
             overlayView
         )
         .sheet(isPresented: $viewModel.showManualView, content: {
-            ISBNManualView(viewModel: ISBNInputViewModel())
+            ISBNManualView(viewModel: viewModel)
                 .presentationDragIndicator(.visible)
         })
         .sheet(isPresented: $viewModel.isShowSaveView, content: {
@@ -33,6 +32,7 @@ struct ISBNCameraView: View {
     
     // MARK: - Barcode Scan OverlayView
     
+    /// 카메라 위 오버레이 뷰
     private var overlayView: some View {
         ZStack(alignment: .center, content: {
             background
@@ -50,6 +50,7 @@ struct ISBNCameraView: View {
         })
     }
     
+    /// 바코드 스캔 안내 뷰
     private var title: some View {
         VStack(alignment: .center, spacing: 10, content: {
             Text("바코드를 스캔해주세요!")
@@ -65,6 +66,7 @@ struct ISBNCameraView: View {
         })
     }
     
+    /// 바코드 스캔 가이드라인 뷰
     private var background: some View {
         Icon.scanGuide.image
             .resizable()

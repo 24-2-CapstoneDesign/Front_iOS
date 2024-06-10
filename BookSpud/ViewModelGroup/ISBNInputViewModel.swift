@@ -13,10 +13,6 @@ import Combine
 class ISBNInputViewModel: ObservableObject {
     
     // MARK: - Moya
-    
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
     private var cancellables = Set<AnyCancellable>()
     var provider: MoyaProvider<KakaoBookAPITarget>
     var bookCreate: MoyaProvider<CreateBook>
@@ -46,12 +42,11 @@ class ISBNInputViewModel: ObservableObject {
     
     // MARK: - Init
     
-    init() {
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
+    init(
+        bookCreate: MoyaProvider<CreateBook> = APIManager.shared.createProvider(for: CreateBook.self)
+    ) {
         provider = MoyaProvider<KakaoBookAPITarget>()
-        bookCreate = MoyaProvider<CreateBook>(session: session)
+        self.bookCreate = bookCreate
         
         $scannedCode
             .dropFirst()
@@ -61,7 +56,7 @@ class ISBNInputViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // MARK: - API Function
+    // MARK: - Kakao API
     
     /// 카카오로 isbn 데이터 넘기기
     /// - Parameter isbn: isbn 데이터 넘기기
@@ -76,6 +71,8 @@ class ISBNInputViewModel: ObservableObject {
         }
     }
     
+    /// 카카오 isbn 책 데이터 핸들러
+    /// - Parameter response: 카카오 책 데이터 API reponse
     private func sendISBNHandleResponse(response: Response) {
         do {
             let decodedData = try JSONDecoder().decode(ScanBookData.self, from: response.data)
@@ -86,6 +83,8 @@ class ISBNInputViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Save BookInfo API
+    /// 카카오로 받아온 책 데이터 북스푸드 서버 저장
     public func sendBookInfo() {
         guard let bookData = scanBookData else { return }
         
@@ -99,6 +98,8 @@ class ISBNInputViewModel: ObservableObject {
         }
     }
     
+    /// 서버 저장 핸들러
+    /// - Parameter response: 서버 저장 API response
     private func handlerResponse(response: Response) {
         do {
             let decoded = try JSONDecoder().decode(BookCreateResponse.self, from: response.data)
