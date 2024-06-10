@@ -366,15 +366,6 @@
 			path = GlboalComponent;
 			sourceTree = "<group>";
 		};
-		481F69BB2C049C2E0095867F /* CheckingUserBookMark */ = {
-			isa = PBXGroup;
-			children = (
-				481F69BC2C049D5A0095867F /* CheckingUserBookMarkView.swift */,
-				481F69BE2C049D960095867F /* CheckingUserBookMarkViewModel.swift */,
-			);
-			path = CheckingUserBookMark;
-			sourceTree = "<group>";
-		};
 		4820557F2BDFDD10004E0D78 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +577,8 @@
 				48ABDBB02BF7336500EF520C /* EmotionVersesViewModel.swift */,
 				4839684B2BFCEF64002A3035 /* EmotionChartViewModel.swift */,
 				48875DF62BFC7F1F00847986 /* BookRecommendViewModel.swift */,
+				48E2446B2C042E1900B7F695 /* EmotionUserViewModel.swift */,
+				481F69BE2C049D960095867F /* CheckingUserBookMarkViewModel.swift */,
 			);
 			path = ViewModelGroup;
 			sourceTree = "<group>";
@@ -672,8 +665,8 @@
 		48A48D2C2BFEC80F00552A28 /* BookRecommendDetail */ = {
 			isa = PBXGroup;
 			children = (
-				481F69BB2C049C2E0095867F /* CheckingUserBookMark */,
-				48EB4F222C0381F2007B5668 /* EmotionUserProfile */,
+				481F69BC2C049D5A0095867F /* CheckingUserBookMarkView.swift */,
+				48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */,
 				4859170A2BFED2A800DC3650 /* BookRecommendDetailView.swift */,
 				48D5C2B12C01CBCC0088FD26 /* BookRecommendDetailRow.swift */,
 			);
@@ -800,15 +793,6 @@
 				48E24C612BFC713500A46E77 /* BookRecommendCard.swift */,
 			);
 			path = BookRecommendCardView;
-			sourceTree = "<group>";
-		};
-		48EB4F222C0381F2007B5668 /* EmotionUserProfile */ = {
-			isa = PBXGroup;
-			children = (
-				48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */,
-				48E2446B2C042E1900B7F695 /* EmotionUserViewModel.swift */,
-			);
-			path = EmotionUserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

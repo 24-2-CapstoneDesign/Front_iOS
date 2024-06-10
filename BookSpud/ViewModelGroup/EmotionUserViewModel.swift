@@ -16,8 +16,6 @@ class EmotionUserViewModel: ObservableObject {
     @Published var emotionUserProfile: SwiftUI.Image = Icon.cutyPotato.image
     @Published var emotionUserDetailData: EmotionUserDetailData?
     
-    var imageCache = ImageCacheManager.shared
-    private var cancellable: AnyCancellable?
     
     // MARK: - API Property
     private let tokenProvider: TokenProviding
@@ -32,31 +30,6 @@ class EmotionUserViewModel: ObservableObject {
         accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
         session = Session(interceptor: accessTokenRefresher)
         provider = MoyaProvider<BookRecommendDetailAPI>(session: session)
-    }
-    
-    // MARK: - ImageFunction
-    
-    public func loadImage(from url: URL) {
-        if let cachedImage = imageCache.loadImageData(from: url) {
-            self.emotionUserProfile = cachedImage
-        } else {
-            downloadImage(from: url)
-        }
-    }
-    
-    private func downloadImage(from url: URL) {
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
-            .catch { _ in Just(Data()) }
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in}, receiveValue: {
-                [weak self] data in
-                guard !data.isEmpty, let self = self else { return }
-                imageCache.downloadAndSaveImage(from: url)
-                if let uiImage = UIImage(data: data) {
-                    self.emotionUserProfile = Image(uiImage: uiImage)
-                }
-            })
     }
    
 }

@@ -58,51 +58,36 @@ extension BookRecommendDetailAPI: TargetType {
         case .emotionBookMark(let id):
             let sampleJSON: String
             switch id {
-            case 1:
-                sampleJSON = """
-                   {
-                       "status": 200,
-                       "message": "북마크 정보",
-                       "result": [
-                           {
-                               "bookId": \(id),
-                               "title": "Happy Book",
-                               "author": "Author A",
-                               "cover": "https://example.com/cover1.jpg"
-                           }
-                       ]
-                   }
-                   """
             case 2:
-                sampleJSON = """
-                   {
-                       "status": 200,
-                       "message": "북마크 정보",
-                       "result": [
-                           {
-                               "bookId": \(id),
-                               "title": "Sad Book",
-                               "author": "Author B",
-                               "cover": "https://example.com/cover2.jpg"
-                           }
-                       ]
-                   }
-                   """
+                sampleJSON =
+                                                """
+                                                {
+                                                  "status": 200,
+                                                  "message": "북마크 불러오기 성공",
+                                                  "result": [
+                                                    {
+                                                      "nickName": "주먹쥐고",
+                                                      "profileImageUrl": "https://i.namu.wiki/i/H_ww_1ZvyUecXektxyEzeINvjQwgEouL1pupbm2C7ozwot0i7haxmgjC3JA1DxNtOSs1McvTBi8CcOCo2Th_ytEPA1MyReoIEOtuvPTi9Eww3wLUAarRY6ZgEfu68CGz1q4R2uQW72hFloCCWOyiTw.webp",
+                                                      "emotion": "MOVED",
+                                                      "phase": "오늘 하루 당신의 삶은 만족스러웠나요?",
+                                                      "memo": "오늘 정말 많은 일들이 있었다. 하지만 나에게 있어 좋은 일들이었다 생각한다."
+                                                    },
+                                                                    {
+                                                                      "nickName": "푸앙이",
+                                                                      "profileImageUrl": "https://www.cau.ac.kr/cau/img/campusinfo/mascot-tab1_01.jpg",
+                                                                      "emotion": "MOVED",
+                                                                      "phase": "과거의 일은 잠시 묻어두고 현재를 바라봐요",
+                                                                      "memo": "현재의 삶을 만족하면서 살아가기로 했다."
+                                                                    }
+                                                  ]
+                                                }
+                                                """
             default:
-                sampleJSON = """
-                   {
-                       "status": 200,
-                       "message": "북마크 정보",
-                       "result": [
-                           {
-                               "bookId": \(id),
-                               "title": "Default Book",
-                               "author": "Default Author",
-                               "cover": "https://example.com/default_cover.jpg"
-                           }
-                       ]
-                   }
-                   """
+                sampleJSON = 
+                                """
+                                
+                                """
+                
             }
             return Data(sampleJSON.utf8)
             

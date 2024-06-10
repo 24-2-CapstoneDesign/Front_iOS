@@ -37,7 +37,7 @@ struct BookRecommendDetailView: View {
             .background(Color.backgrounYellow)
             .onAppear {
                 viewModel.getDetailBookInfo(id: bookData.bookId)
-//                viewModel.getDataProfile(id: bookData.bookId)
+                viewModel.getDataProfile(id: bookData.bookId)
             }
     }
     
@@ -175,17 +175,16 @@ struct BookRecommendDetailView: View {
                 columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6), spacing: 30,
                 content: {
                     ForEach(emotionUserData.result, id: \.self) { data in
-                    EmotionUserProfile(viewModel: EmotionUserViewModel(emotionUserDetailData: data))
+                    EmotionUserProfile(emotionUserDetailData: data)
                         .onTapGesture {
                             self.showSheet = true
                         }
-                        .sheet(isPresented: $showSheet, content: {
-                            CheckingUserBookMarkView(viewModel: CheckingUserBookMarkViewModel(checkingUserBookData: data),
-                                                     isPresented: $showSheet)
-                            .presentationDetents([.fraction(0.8)])
-                            .presentationDragIndicator(.visible)
-                        })
-                        
+//                        .sheet(isPresented: $showSheet, content: {
+//                            CheckingUserBookMarkView(viewModel: CheckingUserBookMarkViewModel(checkingUserBookData: data),
+//                                                     isPresented: $showSheet)
+//                            .presentationDetents([.fraction(0.8)])
+//                            .presentationDragIndicator(.visible)
+//                        })
                 }
             })
             .frame(maxWidth: 352, alignment: .top)
