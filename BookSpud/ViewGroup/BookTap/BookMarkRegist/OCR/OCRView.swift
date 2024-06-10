@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct OCRView: View {
-    @ObservedObject var viewModel: BookMarkResgistViewModel
+    @ObservedObject var viewModel: BookMarkRegistViewModel
     @Binding var isShowOCR: Bool
+    
+    
+    init(viewModel: BookMarkRegistViewModel, isShowOCR: Binding<Bool>) {
+        self.viewModel = viewModel
+        self._isShowOCR = isShowOCR
+    }
 
     var body: some View {
         VStack(alignment: .center, spacing: 23) {

@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+/// 저장된 북마크 조회 뷰
 struct BookMarkReadView: View {
     
     @ObservedObject var viewModel: BookDetailViewModel
     @State var verses: String
-  @State var memo: String
-  @State var page: Int
-  @State var emotion: String
+    @State var memo: String
+    @State var page: Int
+    @State var emotion: String
     
     var body: some View {
         allView
@@ -40,7 +41,6 @@ struct BookMarkReadView: View {
         .frame(maxWidth: .infinity)
         .background(Color.backgrounYellow)
         .onAppear {
-            viewModel.loadSession()
             viewModel.emotionImageChange(emotion)
         }
     }
@@ -48,7 +48,7 @@ struct BookMarkReadView: View {
     /// 유저들이 저장한 감정 북마크의 타이틀
     private var title: some View {
         HStack(spacing: 16, content: {
-            Text("\(viewModel.nickname)님의 감정")
+            Text("\(viewModel.loadSession())님의 감정")
                 .font(.spoqaHans(type: .bold, size: 20))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)
@@ -75,6 +75,7 @@ struct BookMarkReadView: View {
         })
     }
     
+    /// 북마크 저장된 책 페이지 수
     private var selectedPage: some View {
         HStack(alignment: .center, content: {
             Text("기록 페이지 💬")
@@ -92,13 +93,13 @@ struct BookMarkReadView: View {
                     .frame(maxWidth: 78, maxHeight: 22)
                     .clipShape(.rect(cornerRadius: 4))
                     .shadow03()
-                        
-                    
+                
+                
                 Text("\(viewModel.page) 쪽")
-                        .font(.spoqaHans(type: .regular, size: 12))
-                        .foregroundStyle(Color.gray07)
-                })
+                    .font(.spoqaHans(type: .regular, size: 12))
+                    .foregroundStyle(Color.gray07)
             })
+        })
         .frame(maxWidth: 339, maxHeight: 22)
     }
     

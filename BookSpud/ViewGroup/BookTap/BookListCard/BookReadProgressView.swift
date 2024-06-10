@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+/// 내가 저장한 책 리스트 진행률 컴포넌트
 struct BookReadProgressView: View {
     
-    @StateObject var viewModel: BookListCardViewModel
+    let currentPage: Int
+    let totalPage: Int
+    
+    init(bookData: BookListDetailData) {
+        self.currentPage = bookData.finalPage
+        self.totalPage = bookData.totalPage
+    }
     
     
     var body: some View {
@@ -58,8 +65,8 @@ struct BookReadProgressView: View {
     }
     
     private func percentage() -> Int {
-        let current = viewModel.bookListDetailData.finalPage
-        let total = viewModel.bookListDetailData.totalPage
+        let current = self.currentPage
+        let total = self.totalPage
         
         guard total > 0 else { return 0 }
         

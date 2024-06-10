@@ -14,15 +14,18 @@ struct CustomTextField: View {
     @Binding var text: String
     @FocusState private var isTextFocused: Bool
     
+    let keyboardType: UIKeyboardType
     let placeholder: String
     let cornerSize: CGFloat
     let showCheckIcon: Bool
     let maxWidth: CGFloat
     let maxHeight: CGFloat
     
+    
     // MARK: - init
     
     init(
+        keyboardType: UIKeyboardType = .default,
         text: Binding<String>,
         isTextFocused: Bool = false,
         placeholder: String,
@@ -31,6 +34,7 @@ struct CustomTextField: View {
         maxWidth: CGFloat,
         maxHeight: CGFloat
     ) {
+        self.keyboardType = keyboardType
         self._text = text
         self.placeholder = placeholder
         self.cornerSize = cornerSize
@@ -78,6 +82,7 @@ struct CustomTextField: View {
             
             TextField("", text: $text, axis: .horizontal)
                 .frame(minWidth: maxWidth, minHeight: maxHeight)
+                .keyboardType(keyboardType)
                 .font(.spoqaHans(type: .medium, size: 13))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Color.gray07)

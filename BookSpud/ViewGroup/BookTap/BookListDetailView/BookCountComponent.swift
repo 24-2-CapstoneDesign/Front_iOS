@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 북마크 수, 페이지 쪽, 감정 북마크 수 보여주는 컴포넌트
 struct BookCountComponent: View {
     
     var count: Int

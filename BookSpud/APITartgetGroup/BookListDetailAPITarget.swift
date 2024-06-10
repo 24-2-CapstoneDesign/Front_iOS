@@ -10,7 +10,7 @@ import Moya
 
 enum BookListDetailAPI {
     case getBookMark(id: Int)
-    case pageUpdagte(id: Int, total: Int, final: Int)
+    case pageUpdagte(id: Int, bookData: BookListDetailData)
 }
 
 extension BookListDetailAPI: TargetType {
@@ -22,7 +22,7 @@ extension BookListDetailAPI: TargetType {
         switch self {
         case .getBookMark(let id):
             return "/api/bookmark/mybook/\(id)"
-        case .pageUpdagte(let id, _, _):
+        case .pageUpdagte(let id, _):
             return "/api/book/\(id)"
         }
     }
@@ -40,10 +40,10 @@ extension BookListDetailAPI: TargetType {
         switch self {
         case .getBookMark:
             return .requestPlain
-        case .pageUpdagte:
+        case .pageUpdagte(_, let bookData):
             return .requestParameters(parameters: [
-                "totalPage": 0,
-                "finalPage": 0
+                "totalPage": bookData.totalPage,
+                "finalPage": bookData.finalPage
             ], encoding: JSONEncoding.default
             )
         }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 내 책 정보 상단 책 분류 버튼 컴포넌트
 struct BookStatusBtn: View {
     
     var text: String

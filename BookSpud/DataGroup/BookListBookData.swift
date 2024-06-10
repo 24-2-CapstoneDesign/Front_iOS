@@ -7,6 +7,9 @@
 
 import Foundation
 
+// MARK: - MYBookData
+
+/// 내가 저장한 책 리스트 받아오기
 struct BookListBookData: Codable, Hashable {
     var status: Int
     var message: String

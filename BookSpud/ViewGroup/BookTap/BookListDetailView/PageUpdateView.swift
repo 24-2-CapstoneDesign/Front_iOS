@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+/// 저장한 책 내부 정보뷰, 페이지 업데이트 뷰
 struct PageUpdateView: View {
     
-    @StateObject var viewModel: BookDetailViewModel
+    @ObservedObject var viewModel: BookDetailViewModel
     @Binding var showPageUpdateView: Bool
-    @State var clickOn: Bool = false
+    
+    // MARK: - Init
+    
+    init(viewModel: BookDetailViewModel, showPageUpdateView: Binding<Bool>) {
+        self.viewModel = viewModel
+        self._showPageUpdateView = showPageUpdateView
+    }
     
     var body: some View {
         ZStack(alignment: .center, content: {
@@ -57,7 +64,7 @@ struct PageUpdateView: View {
     private var savePageCount: some View {
         Button(action: {
             if viewModel.bookListDetailData.finalPage <= viewModel.bookListDetailData.totalPage {
-                viewModel.patchPage(id: viewModel.bookListDetailData.myBookId, total: viewModel.bookListDetailData.totalPage, final: viewModel.bookListDetailData.finalPage)
+                viewModel.patchPage(id: viewModel.bookListDetailData.myBookId, bookData: viewModel.bookListDetailData)
                 showPageUpdateView = false
             }
         }, label: {
@@ -80,7 +87,7 @@ struct PageUpdateView: View {
             Text(name)
                 .font(.pretendard(type: .semiBold, size: 14))
                 .foregroundStyle(Color.black)
-            CustomTextField(text: Binding(
+            CustomTextField(keyboardType: .numberPad, text: Binding(
                 get: {String(text.wrappedValue)},
                 set: {text.wrappedValue = Int($0) ?? text.wrappedValue}
             ), placeholder: "\(name) 입력 해주세요", showCheckIcon: false, maxWidth: 107, maxHeight: 41)

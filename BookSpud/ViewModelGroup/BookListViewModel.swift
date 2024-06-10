@@ -11,21 +11,16 @@ import Moya
 
 class BookListViewModel: ObservableObject {
     @Published var bookListBookData: BookListBookData?
-    private let imageCacheManager = ImageCacheManager.shared
+    private let provider: MoyaProvider<BookListAPI>
     
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
-    var provider: MoyaProvider<BookListAPI>
-    
-    init() {
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<BookListAPI>(session: session)
+    init(
+        provider: MoyaProvider<BookListAPI> = APIManager.shared.createProvider(for: BookListAPI.self)
+    ) {
+        self.provider = provider
     }
     
     
+    /// 내가 등록한 책 정보 받아오기
     public func getBookList() {
         provider.request(.bookListAPI) {[weak self] result in
             switch result {
@@ -41,6 +36,7 @@ class BookListViewModel: ObservableObject {
         do {
             let decodedData = try JSONDecoder().decode(BookListBookData.self, from: response.data)
             self.bookListBookData = decodedData
+            print("내가 저장 책 조회 성공")
         } catch {
             print("디코더 오류: \(error)")
         }

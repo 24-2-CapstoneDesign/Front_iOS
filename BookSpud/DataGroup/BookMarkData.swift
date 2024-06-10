@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - BookMarkReading
+
 struct BookMarkData: Codable, Hashable {
     var status: Int
     var message: String
@@ -21,6 +23,7 @@ struct BookMarkDetailData: Codable, Hashable {
     var emotion: String
 }
 
+// MARK: - PageUpdate
 
 struct BookPageData: Codable {
     var status: Int

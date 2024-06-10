@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import Kingfisher
 
+/// 저장된 책 상세 정보 조회 뷰
 struct BookListDetailView: View {
     
     @StateObject var viewModel: BookDetailViewModel
-    @State var isShowBoookMark: Bool = false
+    /* 북마크 생성하기 버튼 */
+    @State var isShowBoookMarkMake: Bool = false
+    /* 책 페이지 수정 */
     @State var isShowCountEdit: Bool = false
+    /* 북마크 정보 Sheet */
     @State var isShowBookMarkInfo: Bool = false
+    /* 북마크 감정 교체 버튼 */
     @State var isSelected: BookEmotionKind = .happy
     
+    
+    init(bookData: BookListDetailData) {
+        self._viewModel = StateObject(wrappedValue: BookDetailViewModel(bookListDetailData: bookData))
+    }
     
     
     var body: some View {
@@ -30,18 +40,22 @@ struct BookListDetailView: View {
             bottomBookMarkView
         })
         .navigationBarBackButtonHidden()
-        .sheet(isPresented: $isShowBoookMark, content: {
-            BookMarkRegistView(viewModel: BookMarkResgistViewModel(bookId: viewModel.bookListDetailData.myBookId, ocrViewModel: OCRViewModel()) ,isShowBookMarkRegist: $isShowBoookMark)
+        
+        .sheet(isPresented: $isShowBoookMarkMake, content: {
+            BookMarkRegistView(bookId: viewModel.bookListDetailData.myBookId, isShowBookMarkRegist: $isShowBoookMarkMake)
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
         })
+        
         .fullScreenCover(isPresented: $isShowCountEdit, content: {
             PageUpdateView(viewModel: viewModel, showPageUpdateView: $isShowCountEdit)
                 .presentationBackground(Color.clear)
         })
+        
         .onAppear {
             viewModel.getBookMark(id: viewModel.bookListDetailData.myBookId)
         }
+        
         .sheet(isPresented: $isShowBookMarkInfo, onDismiss: {
             self.isShowBookMarkInfo = false
         }, content: {
@@ -69,6 +83,7 @@ struct BookListDetailView: View {
         .frame(maxWidth: .infinity).ignoresSafeArea(.all)
     }
     
+    /// 책 정보를 담고 있는 배경화면
     private var backgroundView: some View {
         RoundedRectangle(cornerRadius: 0)
             .fill(
@@ -78,6 +93,7 @@ struct BookListDetailView: View {
     }
     
     
+    /// 이전으로 돌아가는 커스텀 네비게이션
     private var topNavigation: some View {
         CustomNavigation(title: "책 정보", onOff: false, height: 35, padding: -5)
     }
@@ -85,13 +101,17 @@ struct BookListDetailView: View {
     /// 상단 책 정보
     private var bookInfo: some View {
         VStack(alignment: .center, spacing: 10, content: {
-            if let image = viewModel.bookCoverImage {
-                image
+            if let url = URL(string: viewModel.bookListDetailData.cover) {
+                KFImage(url)
+                    .placeholder {
+                        ProgressView()
+                            .frame(width: 100, height: 150)
+                    }.retry(maxCount: 2, interval: .seconds(2))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(minWidth: 100, minHeight: 150)
             } else {
-                ProgressView()
+                EmptyBookView()
             }
             
             Text(viewModel.bookListDetailData.title)
@@ -105,9 +125,6 @@ struct BookListDetailView: View {
                 .foregroundStyle(.subText)
                 .kerning(-0.2)
         })
-        .onAppear {
-            viewModel.loadImage()
-        }
     }
     
     private var bookInfoCount: some View {
@@ -133,7 +150,7 @@ struct BookListDetailView: View {
     private var btnGroup: some View {
         HStack(alignment: .center, spacing: 10, content: {
             makeBtn(title: "북마크 생성하기", action: {
-                self.isShowBoookMark = true
+                self.isShowBoookMarkMake = true
             }, color: Color.primaryDark)
             
             makeBtn(title: "페이지 업데이트", action: {

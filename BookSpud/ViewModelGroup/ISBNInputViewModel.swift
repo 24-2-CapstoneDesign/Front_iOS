@@ -103,7 +103,7 @@ class ISBNInputViewModel: ObservableObject {
     private func handlerResponse(response: Response) {
         do {
             let decoded = try JSONDecoder().decode(BookCreateResponse.self, from: response.data)
-            print("책저장 완료")
+            print("책저장 완료: \(decoded.status)")
         } catch {
             print("책 저장 디코드 에러 : \(error)")
         }
