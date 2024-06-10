@@ -8,15 +8,17 @@
 import SwiftUI
 import Kingfisher
 
-/// 유저 프로필 카드(북마크를 남긴 사람들 컴포넌트 사용)
+/// 유저 프로필 카드(북마크를 남긴 사람들의 북마크 컴포넌트)
 struct EmotionUserProfile: View {
     
     let emotionUserDetailData: EmotionUserDetailData
+    @State var showSheet: Bool
     
     // MARK: - init
     
     init(emotionUserDetailData: EmotionUserDetailData) {
         self.emotionUserDetailData = emotionUserDetailData
+        self.showSheet = false
     }
     
     
@@ -25,7 +27,15 @@ struct EmotionUserProfile: View {
             userProfile
             userName
         })
+        .onTapGesture {
+            showSheet = true
+        }
         .frame(maxWidth: 52, maxHeight: 109)
+        .sheet(isPresented: $showSheet, content: {
+            CheckingUserBookMarkView(isPresented: $showSheet, data: emotionUserDetailData)
+            .presentationDetents([.fraction(0.8)])
+            .presentationDragIndicator(.visible)
+        })
     }
     
     // MARK: - EmotionUserDataView

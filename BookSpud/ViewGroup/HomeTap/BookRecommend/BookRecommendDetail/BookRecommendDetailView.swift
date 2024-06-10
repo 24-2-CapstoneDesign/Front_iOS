@@ -170,45 +170,38 @@ struct BookRecommendDetailView: View {
     /// 북마크 프로필 리스트
     private var bookMarkProfileList: some View {
         
-        if let emotionUserData = viewModel.emotionUserData {
-            LazyVGrid(
-                columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6), spacing: 30,
-                content: {
-                    ForEach(emotionUserData.result, id: \.self) { data in
-                    EmotionUserProfile(emotionUserDetailData: data)
-                        .onTapGesture {
-                            self.showSheet = true
+        if let emotionUserData = viewModel.emotionUserData?.result {
+            if !emotionUserData.isEmpty {
+                LazyVGrid(
+                    columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 150), spacing: 15), count: 6), spacing: 30,
+                    content: {
+                        ForEach(emotionUserData, id: \.self) { data in
+                            EmotionUserProfile(emotionUserDetailData: data)
                         }
-//                        .sheet(isPresented: $showSheet, content: {
-//                            CheckingUserBookMarkView(viewModel: CheckingUserBookMarkViewModel(checkingUserBookData: data),
-//                                                     isPresented: $showSheet)
-//                            .presentationDetents([.fraction(0.8)])
-//                            .presentationDragIndicator(.visible)
-//                        })
-                }
-            })
-            .frame(maxWidth: 352, alignment: .top)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 10)
-            
-        } else {
-            HStack(content: {
+                    })
+                .frame(maxWidth: 352, alignment: .top)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
                 
-                Spacer()
-                
-                VStack(alignment: .center, spacing: 16, content: {
-                    Icon.sadSpud.image
-                        .resizable()
-                        .frame(maxWidth: 50, maxHeight: 53)
-                    Text("등록된 북마크가 없습니다.")
-                        .font(.spoqaHans(type: .regular, size: 10))
-                        .foregroundStyle(Color.gray06)
-                        .kerning(-0.2)
+            } else {
+                HStack(content: {
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .center, spacing: 16, content: {
+                        Icon.sadSpud.image
+                            .resizable()
+                            .frame(maxWidth: 50, maxHeight: 53)
+                        Text("등록된 북마크가 없습니다.")
+                            .font(.spoqaHans(type: .regular, size: 10))
+                            .foregroundStyle(Color.gray06)
+                            .kerning(-0.2)
+                    })
+                    
+                    Spacer()
                 })
-                
-                Spacer()
-            })
-            .frame(maxWidth: 352, maxHeight: 100)
+                .frame(maxWidth: 352, maxHeight: 100)
+            }
         }
     }
 }

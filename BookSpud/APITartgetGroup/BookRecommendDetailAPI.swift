@@ -58,6 +58,24 @@ extension BookRecommendDetailAPI: TargetType {
         case .emotionBookMark(let id):
             let sampleJSON: String
             switch id {
+            case 1:
+                sampleJSON =
+                                                                """
+                                                                {
+                                                                  "status": 200,
+                                                                  "message": "북마크 불러오기 성공",
+                                                                  "result": [
+                                                                    {
+                                                                      "nickName": "챆찎",
+                                                                      "profileImageUrl": "https://upload.wikimedia.org/wikipedia/ko/thumb/4/4a/신짱구.png/230px-신짱구.png",
+                                                                      "emotion": "MOVED",
+                                                                      "phase": "오늘 하루 당신의 삶은 만족스러웠나요?",
+                                                                      "memo": "오늘 정말 많은 일들이 있었다. 하지만 나에게 있어 좋은 일들이었다 생각한다."
+                                                                    }
+                                                                  ]
+                                                                }
+                                                                """
+
             case 2:
                 sampleJSON =
                                                 """
@@ -75,7 +93,7 @@ extension BookRecommendDetailAPI: TargetType {
                                                                     {
                                                                       "nickName": "푸앙이",
                                                                       "profileImageUrl": "https://www.cau.ac.kr/cau/img/campusinfo/mascot-tab1_01.jpg",
-                                                                      "emotion": "MOVED",
+                                                                      "emotion": "JOY",
                                                                       "phase": "과거의 일은 잠시 묻어두고 현재를 바라봐요",
                                                                       "memo": "현재의 삶을 만족하면서 살아가기로 했다."
                                                                     }
@@ -83,10 +101,15 @@ extension BookRecommendDetailAPI: TargetType {
                                                 }
                                                 """
             default:
-                sampleJSON = 
-                                """
-                                
-                                """
+                sampleJSON =
+                                                                                """
+                                                                                {
+                                                                                  "status": 410,
+                                                                                  "message": "데이터 없음",
+                                                                                  "result": [
+                                                                                  ]
+                                                                                }
+                                                                                """
                 
             }
             return Data(sampleJSON.utf8)

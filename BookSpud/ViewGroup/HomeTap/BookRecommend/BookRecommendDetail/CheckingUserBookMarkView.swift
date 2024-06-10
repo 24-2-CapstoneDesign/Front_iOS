@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+/// 북마크를 남긴 사람들의 북마크 클릭시 감정 Sheet뷰
 struct CheckingUserBookMarkView: View {
     
-    @ObservedObject var viewModel: CheckingUserBookMarkViewModel
+    @StateObject var viewModel: CheckingUserBookMarkViewModel
     @Binding var isPresented: Bool
+    
+    init(
+         isPresented: Binding<Bool>,
+         data: EmotionUserDetailData
+    ) {
+        self._viewModel = StateObject(wrappedValue: CheckingUserBookMarkViewModel(checkingUserBookData: data))
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         allView
