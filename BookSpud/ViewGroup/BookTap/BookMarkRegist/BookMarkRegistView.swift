@@ -7,13 +7,20 @@
 
 import SwiftUI
 
+/// 북마크 등록 뷰
 struct BookMarkRegistView: View {
     
     
-    @StateObject var viewModel: BookMarkResgistViewModel
-    
+    @StateObject var viewModel: BookMarkRegistViewModel
     @Binding var isShowBookMarkRegist: Bool
-
+    
+    init(bookId: Int,
+         isShowBookMarkRegist: Binding<Bool>
+    ) {
+        self._viewModel = StateObject(wrappedValue: BookMarkRegistViewModel(bookId: bookId))
+        self._isShowBookMarkRegist = isShowBookMarkRegist
+    }
+    
     
     var body: some View {
         VStack(alignment: .center, spacing: 20, content: {
@@ -37,6 +44,7 @@ struct BookMarkRegistView: View {
     
     // MARK: - TopView
     
+    /// 북마크 등록 뷰 상단 타이틀
     private var topTitleView: some View {
         VStack(alignment: .center, spacing: 13, content: {
             BookMarkTitleView(emotion: viewModel.isSelectedEmotion)
@@ -44,6 +52,7 @@ struct BookMarkRegistView: View {
         })
     }
     
+    /// 상단에 보이는 감정 메뉴
     private var emotionMenu: some View {
         HStack(alignment: .center, spacing: 10, content: {
             SeletedEmotionBtn(title: "기쁨", currentStatus: .happy, selected: $viewModel.isSelectedEmotion, action: {
@@ -68,8 +77,9 @@ struct BookMarkRegistView: View {
         })
     }
     
-    // MARK: - VersesView
+    // MARK: - RegistDetail
     
+    /// 저장하고자 하는 페이지 수 입력
     private var selectedPage: some View {
         HStack(alignment: .center, content: {
             Text("기록 페이지 💬")
@@ -96,7 +106,7 @@ struct BookMarkRegistView: View {
                         .padding(.leading, 5)
                         .background(Color.clear)
                         .font(.spoqaHans(type: .regular, size: 12))
-                        
+                    
                     
                     Text("쪽")
                         .font(.spoqaHans(type: .regular, size: 12))
@@ -107,6 +117,7 @@ struct BookMarkRegistView: View {
         .frame(maxWidth: 339, maxHeight: 22)
     }
     
+    /// 저장하고자 하는 구절 입력
     private var selectedVerses: some View {
         VStack(alignment: .leading, spacing: 20, content: {
             Text("선택한 구절 💬")
@@ -123,6 +134,7 @@ struct BookMarkRegistView: View {
         })
     }
     
+    /// 기록하고 싶은 메모 입력
     private var writedMeomo: some View {
         VStack(alignment: .leading, spacing: 20, content: {
             Text("기록하고 싶은 메모 📝")
@@ -142,6 +154,7 @@ struct BookMarkRegistView: View {
         .frame(maxWidth: 340, maxHeight: 200)
     }
     
+    /// 북마크 등록 뷰 작성
     private var bookMarkRegistButton: some View {
         Button(action: {
             viewModel.postBookMark()
@@ -157,7 +170,7 @@ struct BookMarkRegistView: View {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundStyle(Color.clear)
                 )
-                
+            
                 .clipShape(.rect(cornerRadius: 50))
         })
     }

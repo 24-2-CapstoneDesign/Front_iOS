@@ -115,9 +115,20 @@ class KeyChainManager {
             userInfo.profileImageURL = imageUrl
             
             let updated = KeyChainManager.standard.saveSession(userInfo, for: key)
-            print("프로필 이미지 로드 완료: \(userInfo)")
+            print("프로필 이미지 로드 완료: \(updated)")
         } else {
             print("프로피 업데이트 불가")
+        }
+    }
+    
+    /// 체크 닉네임
+    /// - Returns: 닉네임 유뮤 참거짓 반환
+    public func checkNickname() -> Bool {
+        if let user = KeyChainManager.standard.loadSession(for: "userSession"),
+           let name = user.nickname {
+            return true
+        } else {
+            return false
         }
     }
 }

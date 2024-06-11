@@ -84,7 +84,7 @@ struct BookVersesView: View {
                     .placeholder {
                         ProgressView()
                             .frame(width: 67, height: 100)
-                    }.retry(maxCount: 3, interval: .seconds(5))
+                    }.retry(maxCount: 3, interval: .seconds(2))
                     .onSuccess { r in
                         print("랜덤 구절 책표지 이미지 로딩 성공: \(r)")
                     }

@@ -11,6 +11,12 @@ struct BookMarkTitleView: View {
 
     var emotion: BookEmotionKind
     
+    // MARK: - Init
+    
+    init(emotion: BookEmotionKind) {
+        self.emotion = emotion
+    }
+    
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             titleView

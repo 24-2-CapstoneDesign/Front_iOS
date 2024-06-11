@@ -9,15 +9,25 @@ import SwiftUI
 
 struct BookListView: View {
     
-    @StateObject var viewModel = BookListViewModel()
-    @State var selectedStatus: ReadingStatus = .nonStarted
+    @StateObject var viewModel: BookListViewModel
+    @State var selectedStatus: ReadingStatus
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: BookListViewModel())
+        self.selectedStatus = .nonStarted
+    }
     
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .center,spacing: 20, content: {
                 bookListNavigation
-                bookListsCard
+                
+                if filteredBooks().isEmpty {
+                    emptyListView
+                } else {
+                    bookListsCard
+                }
             })
             .ignoresSafeArea(.all)
             .background(Color.backgrounYellow)
@@ -97,41 +107,31 @@ struct BookListView: View {
         .padding(.leading, 20)
     }
     
-    //TODO: - API 연결하기
     
     
+    /// 책 리스트 받아오기
     private var bookListsCard: some View {
         ScrollView(.vertical, showsIndicators: false,
                    content: {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 180), spacing: 20), count: 2), spacing: 14, content: {
-                ForEach(filteredBooks(), id: \.self) { information in
-                    NavigationLink(destination: BookListDetailView(viewModel: BookDetailViewModel(bookListDetailData: information))) {
-                        BookListCardView(viewModel: BookListCardViewModel(bookListDetailData: information))
-                            .onTapGesture {
-                                print(information)
-                            }
-                    }
+                ForEach(filteredBooks(), id: \.self) { book in
+                    BookListCardView(bookData: book)
                 }
             })
         })
         .padding(.horizontal, 15)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .refreshable {
+            print("리프레시 진행")
             viewModel.getBookList()
-        }
-    }
-    
-    private func filteredBooks() -> [BookListDetailData] {
-            switch selectedStatus {
-            case .nonStarted:
-                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress == 0 } ?? []
-            case .reading:
-                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress > 0 && $0.readingProgress < 1 } ?? []
-            case .completed:
-                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress == 1 } ?? []
+            DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
+                viewModel.getBookList()
             }
         }
+    }
+
     
+    /// 등록된 책 데이터 없을 시 이미지 반환하기
     private var emptyListView: some View {
         VStack(alignment: .center, spacing: 25, content: {
             
@@ -146,8 +146,23 @@ struct BookListView: View {
                 .font(.spoqaHans(type: .bold, size: 18))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)
+            Spacer()
         })
-        .frame(height: 400)
     }
+    
+    // MARK: - Function
+    
+    /// 책 진행률에 따라 분류하기
+    /// - Returns: 진행률에 따라 분류된 책 데이터 반환
+    private func filteredBooks() -> [BookListDetailData] {
+            switch selectedStatus {
+            case .nonStarted:
+                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress == 0 } ?? []
+            case .reading:
+                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress > 0 && $0.readingProgress < 1 } ?? []
+            case .completed:
+                return viewModel.bookListBookData?.result.myBooks.filter { $0.readingProgress == 1 } ?? []
+            }
+        }
     
 }

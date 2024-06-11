@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 북마크 수, 페이지 쪽, 감정 북마크 수 보여주는 컴포넌트
 struct BookCountComponent: View {
     
     var count: Int
@@ -20,7 +21,7 @@ struct BookCountComponent: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12, content: {
             if title == "북마크 수" {
-                Text("\(count)")
+                Text("\(count)개")
                     .font(.spoqaHans(type: .bold, size: 16))
                     .foregroundStyle(Color.primaryDark)
                     .kerning(-0.2)

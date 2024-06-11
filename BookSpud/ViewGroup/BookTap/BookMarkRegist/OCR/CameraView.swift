@@ -62,7 +62,7 @@ struct CameraView: UIViewControllerRepresentable {
             }
         }
 
-        request.recognitionLanguages = ["ko-KR"] // 한국어 인식
+        request.recognitionLanguages = ["ko-KR"]
         request.recognitionLevel = .accurate
         request.usesLanguageCorrection = true
 

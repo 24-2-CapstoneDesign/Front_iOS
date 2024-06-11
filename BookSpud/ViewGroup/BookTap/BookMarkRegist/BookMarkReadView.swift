@@ -7,24 +7,19 @@
 
 import SwiftUI
 
+/// 저장된 북마크 조회 뷰
 struct BookMarkReadView: View {
     
-    @ObservedObject var viewModel: BookDetailViewModel
-    @State var verses: String
-  @State var memo: String
-  @State var page: Int
-  @State var emotion: String
+    @StateObject var viewModel: BookMarkDetailViewModel
+    let bookMardId: Int
     
     var body: some View {
-        allView
-    }
+            allView
+        }
     
-    init(viewModel: BookDetailViewModel, verses: String = "", memo: String = "", page: Int = 0, emotion: String = "") {
-        self.viewModel = viewModel
-        self.verses = verses
-        self.memo = memo
-        self.page = page
-        self.emotion = emotion
+    init(bookMarkId: Int) {
+        self._viewModel = StateObject(wrappedValue: BookMarkDetailViewModel())
+        self.bookMardId = bookMarkId
     }
     
     // MARK: - CheckingUserBookMark View
@@ -37,18 +32,20 @@ struct BookMarkReadView: View {
             selectedVerses
             writedMemo
         })
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backgrounYellow)
         .onAppear {
-            viewModel.loadSession()
-            viewModel.emotionImageChange(emotion)
+            viewModel.getBookMarkInfo(id: bookMardId)
+        }
+        .onDisappear {
+            viewModel.bookMarkData = nil
         }
     }
     
     /// 유저들이 저장한 감정 북마크의 타이틀
     private var title: some View {
         HStack(spacing: 16, content: {
-            Text("\(viewModel.nickname)님의 감정")
+            Text("\(viewModel.userName)님의 감정")
                 .font(.spoqaHans(type: .bold, size: 20))
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray06)
@@ -75,6 +72,7 @@ struct BookMarkReadView: View {
         })
     }
     
+    /// 북마크 저장된 책 페이지 수
     private var selectedPage: some View {
         HStack(alignment: .center, content: {
             Text("기록 페이지 💬")
@@ -92,13 +90,13 @@ struct BookMarkReadView: View {
                     .frame(maxWidth: 78, maxHeight: 22)
                     .clipShape(.rect(cornerRadius: 4))
                     .shadow03()
-                        
-                    
-                Text("\(viewModel.page) 쪽")
-                        .font(.spoqaHans(type: .regular, size: 12))
-                        .foregroundStyle(Color.gray07)
-                })
+                
+                
+                Text("\(viewModel.bookMarkData?.result.page ?? 0) 쪽")
+                    .font(.spoqaHans(type: .regular, size: 12))
+                    .foregroundStyle(Color.gray07)
             })
+        })
         .frame(maxWidth: 339, maxHeight: 22)
     }
     
@@ -110,7 +108,7 @@ struct BookMarkReadView: View {
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray07)
             
-            VersesBackground(versesText: viewModel.verses)
+            VersesBackground(versesText: viewModel.bookMarkData?.result.phase ?? "")
         })
     }
     
@@ -122,7 +120,7 @@ struct BookMarkReadView: View {
                 .kerning(-0.2)
                 .foregroundStyle(Color.gray07)
             
-            WritedMemo(text: viewModel.memo)
+            WritedMemo(text: viewModel.bookMarkData?.result.memo ?? "")
         })
     }
 }

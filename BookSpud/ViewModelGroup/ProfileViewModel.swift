@@ -15,20 +15,14 @@ class ProfileViewModel: ObservableObject, ImageHandling {
     
     
     private let keyChainManger = KeyChainManager.standard
-    private let imageCacheManager = ImageCacheManager.shared
-    
-    // MARK: - API Property
-    private let tokenProvider: TokenProviding
-    private let accessTokenRefresher: AccessTokenRefresher
-    private let session: Session
     
     var provider: MoyaProvider<ProfileAPITarget>
+    @Published public var isProfileCompleted: Bool
     
-    init() {
-        tokenProvider = TokenProvider()
-        accessTokenRefresher = AccessTokenRefresher(tokenProvider: tokenProvider)
-        session = Session(interceptor: accessTokenRefresher)
-        provider = MoyaProvider<ProfileAPITarget>(session: session)
+    init(provider: MoyaProvider<ProfileAPITarget> = APIManager.shared.createProvider(for: ProfileAPITarget.self),
+         isProfileCompleted: Bool) {
+        self.provider = provider
+        self.isProfileCompleted = isProfileCompleted
     }
     
     // MARK: - NicknameProperty
@@ -42,8 +36,6 @@ class ProfileViewModel: ObservableObject, ImageHandling {
             }
         }
     }
-    
-    @Published public var isProfileCompleted: Bool = false
     
     // MARK: - btnProperty
     /// 시작하기 버튼 활성화 여부 판단

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 감정 북마크 조회 버튼
 struct SeletedEmotionBtn: View {
     
     var title: String

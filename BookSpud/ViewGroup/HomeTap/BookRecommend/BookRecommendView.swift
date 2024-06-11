@@ -10,10 +10,13 @@ import SwiftUI
 /// 추천책 전체 뷰
 struct BookRecommendView: View {
     
-    @StateObject var viewModel: BookRecommendViewModel
-    @State private var selectedBookViewModel: BookRecommendCardViewModel? = nil
-    @State private var isSelectedBook: Bool = false
+    @ObservedObject var viewModel: BookRecommendViewModel
+    @StateObject var bookRecommendCardViewModel: BookRecommendCardViewModel
     
+    init(viewModel: BookRecommendViewModel) {
+        self.viewModel = viewModel
+        _bookRecommendCardViewModel = StateObject(wrappedValue: BookRecommendCardViewModel())
+    }
     
     var body: some View {
         allView
@@ -51,20 +54,17 @@ struct BookRecommendView: View {
             .foregroundStyle(Color.black)
     }
     
+    /// 북투북 추천 책 리스트
     private var individualBookConnecting: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible(minimum: 0, maximum: 150))], spacing: 40, content: {
                 ForEach(viewModel.bookRecommendData?.result.myBooks ?? [], id: \.self) { book in
-                    let viewModel = BookRecommendCardViewModel(bookRecommendDetailData: book)
-                    NavigationLink(destination: BookRecommendDetailView(viewModel: viewModel)
-                        .onAppear {
-                            viewModel.getDetailBookInfo(id: book.bookId)
-                        }){
-                        BookRecommendCard(viewModel: viewModel)
+                    NavigationLink(destination: BookRecommendDetailView(viewModel: bookRecommendCardViewModel, bookData: book)) {
+                        BookRecommendCard(bookData: book)
                     }
                 }
             })
-            .frame(minWidth: 390, maxHeight: 201)
+            .frame(minWidth: 390, maxHeight: 210)
             .padding(.vertical, -10)
         }
     }
