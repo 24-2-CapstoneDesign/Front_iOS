@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum ReportAPITarget {
-    case getReport
+    case getReport // 독후감 전체 조회 API
     case getDraft(id: Int)
     case postDraft(id: Int, argument: String)
     case getQuestion(id: Int)

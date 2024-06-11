@@ -16,12 +16,12 @@ struct BookListDetailView: View {
     @State var isShowBoookMarkMake: Bool = false
     /* 책 페이지 수정 */
     @State var isShowCountEdit: Bool = false
-    /* 북마크 정보 Sheet */
-    @State var isShowBookMarkInfo: Bool = false
     /* 북마크 감정 교체 버튼 */
     @State var isSelected: BookEmotionKind = .happy
+    /* 생성된 북마크 데이터 상태 변화 데이터 */
     @State var selectedBookMark: BookMarkDetailData?
     
+    // MARK: - Init
     
     init(bookData: BookListDetailData) {
         self._viewModel = StateObject(wrappedValue: BookDetailViewModel(bookListDetailData: bookData))
@@ -217,9 +217,6 @@ struct BookListDetailView: View {
                             .padding([.vertical, .horizontal], 5)
                             .onTapGesture {
                                 self.selectedBookMark = data
-                                DispatchQueue.main.async {
-                                    self.isShowBookMarkInfo = true
-                                }
                             }
                             .sheet(item: $selectedBookMark) { selectedBookMark in
                                 BookMarkReadView(bookMarkId: selectedBookMark.bookMarkId)

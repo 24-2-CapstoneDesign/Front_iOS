@@ -591,6 +591,7 @@
 				48C0536F2C0E00BC0032969B /* BookMarkRegistViewModel.swift */,
 				487F18FB2C0EC57F00DA93E5 /* OCRViewModel.swift */,
 				48FC9C262C17806300D82511 /* BookMarkDetailViewModel.swift */,
+				48DF68852C1268470041DFE8 /* ReportViewModel.swift */,
 			);
 			path = ViewModelGroup;
 			sourceTree = "<group>";
@@ -607,6 +608,7 @@
 				482F3F162C0CA334003E7B00 /* BookListBookData.swift */,
 				480638882C0D9D6200EA9B91 /* BookMarkData.swift */,
 				48DF687B2C1257260041DFE8 /* BookMarkRegistData.swift */,
+				48DF68832C1267080041DFE8 /* ReportData.swift */,
 			);
 			path = DataGroup;
 			sourceTree = "<group>";
@@ -645,6 +647,7 @@
 				48DF687D2C125BB20041DFE8 /* BookListDetailAPITarget.swift */,
 				48DF68792C1256B80041DFE8 /* BookMarkRegistAPITarget.swift */,
 				48FC9C282C178BCE00D82511 /* BookMarkReadAPITarget.swift */,
+				48DF68872C12688E0041DFE8 /* ReportAPITarget.swift */,
 			);
 			path = APITartgetGroup;
 			sourceTree = "<group>";
@@ -762,9 +765,6 @@
 				48800D992C1047EC00795E41 /* ReportDraft */,
 				48800D942C103B1800795E41 /* SelectBookListView */,
 				48DE6E062BEF5DB10096A069 /* ReportView.swift */,
-				48DF68872C12688E0041DFE8 /* ReportAPITarget.swift */,
-				48DF68852C1268470041DFE8 /* ReportViewModel.swift */,
-				48DF68832C1267080041DFE8 /* ReportData.swift */,
 			);
 			path = ReportTab;
 			sourceTree = "<group>";
