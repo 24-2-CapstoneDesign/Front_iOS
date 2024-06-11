@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+
+/// 독후감 전체 데이터 받아오기
 struct ReportData: Codable, Hashable {
     var status: Int
     var message: String

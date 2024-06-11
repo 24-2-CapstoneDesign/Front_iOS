@@ -16,7 +16,7 @@ class ReportViewModel: ObservableObject {
     
     // MARK: - Init
     
-    init(provider: MoyaProvider<ReportAPITarget> = APIManager.shared.createProvider(for: ReportAPITarget.self)) {
+    init(provider: MoyaProvider<ReportAPITarget> = APIManager.shared.testProvider(for: ReportAPITarget.self)) {
         self.provider = provider
     }
     

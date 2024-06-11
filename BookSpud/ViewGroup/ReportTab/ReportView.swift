@@ -31,16 +31,15 @@ struct ReportView: View {
         //        .sheet(isPresented: $isShowMakeReport, content: {
         //            SelectedBookListView(viewModel: selectBookListViewModel, reportDraftViewModel: reportDraftViewModel)
         //        })
-        //        .onAppear {
-        //            viewModel.getReportData()
-        //        }
+        .onAppear {
+            viewModel.getReportData()
+        }
     }
     
     // MARK: - ReportView Group
     private var allGroup: some View {
         VStack(alignment: .center, spacing: 46, content: {
             topCustomNavigation
-            Spacer()
             reportList
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea(.all)
@@ -69,19 +68,12 @@ struct ReportView: View {
         ScrollView(.vertical) {
             LazyVGrid(columns: [GridItem(.flexible(minimum: 0, maximum: 142))], alignment: .center, spacing: 16, pinnedViews: [], content: {
                 ForEach(viewModel.reportData?.result.bookReportResponses ?? [], id: \.self) { report in
-                    NavigationLink(destination: DetailReport(viewModel: ReportCardViewModel(bookReportResponse: report), reportDraftViewModel: reportDraftViewModel)) {
-                        ReportCardView(viewModel: ReportCardViewModel(bookReportResponse: report))
-                    }
+                    ReportCardView(reportData: report)
                 }
             })
-            .frame(maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
-            .background(Color.backgrounYellow)
-            .ignoresSafeArea()
-            .onAppear {
-                viewModel.getReportData()
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.backgrounYellow)
         .refreshable {
             viewModel.getReportData()
         }
@@ -91,7 +83,7 @@ struct ReportView: View {
     private var notReportData: some View {
         VStack(alignment: .center, spacing: 15, content: {
             
-            Spacer().frame(maxHeight: 120)
+            Spacer().frame(maxHeight: 200)
             
             Icon.sadSpud.image
                 .resizable()
@@ -105,8 +97,6 @@ struct ReportView: View {
             Spacer()
         })
     }
-        
-    
 }
 
 struct Report_PrewView: PreviewProvider {

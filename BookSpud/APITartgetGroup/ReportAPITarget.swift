@@ -86,4 +86,35 @@ extension ReportAPITarget: TargetType {
             "accept": "*/*"
         ]
     }
+    
+    var sampleData: Data {
+        switch self {
+        case .getReport:
+            let jsonData = """
+            {
+              "status": 200,
+              "message": "성공",
+              "result": {
+                "bookReportResponses": [
+                  {
+                    "bookReportId": 1,
+                    "cover": "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791188331796.jpg",
+                    "title": "돈의 속성",
+                    "updatedAt": "2024",
+                    "argument": "우리의 마음",
+                    "status": "BLANK"
+                  }
+                ]
+              }
+            }
+            """
+            return Data(jsonData.utf8)
+            
+        default:
+            let jsonData =
+            """
+            """
+            return Data(jsonData.utf8)
+        }
+    }
 }

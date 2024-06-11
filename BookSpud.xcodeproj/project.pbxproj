@@ -11,7 +11,6 @@
 		4800C5CD2BDC8532001431BE /* GlobalMainBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4800C5CC2BDC8532001431BE /* GlobalMainBtn.swift */; };
 		4804F2A12C1018FE00829DEE /* ReportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804F2A02C1018FE00829DEE /* ReportCardView.swift */; };
 		4804F2A32C101A2100829DEE /* ReportTagComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804F2A22C101A2100829DEE /* ReportTagComponent.swift */; };
-		4804F2A52C101CE800829DEE /* ReportCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804F2A42C101CE800829DEE /* ReportCardViewModel.swift */; };
 		480638892C0D9D6200EA9B91 /* BookMarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480638882C0D9D6200EA9B91 /* BookMarkData.swift */; };
 		480F6D2D2BC996DE008D958E /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D2C2BC996DE008D958E /* CombineMoya */; };
 		480F6D2F2BC996DE008D958E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6D2E2BC996DE008D958E /* Moya */; };
@@ -167,7 +166,6 @@
 		4800C5CC2BDC8532001431BE /* GlobalMainBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMainBtn.swift; sourceTree = "<group>"; };
 		4804F2A02C1018FE00829DEE /* ReportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCardView.swift; sourceTree = "<group>"; };
 		4804F2A22C101A2100829DEE /* ReportTagComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTagComponent.swift; sourceTree = "<group>"; };
-		4804F2A42C101CE800829DEE /* ReportCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCardViewModel.swift; sourceTree = "<group>"; };
 		480638882C0D9D6200EA9B91 /* BookMarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkData.swift; sourceTree = "<group>"; };
 		480F6D362BC99943008D958E /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		480F6D382BC99969008D958E /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
@@ -336,8 +334,6 @@
 			children = (
 				4804F2A02C1018FE00829DEE /* ReportCardView.swift */,
 				4804F2A22C101A2100829DEE /* ReportTagComponent.swift */,
-				4804F2A42C101CE800829DEE /* ReportCardViewModel.swift */,
-				48CF8F262C12A489003DF132 /* ReportCardAPITarget.swift */,
 			);
 			path = ReportCard;
 			sourceTree = "<group>";
@@ -560,7 +556,6 @@
 				48800D972C10428900795E41 /* SelectBookListViewModel.swift */,
 				48CF8F1E2C127A1E003DF132 /* SelectBookListAPI.swift */,
 				48CF8F202C127BD7003DF132 /* SelectedBookListView.swift */,
-				4804F29E2C1018EB00829DEE /* ReportCard */,
 			);
 			path = SelectBookListView;
 			sourceTree = "<group>";
@@ -648,6 +643,7 @@
 				48DF68792C1256B80041DFE8 /* BookMarkRegistAPITarget.swift */,
 				48FC9C282C178BCE00D82511 /* BookMarkReadAPITarget.swift */,
 				48DF68872C12688E0041DFE8 /* ReportAPITarget.swift */,
+				48CF8F262C12A489003DF132 /* ReportCardAPITarget.swift */,
 			);
 			path = APITartgetGroup;
 			sourceTree = "<group>";
@@ -764,6 +760,7 @@
 				48DF68892C126E0B0041DFE8 /* DetailReport */,
 				48800D992C1047EC00795E41 /* ReportDraft */,
 				48800D942C103B1800795E41 /* SelectBookListView */,
+				4804F29E2C1018EB00829DEE /* ReportCard */,
 				48DE6E062BEF5DB10096A069 /* ReportView.swift */,
 			);
 			path = ReportTab;
@@ -905,7 +902,6 @@
 				48C053702C0E00BC0032969B /* BookMarkRegistViewModel.swift in Sources */,
 				48EB4F242C038237007B5668 /* EmotionUserData.swift in Sources */,
 				483968502BFCFAD3002A3035 /* EmotionData.swift in Sources */,
-				4804F2A52C101CE800829DEE /* ReportCardViewModel.swift in Sources */,
 				48DF68782C124EFC0041DFE8 /* BookListAPITarget.swift in Sources */,
 				48EB4F212C0381C6007B5668 /* EmotionUserProfile.swift in Sources */,
 				488D1C1F2C082BD70080CCCC /* SuccessISBNView.swift in Sources */,
