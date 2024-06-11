@@ -66,7 +66,10 @@ struct ReportView: View {
         ScrollView(.vertical) {
             LazyVGrid(columns: [GridItem(.flexible(minimum: 0, maximum: 142))], alignment: .center, spacing: 16, pinnedViews: [], content: {
                 ForEach(viewModel.reportData?.result.bookReportResponses ?? [], id: \.self) { report in
-                    ReportCardView(reportData: report)
+                    NavigationLink(destination: destinationView(for: report)) {
+                        ReportCardView(reportData: report)
+                            .padding(.top, 5)
+                    }
                 }
             })
         }
@@ -94,6 +97,15 @@ struct ReportView: View {
             
             Spacer()
         })
+    }
+    
+    @ViewBuilder
+    private func destinationView(for report: BookReportResponse) -> some View {
+        if report.status == "DRAFT" {
+            DetailReportA(bookData: report)
+        } else if report.status == "FINAL" {
+            DetailReportB(bookData: report)
+        }
     }
 }
 

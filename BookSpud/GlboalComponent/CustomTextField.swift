@@ -62,6 +62,7 @@ struct CustomTextField: View {
         .onTapGesture {
             isTextFocused = false
         }
+        .ignoresSafeArea(.keyboard)
     }
     
     /// 텍스트 필드 내 Placeholder 지정

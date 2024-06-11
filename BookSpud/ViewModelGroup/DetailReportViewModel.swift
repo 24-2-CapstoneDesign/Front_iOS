@@ -10,11 +10,17 @@ import Moya
 
 class DetailReportViewModel: ObservableObject {
     
+    @Published var isLoading: Bool = false
+    
 
     @Published var introEmotionText: String = ""
     @Published var bodyEmotionText: String = ""
-    @Published var conclustionText: String = ""
+    @Published var conclustionEmotionText: String = ""
     
+    
+    @Published var introPlace: String = ""
+    @Published var bodyPlace: String = ""
+    @Published var conclustionPlace: String = ""
     
     @Published var bookData: BookReportResponse
     /* 감정 가이드 질문 */
@@ -39,12 +45,14 @@ class DetailReportViewModel: ObservableObject {
     /// 독후감 세부 상세 조회 API
     /// - Parameter argumentId: 논점 생성 후 받은 id 값
     public func showDetailBookReport(argumentId: Int) {
+        isLoading = true
         provider.request(.detailBookreport(argumentId: argumentId)) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.handleShowDetailReport(response: response)
             case .failure(let error):
                 print("상세 독후감 네트워크 오류: \(error)")
+                self?.isLoading = false
             }
         }
     }
@@ -55,9 +63,11 @@ class DetailReportViewModel: ObservableObject {
         do {
             let decodedData = try JSONDecoder().decode(ShowDetailBook.self, from: response.data)
             self.detailBookReport = decodedData
+            self.valueMatching()
         } catch {
             print("상세 독후감 디코드 에러: \(error)")
         }
+        isLoading = false
     }
     
     // MARK: - RegistFinal Regist
@@ -123,6 +133,17 @@ class DetailReportViewModel: ObservableObject {
     private func createInputEmotionData() -> InputEmotionData {
         return InputEmotionData(introEmotion: self.introEmotionText,
                                 bodyEmotion: self.bodyEmotionText,
-                                conclusionEmotion: self.conclustionText)
+                                conclusionEmotion: self.conclustionEmotionText)
+    }
+    
+    private func valueMatching() {
+        if let data = detailBookReport?.result,
+           let intro = data.introEmotion,
+           let body = data.bodyEmotion,
+           let conclu = data.conclusionEmotion {
+            self.introEmotionText = intro
+            self.bodyEmotionText = body
+            self.conclustionEmotionText = conclu
+        }
     }
 }

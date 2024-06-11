@@ -118,6 +118,8 @@ struct BookListView: View {
                     BookListCardView(bookData: book)
                 }
             })
+            .frame(minHeight: 1000, alignment: .top)
+            .padding(.top, 5)
         })
         .padding(.horizontal, 15)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
