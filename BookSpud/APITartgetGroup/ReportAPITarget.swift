@@ -10,11 +10,12 @@ import Moya
 
 enum ReportAPITarget {
     case getReport // 독후감 전체 조회 API
-    case getDraft(id: Int)
-    case postDraft(id: Int, argument: String)
-    case getQuestion(id: Int)
-    case makeDraft(id: Int, data: MakeDraft)
-    case detailBookreport(id: Int)
+    case selectArgument(myBookId: Int) // 논점 후보 조회 (id 값 -> 책아이디
+    case postDraft(myBookId: Int, argument: String) // 논점 선택
+    case getQuestion(argumentId: Int) // 질문 조회 (id 값 -> 논점 id)
+    case makeDraft(argumentId: Int, data: MakeDraft) // 초안 생성
+    case detailBookreport(argumentId: Int) // 독후감 상세 조회
+    case makeFinalReport(argumentId: Int, inputData: InputEmotionData) // 최종본 생성
 }
 
 extension ReportAPITarget: TargetType {
@@ -26,7 +27,7 @@ extension ReportAPITarget: TargetType {
         switch self {
         case .getReport:
             return "/api/bookreport"
-        case .getDraft(let id):
+        case .selectArgument(let id):
             return "/api/bookreport/\(id)/argument"
         case .postDraft(let id, _):
             return "/api/bookreport/\(id)/argument"
@@ -36,6 +37,8 @@ extension ReportAPITarget: TargetType {
             return "/api/bookreport/\(id)/draft"
         case .detailBookreport(let id):
             return "/api/bookreport/\(id)"
+        case .makeFinalReport(let id, _):
+            return "/api/bookreport/\(id)"
         }
     }
     
@@ -43,7 +46,7 @@ extension ReportAPITarget: TargetType {
         switch self {
         case .getReport:
             return .get
-        case .getDraft:
+        case .selectArgument:
             return .get
         case .postDraft:
             return .post
@@ -53,6 +56,8 @@ extension ReportAPITarget: TargetType {
             return .post
         case .detailBookreport:
             return .get
+        case .makeFinalReport:
+            return .patch
         }
     }
     
@@ -60,7 +65,7 @@ extension ReportAPITarget: TargetType {
         switch self {
         case .getReport:
             return .requestPlain
-        case .getDraft:
+        case .selectArgument:
             return .requestPlain
         case .postDraft(_, let argument):
             return .requestParameters(parameters: ["argument": argument], encoding: JSONEncoding.default)
@@ -77,6 +82,12 @@ extension ReportAPITarget: TargetType {
             ], encoding: JSONEncoding.default)
         case .detailBookreport:
             return .requestPlain
+        case .makeFinalReport(_, let data):
+            return .requestParameters(parameters: [
+                "introEmotion": data.introEmotion,
+                "bodyEmotion": data.bodyEmotion,
+                "conclusionEmotion": data.conclusionEmotion
+            ], encoding: JSONEncoding.default)
         }
     }
     

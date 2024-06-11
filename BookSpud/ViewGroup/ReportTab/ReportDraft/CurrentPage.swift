@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import Kingfisher
 
+/// 독후감 생성을 위해 사용되는 질문 생성 뷰, 하나의 뷰에 순서대로 작동한다.
 struct CurrentPage: View {
     
-    @StateObject var viewModel: ReportDraftViewModel
-    @State var nextButton: Bool = true
-    
+    @ObservedObject var viewModel: ReportDraftViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         currentPageView
-            .transition(.move(edge: .trailing))
+            .transition(.move(edge: .leading))
             .animation(.easeInOut(duration: 0.7), value: viewModel.currentPageIndex)
+            .navigationBarBackButtonHidden()
     }
     
     // MARK: - CurrentPageView
@@ -31,7 +33,7 @@ struct CurrentPage: View {
         case 2:
             thirdPage // 본론
         case 3:
-            fouthPage
+            fouthPage // 결론
         default:
             
             EmptyView()
@@ -40,6 +42,7 @@ struct CurrentPage: View {
     
     // MARK: - FirstPage
     
+    /// 논점 선택 뷰
     private var argumentMenu: some View {
         VStack(alignment: .leading, spacing: 10, content: {
             Text("논점 정리하기 📝")
@@ -57,6 +60,7 @@ struct CurrentPage: View {
         .frame(maxWidth: 340, maxHeight: 327)
     }
     
+    /// 책 정보 데이터
     private var bookInfo: some View {
         ZStack(alignment: .center, content: {
             RoundedRectangle(cornerRadius: 4)
@@ -68,21 +72,20 @@ struct CurrentPage: View {
             
             VStack(alignment: .center, spacing: 18, content: {
                 bookCover
-                bookName
+                bookInfoText
             })
         })
-        .onAppear {
-            let urlString = viewModel.data?.cover ?? ""
-            if let url = URL(string: urlString) {
-                viewModel.loadImage(from: url)
-            }
-        }
     }
     
     @ViewBuilder
+    /// 책 커버 사진
     private var bookCover: some View {
-        if let image = viewModel.bookCover {
-            image
+        if let url = URL(string: viewModel.bookData.cover) {
+            KFImage(url)
+                .placeholder {
+                    ProgressView()
+                        .frame(width: 100, height: 150)
+                }
                 .resizable()
                 .frame(maxWidth: 100, maxHeight: 150)
                 .aspectRatio(contentMode: .fit)
@@ -93,72 +96,92 @@ struct CurrentPage: View {
         }
     }
     
-    private var bookName: some View {
+    /// 책 이름 및 작가 이름
+    private var bookInfoText: some View {
         VStack(alignment: .center, spacing: 10, content: {
-            Text(viewModel.data?.title ?? "")
+            Text(viewModel.bookData.title)
                 .font(.spoqaHans(type: .bold, size: 12))
                 .foregroundStyle(Color.mainText)
             
-            Text(viewModel.data?.author ?? "")
+            Text(viewModel.bookData.author)
                 .font(.spoqaHans(type: .bold, size: 10))
                 .foregroundStyle(Color.subText)
         })
     }
     
     // MARK: - PageGroup
+    /// 논점 생성 뷰
     private var firstPage: some View {
         VStack(alignment: .center, content: {
             bookInfo
             
             Spacer()
             
-            argumentMenu
+            if viewModel.isLoadng {
+                ProgressView("논점 생성 중..")
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                
+                argumentMenu
+            }
             
             Spacer()
             
             pageNextButton(name: "다음", action: {
                 
                 if let argument = viewModel.selectedArgument {
-                    
-                    viewModel.postArguments(id: viewModel.data?.myBookId ?? 0, argument: argument)
-                    
                     if viewModel.checkZeroBtn {
-                        viewModel.currentPageIndex += 1
-                        print("page 0")
+                        
+                        viewModel.postArguments(bookId: viewModel.bookData.myBookId, argument: argument)
+                        
+                        DispatchQueue.main.async {
+                            viewModel.currentPageIndex += 1
+                        }
                     }
                 }
             })
-            
         })
         .frame(maxWidth: 340, maxHeight: 670)
         .ignoresSafeArea(.keyboard)
+        .onAppear {
+            viewModel.getArguments(bookId: viewModel.bookData.myBookId)
+        }
     }
     
     /// 서론 입력 페이지(first)
     private var secondPage: some View {
         VStack(alignment: .center, spacing: 47, content: {
-            topQuestion("서론", questionValue: viewModel.answerData?.result.introQuestion ?? "서론 질문이 생성되지 않았습니다.")
-            
-            BookSpud.MainDotLine()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
-                .frame(width: 340, height: 1)
-                .foregroundStyle(Color.gray04)
-            
-            answer(text: $viewModel.firstAnswer)
-            
-            Spacer()
-            
-            pageNextButton(name: "다음", action: {
-                if viewModel.checkFirstBtn {
-                    viewModel.currentPageIndex += 1
-                    print("서론 버튼")
+            if viewModel.isLoadng {
+                ProgressView("로딩 중..")
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                
+                if let question = viewModel.answerData?.result {
+                    topQuestion("서론", questionValue: question.introQuestion)
+                    
+                    BookSpud.MainDotLine()
+                        .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
+                        .frame(width: 340, height: 1)
+                        .foregroundStyle(Color.gray04)
+                    
+                    answer(text: $viewModel.firstAnswer)
+                    
+                    Spacer()
+                    
+                    pageNextButton(name: "다음", action: {
+                        if viewModel.checkFirstBtn {
+                            viewModel.currentPageIndex += 1
+                            print("서론 버튼")
+                        }
+                    })
                 }
-            })
+            }
         })
         .onAppear {
-            viewModel.postArguments(id: viewModel.data?.myBookId ?? 0, argument: viewModel.selectedArgument ?? "")
             DispatchQueue.main.asyncAfter(deadline: .now()+1.8) {
-                viewModel.getAnswer(id: viewModel.responseArguments?.result.id ?? 0)
+                if let argumentId = viewModel.responseArguments?.result.id {
+                    viewModel.getAnswer(argumentId: argumentId)
+                }
             }
         }
         .frame(maxWidth: 340, maxHeight: 669)
@@ -168,46 +191,54 @@ struct CurrentPage: View {
     /// 본론 입력 페이지(third)
     private var thirdPage: some View {
         VStack(alignment: .center, spacing: 47, content: {
-            topQuestion("본론", questionValue: viewModel.answerData?.result.bodyQuestion ?? "본론 질문이 생성되지 않았습니다.")
-            
-            BookSpud.MainDotLine()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
-                .frame(width: 340, height: 1)
-                .foregroundStyle(Color.gray04)
-      
-            answer(text: $viewModel.secondAnswer)
-            
-            Spacer()
-            
-            pageNextButton(name: "다음", action: {
-                if viewModel.checkSecondBtn {
-                    viewModel.currentPageIndex += 1
-                    print("본론 버튼")
-                }
-            })
+            if let question = viewModel.answerData?.result {
+                topQuestion("본론", questionValue: question.bodyQuestion)
+                
+                BookSpud.MainDotLine()
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
+                    .frame(width: 340, height: 1)
+                    .foregroundStyle(Color.gray04)
+                
+                answer(text: $viewModel.secondAnswer)
+                
+                Spacer()
+                
+                pageNextButton(name: "다음", action: {
+                    if viewModel.checkSecondBtn {
+                        viewModel.currentPageIndex += 1
+                        print("본론 버튼")
+                    }
+                })
+            }
         })
         .frame(maxWidth: 340, maxHeight: 669)
         .ignoresSafeArea(.keyboard)
     }
     
+    /// 결론 작성 완료 페이지
     private var fouthPage: some View {
         VStack(alignment: .center, spacing: 47, content: {
-            topQuestion("결론", questionValue: viewModel.answerData?.result.conclusionQuestion ?? "결론 질문이 생성되지 않았습니다.")
-            
-            BookSpud.MainDotLine()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
-                .frame(width: 340, height: 1)
-                .foregroundStyle(Color.gray04)
-            
-            answer(text: $viewModel.thirdAnswer)
-            
-            Spacer()
-            
-            pageNextButton(name: "독후감 초안 작성", action: {
-                if viewModel.checkThirdBtn {
-                    viewModel.makeDraft(id: viewModel.responseArguments?.result.id ?? 0)
-                }
-            })
+            if let question = viewModel.answerData?.result {
+                topQuestion("결론", questionValue: question.conclusionQuestion)
+                
+                BookSpud.MainDotLine()
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [2,3]))
+                    .frame(width: 340, height: 1)
+                    .foregroundStyle(Color.gray04)
+                
+                answer(text: $viewModel.thirdAnswer)
+                
+                Spacer()
+                
+                pageNextButton(name: "독후감 초안 작성", action: {
+                    if viewModel.checkThirdBtn {
+                        if let id = viewModel.responseArguments?.result.id {
+                            viewModel.makeDraft(argumentId: id)
+                            dismiss()
+                        }
+                    }
+                })
+            }
         })
         .frame(maxWidth: 340, maxHeight: 669)
         .ignoresSafeArea(.keyboard)
@@ -227,7 +258,7 @@ struct CurrentPage: View {
                 .frame(maxWidth: 300, minHeight: 11, alignment: .leading)
                 .background(Color.white)
                 .clipShape(.rect(cornerRadius: 4))
-                
+            
         })
         .frame(width: 340, height: 50)
         

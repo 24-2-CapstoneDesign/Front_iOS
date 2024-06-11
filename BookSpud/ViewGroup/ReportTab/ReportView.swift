@@ -11,10 +11,8 @@ import SwiftUI
 struct ReportView: View {
     
     @StateObject var viewModel: ReportViewModel
-    
-    @StateObject var reportDraftViewModel = ReportDraftViewModel()
-    @StateObject var selectBookListViewModel = SelectBookListViewModel()
     @State var isShowMakeReport: Bool
+    
     
     // MARK: -Init
     
@@ -28,9 +26,9 @@ struct ReportView: View {
         NavigationStack {
             allGroup
         }
-        //        .sheet(isPresented: $isShowMakeReport, content: {
-        //            SelectedBookListView(viewModel: selectBookListViewModel, reportDraftViewModel: reportDraftViewModel)
-        //        })
+        .sheet(isPresented: $isShowMakeReport, content: {
+                    SelectedBookListView()
+                })
         .onAppear {
             viewModel.getReportData()
         }
@@ -56,7 +54,7 @@ struct ReportView: View {
     @ViewBuilder
     /// 독후감 데이터의 유무에 따라 보이는 뷰
     private var reportList: some View {
-        if viewModel.reportData?.result == nil {
+        if viewModel.reportData?.result.bookReportResponses.isEmpty ?? true {
             notReportData
         } else {
             reportCardMake

@@ -12,6 +12,8 @@ struct ReportCardView: View {
     
     let reportData: BookReportResponse
     
+    // MARK: - Init
+    
     init(reportData: BookReportResponse) {
         self.reportData = reportData
     }

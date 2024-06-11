@@ -63,6 +63,7 @@ struct ResultMakeDraft: Codable {
 
 // MARK: - 논점 생성
 
+/// 논점 받아오는 데이터
 struct DraftReportData: Codable {
     var status: Int
     var message: String
@@ -73,6 +74,9 @@ struct Arguments: Codable {
     var arguments: [String]
 }
 
+
+
+/// 논점 전달 후, 논점 id 데이터
 struct ResponseArguments: Codable {
     var status: Int
     var message: String

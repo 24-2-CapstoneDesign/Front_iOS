@@ -7,23 +7,29 @@
 
 import SwiftUI
 
+/// 독후감 초안 생성 뷰
 struct ReportDraftView: View {
     
     @StateObject var viewModel: ReportDraftViewModel
+    
+    init(bookData: BookListDetailData) {
+        self._viewModel = StateObject(wrappedValue: ReportDraftViewModel(bookData: bookData))
+    }
+    
+    
     var body: some View {
         VStack(alignment: .center, spacing: 35, content: {
-            CustomNavigation(title: "독후감 초안 생성")
+            CustomNavigation(title: "독후감 초안 생성", height: 90)
             
             CurrentPage(viewModel: viewModel)
             
             Spacer()
         })
-        .frame(maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea(.all)
         .background(Color.backgrounYellow)
         .onAppear(perform: {
             UIApplication.shared.hideKeyboard()
-            viewModel.getArguments(id: viewModel.data?.myBookId ?? 0)
         })
     }
 }
