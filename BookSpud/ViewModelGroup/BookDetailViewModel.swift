@@ -15,10 +15,6 @@ class BookDetailViewModel: ObservableObject {
     /* 해당 책이 들고 있는 북마크 데이터 */
     @Published var bookMarkData: BookMarkData?
     
-    /* 북마크 생성 시, 사용되는 감정 표현 이모티콘과 구문 */
-    @Published var emotionImg: SwiftUI.Image = Icon.happySpud.image
-    @Published var emotionTextImg: SwiftUI.Image = Icon.happyEmotion.image
-    
     @Published var verses: String = ""
     @Published var memo: String = ""
     @Published var page: Int = 0
@@ -101,31 +97,4 @@ class BookDetailViewModel: ObservableObject {
             print("페이지 업데이트 디코드 \(error)")
         }
     }
-    
-    // MARK: - BookMarkCreatFunction
-    
-    /// 북마크 생성 시 선택하는 감정 함수
-    /// - Parameter emotion: 선택한 감정 값
-    public func emotionImageChange(_ emotion: String) {
-        switch emotion {
-        case "JOY":
-            self.emotionTextImg = Icon.happyEmotion.image
-            self.emotionImg = Icon.happySpud.image
-        case "SADNESS":
-            self.emotionTextImg = Icon.sadEmotion.image
-            self.emotionImg = Icon.sadSpud.image
-        case "ANGER":
-            self.emotionTextImg = Icon.angryEmotion.image
-            self.emotionImg = Icon.angrySpud.image
-        case "INSPIRATION":
-            self.emotionTextImg = Icon.inspirationEmotion.image
-            self.emotionImg = Icon.inspirationSpud.image
-        case "MOVED":
-            self.emotionTextImg = Icon.moveEmotion.image
-            self.emotionImg = Icon.sensationSpud.image
-        default:
-            break
-        }
-    }
-
 }

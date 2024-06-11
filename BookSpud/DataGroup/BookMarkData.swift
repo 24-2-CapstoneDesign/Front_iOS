@@ -15,7 +15,8 @@ struct BookMarkData: Codable, Hashable {
     var result: [BookMarkDetailData]
 }
 
-struct BookMarkDetailData: Codable, Hashable {
+struct BookMarkDetailData: Codable, Hashable, Identifiable {
+    var id: Int { bookMarkId }
     var bookMarkId: Int
     var phase: String
     var page: Int
@@ -28,4 +29,12 @@ struct BookMarkDetailData: Codable, Hashable {
 struct BookPageData: Codable {
     var status: Int
     var message: String
+}
+
+
+// MARK: - IndividualBookMark
+struct IndividualBookMark: Codable {
+    var status: Int
+    var message: String
+    var result: BookMarkDetailData
 }

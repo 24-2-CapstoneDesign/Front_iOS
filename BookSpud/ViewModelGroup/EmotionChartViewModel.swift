@@ -24,7 +24,7 @@ class EmotionChartViewModel: ObservableObject {
     // MARK: - Init
     
     init(
-        provider: MoyaProvider<EmotionChartAPITarget> = APIManager.shared.testProvider(for: EmotionChartAPITarget.self
+        provider: MoyaProvider<EmotionChartAPITarget> = APIManager.shared.createProvider(for: EmotionChartAPITarget.self
         )
     ) {
         let initialData = [

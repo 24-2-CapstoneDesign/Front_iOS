@@ -158,6 +158,8 @@
 		48E24C622BFC713500A46E77 /* BookRecommendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E24C612BFC713500A46E77 /* BookRecommendCard.swift */; };
 		48EB4F212C0381C6007B5668 /* EmotionUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */; };
 		48EB4F242C038237007B5668 /* EmotionUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4F232C038237007B5668 /* EmotionUserData.swift */; };
+		48FC9C272C17806300D82511 /* BookMarkDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC9C262C17806300D82511 /* BookMarkDetailViewModel.swift */; };
+		48FC9C292C178BCE00D82511 /* BookMarkReadAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC9C282C178BCE00D82511 /* BookMarkReadAPITarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -300,6 +302,8 @@
 		48E24C612BFC713500A46E77 /* BookRecommendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommendCard.swift; sourceTree = "<group>"; };
 		48EB4F202C0381C6007B5668 /* EmotionUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionUserProfile.swift; sourceTree = "<group>"; };
 		48EB4F232C038237007B5668 /* EmotionUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionUserData.swift; sourceTree = "<group>"; };
+		48FC9C262C17806300D82511 /* BookMarkDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkDetailViewModel.swift; sourceTree = "<group>"; };
+		48FC9C282C178BCE00D82511 /* BookMarkReadAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkReadAPITarget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +590,7 @@
 				4874F3BC2C0D79700034698E /* BookDetailViewModel.swift */,
 				48C0536F2C0E00BC0032969B /* BookMarkRegistViewModel.swift */,
 				487F18FB2C0EC57F00DA93E5 /* OCRViewModel.swift */,
+				48FC9C262C17806300D82511 /* BookMarkDetailViewModel.swift */,
 			);
 			path = ViewModelGroup;
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				48DF68772C124EFC0041DFE8 /* BookListAPITarget.swift */,
 				48DF687D2C125BB20041DFE8 /* BookListDetailAPITarget.swift */,
 				48DF68792C1256B80041DFE8 /* BookMarkRegistAPITarget.swift */,
+				48FC9C282C178BCE00D82511 /* BookMarkReadAPITarget.swift */,
 			);
 			path = APITartgetGroup;
 			sourceTree = "<group>";
@@ -997,6 +1003,7 @@
 				48B422F92BFF2AF1009839AD /* EmptyBookView.swift in Sources */,
 				483968472BFCE80D002A3035 /* NoRegistEmotion.swift in Sources */,
 				4876A83C2BF60B5200E1B204 /* EmotionVersesView.swift in Sources */,
+				48FC9C272C17806300D82511 /* BookMarkDetailViewModel.swift in Sources */,
 				48ADB3122C11BC59006B7BA8 /* LoginData.swift in Sources */,
 				48C053742C0E2EB40032969B /* OnBoardScreen.swift in Sources */,
 				48DE6E052BEF5DAB0096A069 /* SpudView.swift in Sources */,
@@ -1014,6 +1021,7 @@
 				482F3F102C0C876D003E7B00 /* ReadingStatus.swift in Sources */,
 				48CF8F272C12A489003DF132 /* ReportCardAPITarget.swift in Sources */,
 				482F3F1C2C0CAA25003E7B00 /* BookReadProgressView.swift in Sources */,
+				48FC9C292C178BCE00D82511 /* BookMarkReadAPITarget.swift in Sources */,
 				48875DF72BFC7F1F00847986 /* BookRecommendViewModel.swift in Sources */,
 				480F6D3D2BC99D9D008D958E /* CustomTextField.swift in Sources */,
 				48800D9B2C10482D00795E41 /* ReportDraftView.swift in Sources */,

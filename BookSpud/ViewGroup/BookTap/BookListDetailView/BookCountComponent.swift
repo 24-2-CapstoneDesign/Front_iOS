@@ -21,7 +21,7 @@ struct BookCountComponent: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12, content: {
             if title == "북마크 수" {
-                Text("\(count)")
+                Text("\(count)개")
                     .font(.spoqaHans(type: .bold, size: 16))
                     .foregroundStyle(Color.primaryDark)
                     .kerning(-0.2)

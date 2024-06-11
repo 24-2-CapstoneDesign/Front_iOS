@@ -120,4 +120,15 @@ class KeyChainManager {
             print("프로피 업데이트 불가")
         }
     }
+    
+    /// 체크 닉네임
+    /// - Returns: 닉네임 유뮤 참거짓 반환
+    public func checkNickname() -> Bool {
+        if let user = KeyChainManager.standard.loadSession(for: "userSession"),
+           let name = user.nickname {
+            return true
+        } else {
+            return false
+        }
+    }
 }

@@ -20,6 +20,7 @@ struct BookListDetailView: View {
     @State var isShowBookMarkInfo: Bool = false
     /* 북마크 감정 교체 버튼 */
     @State var isSelected: BookEmotionKind = .happy
+    @State var selectedBookMark: BookMarkDetailData?
     
     
     init(bookData: BookListDetailData) {
@@ -45,6 +46,9 @@ struct BookListDetailView: View {
             BookMarkRegistView(bookId: viewModel.bookListDetailData.myBookId, isShowBookMarkRegist: $isShowBoookMarkMake)
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
+                .onDisappear {
+                    viewModel.getBookMark(id: viewModel.bookListDetailData.myBookId)
+                }
         })
         
         .fullScreenCover(isPresented: $isShowCountEdit, content: {
@@ -55,12 +59,6 @@ struct BookListDetailView: View {
         .onAppear {
             viewModel.getBookMark(id: viewModel.bookListDetailData.myBookId)
         }
-        
-        .sheet(isPresented: $isShowBookMarkInfo, onDismiss: {
-            self.isShowBookMarkInfo = false
-        }, content: {
-            BookMarkReadView(viewModel: viewModel)
-        })
     }
     
     // MARK: - Top BookInfo
@@ -127,6 +125,7 @@ struct BookListDetailView: View {
         })
     }
     
+    /// 책 관련 저장된 데이터(총 페이지, 읽은 페이지, 북마크 수)
     private var bookInfoCount: some View {
         ZStack(alignment: .center, content: {
             RoundedRectangle(cornerRadius: 4)
@@ -138,15 +137,16 @@ struct BookListDetailView: View {
             
             HStack(alignment: .center, spacing: 53, content: {
                 BookCountComponent(count: viewModel.bookListDetailData.totalPage,
-                              title: "총 페이지")
+                                   title: "총 페이지")
                 BookCountComponent(count: viewModel.bookListDetailData.finalPage,
-                              title: "읽은 페이지")
-                BookCountComponent(count: 12,
-                              title: "북마크 수")
+                                   title: "읽은 페이지")
+                BookCountComponent(count: viewModel.bookMarkData?.result.count ?? 0,
+                                   title: "북마크 수")
             })
         })
     }
     
+    /// 북마크 생성하기 버튼 및 페이지 업데이트 버튼
     private var btnGroup: some View {
         HStack(alignment: .center, spacing: 10, content: {
             makeBtn(title: "북마크 생성하기", action: {
@@ -163,6 +163,7 @@ struct BookListDetailView: View {
     }
     // MARK: - Bottom BookMarkView
     
+    /// 하단 북마크 담당 뷰
     private var bottomBookMarkView: some View {
         VStack(alignment: .center, spacing: 5, content: {
             emotionBtnList
@@ -171,6 +172,7 @@ struct BookListDetailView: View {
         
     }
     
+    /// 북마크 조회 감정 버튼
     private var emotionBtnList: some View {
         HStack(spacing: 10, content: {
             SeletedEmotionBtn(title: "기쁨", currentStatus: .happy, selected: $isSelected, action: {
@@ -202,52 +204,71 @@ struct BookListDetailView: View {
         })
     }
     
+    /// 북마크 리스트 조회
     private var bookMarkList: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 64), spacing: 15), count: 4), spacing: 15, content: {
-                ForEach(filteredMark(), id: \.self) { information in
-                    Icon.icon(for: information.emotion).image
-                        .resizable()
-                        .frame(maxWidth: 50, maxHeight: 50)
-                        .aspectRatio(contentMode: .fit)
-                        .padding([.vertical, .horizontal], 5)
-                        .onTapGesture {
-                            isShowBookMarkInfo = true
-                            
-                            viewModel.verses = information.phase
-                            viewModel.memo = information.memo
-                            viewModel.page = information.page
-                            viewModel.emotion = information.emotion
-
-                        }
+            if !filteredMark().isEmpty {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 0, maximum: 64), spacing: 15), count: 4), spacing: 15, content: {
+                    ForEach(filteredMark(), id: \.self) { data in
+                        Icon.icon(for: data.emotion).image
+                            .resizable()
+                            .frame(maxWidth: 50, maxHeight: 50)
+                            .aspectRatio(contentMode: .fit)
+                            .padding([.vertical, .horizontal], 5)
+                            .onTapGesture {
+                                self.selectedBookMark = data
+                                DispatchQueue.main.async {
+                                    self.isShowBookMarkInfo = true
+                                }
+                            }
+                            .sheet(item: $selectedBookMark) { selectedBookMark in
+                                BookMarkReadView(bookMarkId: selectedBookMark.bookMarkId)
+                                    .presentationDetents([.fraction(0.7)])
+                                    .presentationDragIndicator(.visible)
+                            }
+                    }
+                })
+                .padding(.vertical, 15)
+                .refreshable {
+                    viewModel.getBookMark(id: viewModel.bookListDetailData.myBookId)
                 }
-            })
-            .padding(.vertical, 15)
+                .frame(maxWidth: .infinity, maxHeight: 380)
+            } else {
+                noBookMarkList
+            }
         }
-        .refreshable {
-            viewModel.getBookMark(id: viewModel.bookListDetailData.myBookId)
-        }
-        .frame(maxWidth: .infinity, maxHeight: 380)
+    }
+    
+    private var noBookMarkList: some View {
+        VStack(alignment: .center, spacing: 34, content: {
+            Icon.sadSpud.image
+                .resizable()
+                .frame(maxWidth: 126, maxHeight: 140)
+                .aspectRatio(contentMode: .fit)
+            Text("등록된 북마크가 없습니다.")
+                .font(.spoqaHans(type: .bold, size: 18))
+                .foregroundStyle(Color.gray06)
+        })
+        .padding(.top, 10)
     }
     
     
     // MARK: - Function
     
+    /// 필터에 맞는 북마크 조회
+    /// - Returns: 해당 감정에 대응하는 북마크 조회
     private func filteredMark() -> [BookMarkDetailData] {
-        
-        guard let bookMarkData = viewModel.bookMarkData else { return [] }
-        
         switch isSelected {
         case .happy:
-            return bookMarkData.result.filter { $0.emotion == "JOY" }
+            return viewModel.bookMarkData?.result.filter { $0.emotion == "JOY" } ?? []
         case .sad:
-            return bookMarkData.result.filter { $0.emotion == "SADNESS" }
+            return viewModel.bookMarkData?.result.filter { $0.emotion == "SADNESS" } ?? []
         case .angry:
-            return bookMarkData.result.filter { $0.emotion == "ANGER" }
+            return viewModel.bookMarkData?.result.filter { $0.emotion == "ANGER" } ?? []
         case .inspiration:
-            return bookMarkData.result.filter { $0.emotion == "INSPIRATION" }
+            return viewModel.bookMarkData?.result.filter { $0.emotion == "INSPIRATION" } ?? []
         case .move:
-            return bookMarkData.result.filter { $0.emotion == "MOVED" }
+            return viewModel.bookMarkData?.result.filter { $0.emotion == "MOVED" } ?? []
         }
     }
     
