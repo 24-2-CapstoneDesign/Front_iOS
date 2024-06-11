@@ -87,7 +87,7 @@ struct ResponseArgumentsResult: Codable {
     var id: Int
 }
 
-// MARK: - 질문 조회
+// MARK: - 서론 본론 결론 질문 조회
 
 struct ResponseAnswer: Codable {
     var status: Int
@@ -125,3 +125,18 @@ struct ShowDetailBookResult: Codable {
     var conclusionEmotion: String?
 }
 
+// MARK: - 감정 입력 질문 가이드
+
+struct EmotionGuide: Codable {
+    var status: Int
+    var message: String
+    var result: EmotionGuideResult
+}
+
+struct EmotionGuideResult: Codable {
+    var questionGuides: [EmotionGuideQuestion]
+}
+
+struct EmotionGuideQuestion: Codable {
+    var question: String
+}

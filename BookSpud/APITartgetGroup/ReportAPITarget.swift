@@ -16,6 +16,7 @@ enum ReportAPITarget {
     case makeDraft(argumentId: Int, data: MakeDraft) // 초안 생성
     case detailBookreport(argumentId: Int) // 독후감 상세 조회
     case makeFinalReport(argumentId: Int, inputData: InputEmotionData) // 최종본 생성
+    case emotionGuide
 }
 
 extension ReportAPITarget: TargetType {
@@ -39,6 +40,8 @@ extension ReportAPITarget: TargetType {
             return "/api/bookreport/\(id)"
         case .makeFinalReport(let id, _):
             return "/api/bookreport/\(id)"
+        case .emotionGuide:
+            return "/api/guide/question"
         }
     }
     
@@ -58,6 +61,8 @@ extension ReportAPITarget: TargetType {
             return .get
         case .makeFinalReport:
             return .patch
+        case .emotionGuide:
+            return .get
         }
     }
     
@@ -88,6 +93,8 @@ extension ReportAPITarget: TargetType {
                 "bodyEmotion": data.bodyEmotion,
                 "conclusionEmotion": data.conclusionEmotion
             ], encoding: JSONEncoding.default)
+        case .emotionGuide:
+            return .requestPlain
         }
     }
     

@@ -16,10 +16,6 @@ class ReportDraftViewModel: ObservableObject {
     
     /* 책 생성 후 받아온 책 데이터 */
     @Published var bookData: BookListDetailData
-    /* 감정 입력 데이터 */
-    @Published var inputEmotionData: InputEmotionData?
-    /* 독후감 세부 상세 조회 데이터*/
-    @Published var detailBookReport: ShowDetailBook?
     /* 초안 생성 후 받은 서론 본론 결론 데이터 */
     @Published var responseMakeDraft: ResponseMakeDraft?
     /* 논점 전달 후 받은 id 값 */
@@ -219,58 +215,6 @@ class ReportDraftViewModel: ObservableObject {
                 bodyAnswer: "",
                 conclusionQuestion: "",
                 conclusionAnswer: "")
-        }
-    }
-    
-    // MARK: - ReadReport
-    
-    /// 독후감 세부 상세 조회 API
-    /// - Parameter argumentId: 논점 생성 후 받은 id 값
-    public func showDetailBookReport(argumentId: Int) {
-        provider.request(.detailBookreport(argumentId: argumentId)) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.handleShowDetailReport(response: response)
-            case .failure(let error):
-                print("상세 독후감 네트워크 오류: \(error)")
-            }
-        }
-    }
-    
-    /// 독후감 세부 상세 조회 API 핸들러
-    /// - Parameter response: 상세 조회 후 받은 response
-    private func handleShowDetailReport(response: Response) {
-        do {
-            let decodedData = try JSONDecoder().decode(ShowDetailBook.self, from: response.data)
-            self.detailBookReport = decodedData
-        } catch {
-            print("상세 독후감 디코드 에러: \(error)")
-        }
-    }
-    
-    /// 최종본 등록 API
-    /// - Parameters:
-    ///   - argumentId: 논점 Id
-    ///   - inputData: 입력한 감정 데이터
-    public func makeFinalReport(argumentId: Int, inputData: InputEmotionData) {
-        provider.request(.makeFinalReport(argumentId: argumentId, inputData: inputData)) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.handleMakeFinalReport(response: response)
-            case .failure(let error):
-                print("최종본 네트워크 오류: \(error)")
-            }
-        }
-    }
-    
-    /// 최종본 등록 API 핸들러
-    /// - Parameter response: 최종본 등록 response
-    private func handleMakeFinalReport(response: Response) {
-        do {
-            let decodedData = try JSONDecoder().decode(ResponseEmotionData.self, from: response.data)
-            print("최종본 생성 성공: \(decodedData)")
-        } catch {
-            print("최종본 디코드 에러: \(error)")
         }
     }
 }
