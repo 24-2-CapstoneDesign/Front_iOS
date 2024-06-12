@@ -86,7 +86,7 @@ struct BookListView: View {
                          selected: $selectedStatus)
             
             BookStatusBtn(text: ReadingStatus.reading.rawValue,
-                         action: {
+                         action: { 
                 withAnimation {
                     selectedStatus = .reading
                 }
@@ -120,6 +120,7 @@ struct BookListView: View {
             })
             .frame(minHeight: 1000, alignment: .top)
             .padding(.top, 5)
+            .padding(.bottom, 100)
         })
         .padding(.horizontal, 15)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

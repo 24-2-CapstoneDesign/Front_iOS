@@ -14,6 +14,6 @@ enum BookSpudTab: String, CaseIterable {
     case homeTab = "homeTab"
     case bookTap = "bookTap"
     case isbnTap = "isbnTap"
-    case spudTab = "spudTab"
     case reportTab = "reportTab"
+    case spudTab = "spudTab"
 }
