@@ -75,6 +75,7 @@ struct ReportCardView: View {
                 Text("논점 : \(reportData.argument)")
                     .font(.spoqaHans(type: .regular, size: 12))
                     .foregroundStyle(Color.gray05)
+                    .multilineTextAlignment(.trailing)
             })
             .frame(minWidth: 153, minHeight: 61, alignment: .topLeading)
             

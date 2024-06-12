@@ -27,7 +27,7 @@ struct OnBoardScreen: View {
                 .foregroundStyle(Color.mainText)
             
             Text("독서, 무한한 지식의 여정을 시작하세요!")
-                .font(.spoqaHans(type: .medium, size: 16))
+                .font(.spoqaHans(type: .medium, size: 14))
                 .foregroundStyle(Color.subText)
             
             Spacer()

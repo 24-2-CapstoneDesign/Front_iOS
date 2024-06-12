@@ -11,35 +11,40 @@ import SwiftUI
 struct CustomTabView: View {
     
     @Binding var selectedTab: BookSpudTab
+    @StateObject var keyboardObserver = KeyboardObserver()
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
-                ForEach(BookSpudTab.allCases, id: \.rawValue) { tab in
-                    
-                    Spacer()
-                    
-                    Button {
-                        withAnimation(.spring()) {
-                            selectedTab = tab
+            if !keyboardObserver.isKeyboardVisible {
+                HStack {
+                    ForEach(BookSpudTab.allCases, id: \.rawValue) { tab in
+                        
+                        Spacer()
+                        
+                        Button {
+                            withAnimation(.spring()) {
+                                selectedTab = tab
+                            }
+                        } label: {
+                            Icon(rawValue: tab.rawValue)?
+                                .icon(for: selectedTab == tab)
+                                .fixedSize()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundStyle(selectedTab == tab ? Color.primary1 : Color.black)
                         }
-                    } label: {
-                        Icon(rawValue: tab.rawValue)?
-                            .icon(for: selectedTab == tab)
-                            .fixedSize()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(selectedTab == tab ? Color.primary1 : Color.black)
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
                 }
+                .frame(width: geo.size.width, height: 80)
+                .ignoresSafeArea(.keyboard)
+                .background(Color.white)
+                .roundedCorner(20, corners: [.topLeft, .topRight])
+                .shadow(color: .black.opacity(0.25), radius: 20, x: 0, y: -1)
+                .ignoresSafeArea(.keyboard)
+                .position(x: geo.size.width / 2, y: geo.size.height - 5)
             }
-            .frame(width: geo.size.width, height: 80)
-            .background(Color.white)
-            .roundedCorner(20, corners: [.topLeft, .topRight])
-            .shadow(color: .black.opacity(0.25), radius: 20, x: 0, y: -1)
-            .ignoresSafeArea(.keyboard)
-            .position(x: geo.size.width / 2, y: geo.size.height - 5)
+
         }
     }
 }

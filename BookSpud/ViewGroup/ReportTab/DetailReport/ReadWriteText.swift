@@ -11,15 +11,20 @@ struct ReadWriteText: View {
     
     let title: String
     let verses: String
-    let place: String
+    var place: String
     let icon: Image
+    let changeOn: Bool
     @Binding var emotionMemo: String
+    @FocusState private var isTextFocused: Bool
     
-    init(title: String, verses: String, place: String, icon: Image, emotionMemo: Binding<String>) {
+    init(title: String, verses: String, place: String, icon: Image, changeOn: Bool = true, emotionMemo: Binding<String>,
+         isTextFocused: Bool = false
+    ) {
         self.title = title
         self.verses = verses
         self.place = place
         self.icon = icon
+        self.changeOn = changeOn
         self._emotionMemo = emotionMemo
     }
     
@@ -71,13 +76,13 @@ struct ReadWriteText: View {
     }
     
     private var inputEmotionMemo: some View {
-        ZStack(alignment: .center, content: {
+        ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 4)
                 .fill(Color.white)
-                .shadow03()
+                .shadow(color: Color.black.opacity(0.03), radius: 5, x: 0, y: 5)
                 .frame(maxWidth: 367, maxHeight: 145)
             
-            HStack(alignment: .center, content: {
+            HStack(alignment: .center) {
                 icon
                     .resizable()
                     .frame(maxWidth: 60, maxHeight: 63)
@@ -85,20 +90,41 @@ struct ReadWriteText: View {
                 
                 Spacer()
                 
-                TextField(place, text: $emotionMemo, axis: .vertical)
-                    .frame(maxWidth: 242, maxHeight: 113)
-                    .font(.spoqaHans(type: .medium, size: 12))
-                    .multilineTextAlignment(.center)
-                    .background(Color.clear)
-            })
+                ZStack(alignment: .center) {
+                   
+                    
+                    if changeOn {
+                        TextField("", text: $emotionMemo)
+                            .frame(maxWidth: 242, maxHeight: 113)
+                            .font(.spoqaHans(type: .medium, size: 12))
+                            .foregroundStyle(Color.black)
+                            .multilineTextAlignment(.leading)
+                            .background(Color.clear)
+                            .focused($isTextFocused)
+                        
+                        if emotionMemo.isEmpty && !isTextFocused {
+                            Text(place)
+                                .foregroundColor(Color.gray05)
+                                .padding(.top, 8)
+                                .padding(.horizontal, 4)
+                                .font(.spoqaHans(type: .light, size: 12))
+                                .multilineTextAlignment(.center)
+                                .onTapGesture {
+                                    self.isTextFocused = true
+                                }
+                        }
+                        
+                    } else {
+                        Text(emotionMemo.isEmpty ? place : emotionMemo)
+                            .frame(maxWidth: 242, maxHeight: 113)
+                            .font(.spoqaHans(type: .medium, size: 12))
+                            .foregroundStyle(Color.black)
+                            .multilineTextAlignment(.leading)
+                            .background(Color.clear)
+                    }
+                }
+            }
             .frame(maxWidth: 327, maxHeight: 113)
-        })
-    }
-}
-
-struct Readadsad_Preview: PreviewProvider {
-    @State static var text: String = ""
-    static var previews: some View {
-        ReadWriteText(title: "서론", verses: "아아 졸리다", place: "깜정을 기록햅좌", icon: Icon.sadSpud.image, emotionMemo: $text)
+        }
     }
 }

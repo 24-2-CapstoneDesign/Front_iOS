@@ -48,14 +48,6 @@ struct BookSpudTabView: View {
                     }
                     .tag(BookSpudTab.isbnTap)
                 
-                SpudView()
-                    .tabItem {
-                        Icon.spudTab.image
-                            .fixedSize()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .tag(BookSpudTab.spudTab)
-                
                 ReportView()
                     .tabItem{
                         Icon.reportTab.image
@@ -63,6 +55,14 @@ struct BookSpudTabView: View {
                             .aspectRatio(contentMode: .fit)
                     }
                     .tag(BookSpudTab.reportTab)
+                
+                SpudView()
+                    .tabItem {
+                        Icon.spudTab.image
+                            .fixedSize()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .tag(BookSpudTab.spudTab)
             }
             
             

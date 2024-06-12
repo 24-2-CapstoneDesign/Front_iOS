@@ -126,7 +126,7 @@ class KeyChainManager {
     public func checkNickname() -> Bool {
         if let user = KeyChainManager.standard.loadSession(for: "userSession"),
            let name = user.nickname {
-            return true
+            return !name.isEmpty
         } else {
             return false
         }

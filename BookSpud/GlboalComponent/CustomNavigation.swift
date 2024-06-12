@@ -13,7 +13,7 @@ struct CustomNavigation: View {
     // MARK: - Init
     
     var title: String
-    var chevron: Image
+    var chevron: Image?
     var onOff: Bool
     var height: CGFloat
     var padding: CGFloat
@@ -30,7 +30,7 @@ struct CustomNavigation: View {
     ///   - padding: 패딩 값
     init(
         title: String,
-        chevron: Image = Image(systemName: "chevron.left"),
+        chevron: Image? = Image(systemName: "chevron.left"),
         onOff: Bool = true,
         height: CGFloat = 120,
         padding: CGFloat = 20,
@@ -72,7 +72,7 @@ struct CustomNavigation: View {
                 Button(action: {
                     self.dimiss()
                 }, label: {
-                    chevron
+                    chevron?
                         .resizable()
                         .frame(maxWidth: 10, maxHeight: 18)
                         .aspectRatio(contentMode: .fit)
