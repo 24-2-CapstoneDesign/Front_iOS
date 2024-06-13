@@ -40,7 +40,7 @@ struct SelectedBookListView: View {
     
     /// 상단 네비게이션
     private var topNavigation: some View {
-        CustomNavigation(title: "책 선택", onOff: true)
+        CustomNavigation(title: "책 선택", chevron: nil, onOff: true, height: 70)
     }
     
     private var gridView: some View {
@@ -52,6 +52,8 @@ struct SelectedBookListView: View {
                     }
                 }
             })
+            .padding(.top, 50)
+            .padding(.bottom, 100)
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
