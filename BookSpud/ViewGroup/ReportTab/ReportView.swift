@@ -36,7 +36,7 @@ struct ReportView: View {
     
     // MARK: - ReportView Group
     private var allGroup: some View {
-        VStack(alignment: .center, spacing: 46, content: {
+        VStack(alignment: .center, spacing: 10, content: {
             topCustomNavigation
             reportList
         })
@@ -72,6 +72,8 @@ struct ReportView: View {
                     }
                 }
             })
+            .padding(.top, 50)
+            .padding(.bottom, 100)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backgrounYellow)

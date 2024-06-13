@@ -19,7 +19,7 @@ struct ReportDraftView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 35, content: {
-            CustomNavigation(title: "독후감 초안 생성", height: 90)
+            CustomNavigation(title: "독후감 초안 생성", height: 70)
             
             CurrentPage(viewModel: viewModel)
             

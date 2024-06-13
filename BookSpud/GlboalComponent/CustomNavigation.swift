@@ -57,7 +57,7 @@ struct CustomNavigation: View {
     private var navigationView: some View {
         ZStack(alignment: .bottom, content: {
             if onOff {
-                TopRadiusView(radius: 0, height: 120)
+                TopRadiusView(radius: 0, height: height)
             }
             navigationViewComponents
         })
